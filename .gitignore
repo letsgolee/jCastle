@@ -1,0 +1,7 @@
+node_modules/
+skip-test/
+tmp-test/
+to-do/
+
+to-do.txt
+git-info.txt

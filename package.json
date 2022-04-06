@@ -1,0 +1,18 @@
+{
+  "name": "jcastle",
+  "version": "2.0.0",
+  "description": "pure javascript crypto package",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "qunit"
+  },
+  "keywords": [
+    "jCastle",
+    "crypto"
+  ],
+  "author": "jacob lee",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "qunit": "^2.17.2"
+  }
+}
