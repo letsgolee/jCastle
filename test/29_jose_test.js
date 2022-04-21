@@ -3156,7 +3156,7 @@ var plaintext = JSON.stringify({
 });
 
 // var password = "entrap_o\xe2\x80\x93peter_long\xe2\x80\x93credit_tun".replace("\xe2\x80\x93", "\u2013").replace("\xe2\x80\x93", "\u2013")
-var password = "entrap_o–peter_long–credit_tun";
+var password = Buffer.from("entrap_o–peter_long–credit_tun");
 
 /*
 5.3.2.  Generated Factors

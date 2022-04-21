@@ -3468,6 +3468,7 @@ QUnit.test("Basic Test", function(assert) {
         var dsa = new jCastle.pki('DSA');
         var bits = 4096;
         var params = jCastle.pki.dsa.getPredefinedParameters(bits);
+        // var params = jCastle.pki.dsa.getNistParameters(3072, 256);
     
         dsa.generateKeypair(params);
     

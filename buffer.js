@@ -1,11 +1,21 @@
-/*!
- * The buffer module for the browser.
+/**
+ * Copyright (C) 2015-2022 Jacob Lee.
  *
- * The javascript uses utf16le string in browser, while node.js uses utf8 string.
- * This Buffer class works as if the string in browser is utf8 string. The Buffer class takes utf16le string as utf8.
- * So be careful when any other encoding library is used with this Buffer class.
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * 02111-1307 USA or check at http://www.gnu.org/licenses/gpl.html
  */
-
 var Buffer = Buffer || (function()
 {
 	/**
@@ -76,7 +86,6 @@ var Buffer = Buffer || (function()
 	 * Export kMaxLength after typed array support is determined.
 	 */
 	Buffer.kMaxLength = Buffer.TYPED_ARRAY_SUPPORT ? 0x7fffffff : 0x3fffffff;
-
 
 
 	function createBuffer(that, length)
@@ -362,6 +371,7 @@ var Buffer = Buffer || (function()
 			case 'latin1':
 			case 'binary':
 			case 'base64':
+			case 'base64url':
 			case 'ucs2':
 			case 'ucs-2':
 			case 'utf16le':
@@ -440,6 +450,8 @@ var Buffer = Buffer || (function()
 					return len >>> 1;
 				case 'base64':
 					return base64ToBytes(string).length;
+				case 'base64url':
+					return base64urlToBytes(string).length;
 				default:
 					if (loweredCase) return utf8ToBytes(string).length; // assume utf8
 					encoding = ('' + encoding).toLowerCase();
@@ -506,6 +518,9 @@ var Buffer = Buffer || (function()
 
 				case 'base64':
 					return base64Slice(this, start, end);
+
+				case 'base64url':
+					return base64urlSlice(this, start, end);
 
 				case 'ucs2':
 				case 'ucs-2':
@@ -845,6 +860,11 @@ var Buffer = Buffer || (function()
 		return blitBuffer(base64ToBytes(string), buf, offset, length);
 	}
 
+	function base64urlWrite(buf, string, offset, length)
+	{
+		return blitBuffer(base64urlToBytes(string), buf, offset, length);
+	}
+
 	function ucs2Write(buf, string, offset, length)
 	{
 		return blitBuffer(utf16leToBytes(string, buf.length - offset), buf, offset, length);
@@ -907,6 +927,9 @@ var Buffer = Buffer || (function()
 					// Warning: maxLength not taken into account in base64Write
 					return base64Write(this, string, offset, length);
 
+				case 'base64url':
+					return base64urlWrite(this, string, offset, length);
+
 				case 'ucs2':
 				case 'ucs-2':
 				case 'utf16le':
@@ -938,6 +961,17 @@ var Buffer = Buffer || (function()
 		}
 	}
 
+	function base64urlSlice(buf, start, end)
+	{
+		var string = base64Slice(buf, start, end);
+
+		string = string.replace(/\+/g, '-').replace(/\//g, '_');
+		while (string.charAt(string.length - 1) === '=') {
+			string = string.substring(0, string.length - 1);
+		}
+		return string;
+	}
+
 	function utf8Slice(buf, start, end)
 	{
 		end = Math.min(buf.length, end);
@@ -960,7 +994,7 @@ var Buffer = Buffer || (function()
 						if (firstByte < 0x80) {
 							codePoint = firstByte;
 						}
-						break
+						break;
 					case 2:
 						secondByte = buf[i + 1];
 						if ((secondByte & 0xC0) === 0x80) {
@@ -969,7 +1003,7 @@ var Buffer = Buffer || (function()
 								codePoint = tempCodePoint;
 							}
 						}
-						break
+						break;
 					case 3:
 						secondByte = buf[i + 1];
 						thirdByte = buf[i + 2];
@@ -979,7 +1013,7 @@ var Buffer = Buffer || (function()
 								codePoint = tempCodePoint;
 							}
 						}
-						break
+						break;
 					case 4:
 						secondByte = buf[i + 1];
 						thirdByte = buf[i + 2];
@@ -1554,8 +1588,8 @@ var Buffer = Buffer || (function()
 
 	function checkIEEE754(buf, value, offset, ext, max, min)
 	{
-		if (offset + ext > buf.length) throw new RangeError('Index out of range')
-		if (offset < 0) throw new RangeError('Index out of range')
+		if (offset + ext > buf.length) throw new RangeError('Index out of range');
+		if (offset < 0) throw new RangeError('Index out of range');
 	}
 
 	function writeFloat(buf, value, offset, littleEndian, noAssert)
@@ -2113,6 +2147,19 @@ var Buffer = Buffer || (function()
 	function base64ToBytes(str)
 	{
 		return base64.toByteArray(base64clean(str));
+	}
+
+	function base64urlToBytes(str)
+	{
+		str = str.replace(/\-/g, '+').replace(/_/g, '/');
+
+		// padding with '='
+		switch (str.length % 4) {
+			case 2: str += '=='; break;
+			case 3: str += '='; break;
+		}
+
+		return base64ToBytes(str);
 	}
 
 	function blitBuffer(src, dst, offset, length)

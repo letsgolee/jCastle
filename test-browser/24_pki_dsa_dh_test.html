@@ -1,0 +1,56 @@
+<DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./qunit/qunit-1.19.0.css">
+
+<script src="./qunit/qunit-1.19.0.js"></script>
+
+<script src="../dist/jCastle.min.js"></script>
+</head>
+<body style="font-family: Consolas, Courier New; font-size: 12px;">
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<script type="text/javascript">
+
+QUnit.module('DSA');
+QUnit.test("DH Test", function(assert) {
+    //----------------------------------------------------------------------------------------------------
+    
+    
+    var params = jCastle.pki.dsa.getPredefinedParameters(4096);
+    
+    var alice = new jCastle.pki('DSA');
+    var bob = new jCastle.pki('DSA');
+
+    alice.setParameters(params);
+    bob.setParameters(params);
+
+    // Now allice and Bob both has the same parameters. now generate public & private key...
+
+    alice.generateKeypair();
+    bob.generateKeypair();
+
+    // Exchange public keys...
+
+    var alice_pubkey = alice.getPublicKey();
+    var bob_pubkey = bob.getPublicKey();
+
+    // Compute secret...
+
+    var alice_dh = new jCastle.dh().init(alice);
+    var bob_dh = new jCastle.dh().init(bob);
+
+    var alice_secret = alice_dh.computeSecret(bob_pubkey).toString('hex');
+    var bob_secret = bob_dh.computeSecret(alice_pubkey).toString('hex');
+
+    // Both secrets should be equal
+
+    assert.equal(alice_secret , bob_secret, "DiffieHellman Key Agreement with DSA Parameters Test");
+});
+
+</script>
+
+</body>
+</html>
