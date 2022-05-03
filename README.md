@@ -8,6 +8,9 @@ jCastle is a native implementation of cryptographic library in JavaScript. It su
 
 ## Installation
 
+Currently npm install is not supported.
+
+<!--
 If you use **Node.js** then it is available through `npm`:
 Installation:
 
@@ -20,6 +23,9 @@ var jCastle = require("jCastle");
 ```
 
 The npm package includes pre-built `jCastle.min.js` and you will need `buffer.js` to use in the web browser. `buffer.js` is uploaded in the top directory.
+-->
+
+The pre-built `jCastle.min.js` file is inside `dist` folder and it includes `buffer.js` for to use with the web browser.
 
 ## Testing
 

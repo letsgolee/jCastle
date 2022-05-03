@@ -2,6 +2,8 @@ node_modules/
 skip-test/
 tmp-test/
 to-do/
+dist/backup/
+tmp-files/
 
 to-do.txt
 git-info.txt
