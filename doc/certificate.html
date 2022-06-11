@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    
+
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+</ul>
+
+
+<section>
+
+  <h3>Class:<code>jCastle.certificate</code><span><a class="mark" href="#class-certificate" id="class-certificate">#</a></span><a aria-hidden="true" class="legacy" id="class_certificate"></a></h3>
+
+  <p>
+  전자 서명의 핵심인 X.509 인증서의 요청(CSR), 생성(CRT) 및 폐지목록(CRL)을 분석(파싱), 생성 및 검증하는 툴입니다. 주어진 PKI를 기반으로 인증서를 생성할 뿐 아니라 그 인증서의 유효 여부 역시 검증할 수 있습니다. 한국의 공인인증서 역시 분석 및 생성 가능합니다.</p>
+
+  <!-- new jCastle.certificate -->
+  <h4><code>new jCastle.certificate()</code><span><a class="mark" href="#new-certificate-intance" id="new-certificate-instance">#</a></span><a aria-hidden="true" class="legacy" id="new_certificate_instance"></a></h4>
+
+  <p><code>jCastle.certificate</code> 오브젝트를 생성합니다.</p>
+
+  <!-- jCastle.certificate.create() -->
+  <h4>Static method: <code>jCastle.certificate.create()</code><span><a class="mark" href="#static-certificate-create" id="static-certificate-create">#</a></span><a aria-hidden="true" class="legacy" id="static_certificate_create"></a></h4>
+
+  <p><code>jCastle.certificate</code> 오브젝트를 생성합니다. <code>new jCastle.certificate()</code>와 동일합니다.</p>
+
+  <ul>
+    <li>Return Value: <code>jCastle.certificate</code> 오브젝트를 생성하여 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.certificate.parse(pem, format, type) -->
+  <h4>Static method: <code>jCastle.certificate.parse(pem, format, type)</code><span><a class="mark" href="#static-certificate-parse" id="static-certificate-parse">#</a></span><a aria-hidden="true" class="legacy" id="static_certificate_parse"></a></h4>
+
+  <p><code>jCastle.certificate</code> 오브젝트를 생성한 후 <code>certificate.parse()</code>를 실행합니다. 자세한 내용은 <code>certificate.parse()</code>를 참조하세요.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 파싱할 X.509 인증서 형식의 스트링 혹은 Buffer 데이터. 객체는 <code>jCastle.asn1</code>으로 파싱한 결과 객체를 말합니다.</li>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 스트링 형식. <code>pem</code>이 스트링으로 주어진 경우 그 형식이 무엇인지를 지정합니다. 없으면 자동으로 인식합니다.</li>
+    <li><code>type</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 인증서 형식. <code>jCastle.certificate</code> 상수 부분을 참조하세요.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 데이터를 파싱하여 그 결과를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.certificate.setConfig(config) -->
+  <h4>Static method: <code>jCastle.certificate.setConfig(config)</code><span><a class="mark" href="#static-certificate-setConfig" id="static-certificate-setConfig">#</a></span><a aria-hidden="true" class="legacy" id="static_certificate_setConfig"></a></h4>
+
+  <p><code>jCastle.certificate</code> 오브젝트를 생성한 후 <code>certificate.setConfig()</code>를 실행합니다. 자세한 내용은 <code>certificate.setConfig()</code>를 참조하세요.</p>
+
+  <ul>
+    <li><code>config</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 OpenSSL의 환경파일 내용 스트링 혹은 Buffer 데이터.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>jCastle.certificate</code> 객체를 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.certificate.setSignKey(signkey, password) -->
+  <h4>Static method: <code>jCastle.certificate.setSignKey(signkey, password)</code><span><a class="mark" href="#static-certificate-setSignKey" id="static-certificate-setSignKey">#</a></span><a aria-hidden="true" class="legacy" id="static_certificate_setSignKey"></a></h4>
+
+  <p><code>jCastle.certificate</code> 오브젝트를 생성한 후 <code>certificate.setSignKey()</code>를 실행합니다. 자세한 내용은 <code>certificate.setSignKey()</code>를 참조하세요.</p>
+
+  <ul>
+    <li><code>signkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>jCastle.certificate</code> 객체를 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.certificate.getBuffer(certInfo) -->
+  <h4>Static method: <code>jCastle.certificate.getBuffer(certInfo)</code><span><a class="mark" href="#static-certificate-getBuffer" id="static-certificate-getBuffer">#</a></span><a aria-hidden="true" class="legacy" id="static_certificate_getBuffer"></a></h4>
+
+  <p><code>jCastle.certificate</code> 오브젝트를 생성한 후 <code>certificate.getBuffer()</code>를 실행합니다. 자세한 내용은 <code>certificate.getBuffer()</code>를 참조하세요.</p>
+
+  <ul>
+    <li><code>certInfo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> X.509 인증서 형식의 <code>schema</code>객체. 인증서를 파싱한 결과로 생성되는 객체와 같은 형식입니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>schema</code>객체를 이용하여 인증서를 생성 후 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.certificate.getDER(certInfo) -->
+  <h4>Static method: <code>jCastle.certificate.getDER(certInfo)</code><span><a class="mark" href="#static-certificate-getDER" id="static-certificate-getDER">#</a></span><a aria-hidden="true" class="legacy" id="static_certificate_getDER"></a></h4>
+
+  <p><code>jCastle.certificate</code> 오브젝트를 생성한 후 <code>certificate.getDER()</code>를 실행합니다. 자세한 내용은 <code>certificate.getDER()</code>를 참조하세요.</p>
+
+  <ul>
+    <li><code>certInfo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> X.509 인증서 형식의 <code>schema</code>객체. 인증서를 파싱한 결과로 생성되는 객체와 같은 형식입니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>schema</code>객체를 이용하여 인증서를 생성 후 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.certificate.registerExtension(ext_name, parse_func, schema_func) -->
+  <h4>Static method: <code>jCastle.certificate.registerExtension(ext_name, parse_func, schema_func)</code><span><a class="mark" href="#static-certificate-registerExtension" id="static-certificate-registerExtension">#</a></span><a aria-hidden="true" class="legacy" id="static_certificate_registerExtension"></a></h4>
+
+  <p><code>extention</code>파싱 및 스키마 생성 함수를 등록합니다.</p>
+
+  <ul>
+    <li><code>ext_name</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 등록할 <code>extension</code> 명칭.</li>
+    <li><code>parse_func</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&#x3C;Function></a> 파싱 함수</li>
+    <li><code>schema_func</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&#x3C;Function></a> 스키마 생성 함수</li>
+  </ul>
+
+
+  <!-- jCastle.certificate.registerOtherNameRule(ext_name, parse_func, schema_func) -->
+  <h4>Static method: <code>jCastle.certificate.registerOtherNameRule(ext_name, parse_func, schema_func)</code><span><a class="mark" href="#static-certificate-registerOtherNameRule" id="static-certificate-registerOtherNameRule">#</a></span><a aria-hidden="true" class="legacy" id="static_certificate_registerOtherNameRule"></a></h4>
+
+  <p><code>otherNames</code>파싱 및 스키마 생성 함수를 등록합니다.</p>
+
+  <ul>
+    <li><code>ext_name</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 등록할 <code>extension</code> 명칭.</li>
+    <li><code>parse_func</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&#x3C;Function></a> 파싱 함수</li>
+    <li><code>schema_func</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&#x3C;Function></a> 스키마 생성 함수</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+// 이것은 한국의 공인인증서를 인식하게 하는 예제입니다.
+// 현재는 jCastle.certificate에 적용되어 있으니 사용할 필요가 없습니다.
+
+jCastle.certificate.registerOtherNameRule(
+  'npkiIdentifyData', 
+  function(otherName, explicit) // parse function
+  {
+    var name = {
+      value: explicit.items[0].items[0].value,
+      type:  explicit.items[0].items[0].type
+    };
+
+    var v = {
+      name: name
+    };
+
+    if (typeof explicit.items[0].items[1] != 'undefined' &&
+      explicit.items[0].items[1].type == jCastle.asn1.tagSequence
+    ) {
+        var seq = explicit.items[0].items[1].items[0];
+        var d = {};
+        d.identifier = jCastle.oid.getName(seq.items[0].value);
+        if (!d.identifier) d.identifier = seq.items[0].value;
+
+        switch(d.identifier) {
+          case 'npkiVID':
+            d.hashAlgo = jCastle.oid.getName(seq.items[1].items[0].items[0].value);
+            d.data = seq.items[1].items[1].items[0].value;
+            break;
+          default:
+            throw jCastle.exception("UNSUPPORTED_EXTENSION", 'CRT063');
+        }
+
+
+      v.identifyData = d;
+    }
+
+    var res = {
+      name: otherName,
+      value: v
+    };
+
+    return res;
+  },
+  function(obj) // schema function
+  {
+    var schema = [];
+    schema.push({
+      type: jCastle.asn1.tagOID,
+      value: jCastle.oid.getOID('npkiIdentifyData')
+    });
+
+    var valueSchema = {
+      type: jCastle.asn1.tagSequence,
+      items: [{
+        type: 'type' in obj.value.name ? obj.value.name.type : jCastle.asn1.tagUTF8String,
+        value: obj.value.name.value
+      }]
+    };
+
+    if ('identifyData' in obj.value) {
+      var npkiVIDSchema = {
+        type: jCastle.asn1.tagSequence,
+        items: [{
+          type: jCastle.asn1.tagSequence,
+          items: [{
+            type: jCastle.asn1.tagOID,
+            value: jCastle.oid.getOID(obj.value.identifyData.identifier) // should be npkiVID
+          }, {
+            type: jCastle.asn1.tagSequence,
+            items: [{
+              type: jCastle.asn1.tagSequence,
+              items: [{
+                type: jCastle.asn1.tagOID,
+                value: jCastle.digest.getOID(obj.value.identifyData.hashAlgo)
+              }]
+            }, {
+              tagClass: jCastle.asn1.tagClassContextSpecific,
+              type: 0x00,
+              constructed: true,
+              items: [{
+                type: jCastle.asn1.tagOctetString,
+                value: obj.value.identifyData.data
+              }]
+            }]
+          }]
+        }]
+      };
+
+      valueSchema.items.push(npkiVIDSchema);
+    }
+
+    schema.push({
+      tagClass: jCastle.asn1.tagClassContextSpecific,
+      type: 0x00,
+      constructed: true,
+      items: [
+        valueSchema
+      ]
+    });
+
+    return schema;
+  }
+);
+  </pre>
+
+  <hr>
+
+  <!-- certificate.reset() -->
+  <h4><code>certificate.reset()</code> <span><a class="mark" href="#certificate-reset" id="certificate-reset">#</a></span><a aria-hidden="true" class="legacy" id="certificate_reset"></a></h4>
+
+  <p>입력되었던 모든 데이터들을 초기화 합니다.</p>
+
+  <ul>
+    <li>Return Value: 오브젝트 자신을 리턴합니다.</li>
+  </ul>
+
+  <!-- certificate.setConfig(config) -->
+  <h4><code>certificate.setConfig(config)</code><span><a class="mark" href="#certificate-setConfig" id="certificate-setConfig">#</a></span><a aria-hidden="true" class="legacy" id="certificate_setConfig"></a></h4>
+
+  <p>OpenSSL의 환경파일을 생성할 인증서에 적용하기 위해 등록합니다. 파일 명이 아니라 파일 내용이 와야 합니다.</p>
+
+  <ul>
+    <li><code>config</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 OpenSSL의 환경파일 내용 스트링 혹은 Buffer 데이터.</li>
+  </ul>
+
+
+  <!-- certificate.setSignKey(signkey, password) -->
+  <h4><code>certificate.setSignKey(signkey, password)</code><span><a class="mark" href="#certificate-setSignKey" id="certificate-setSignKey">#</a></span><a aria-hidden="true" class="legacy" id="certificate_setSignKey"></a></h4>
+
+  <p>인증서 생성에 필요한 개인키 혹은 공개키를 등록합니다.</p>
+
+  <ul>
+    <li><code>signkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+  </ul>
+
+
+  <!-- certificate.parse(pem, format = 'auto', type = jCastle.certificate.typeCRT) -->
+  <h4><code>certificate.parse(pem, format = 'auto', type = jCastle.certificate.typeCRT)</code><span><a class="mark" href="#certificate-parse" id="certificate-parse">#</a></span><a aria-hidden="true" class="legacy" id="certificate_parse"></a></h4>
+
+  <p>X.509 형식의 인증서를 파싱(분석)하여 그 결과를 리턴할 뿐 아니라 객체의 <code>certInfo</code> 프로퍼티에 등록합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 파싱할 X.509 인증서 형식의 스트링 혹은 Buffer 데이터. 객체는 <code>jCastle.asn1</code>으로 파싱한 결과 객체를 말합니다.</li>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 스트링 형식. <code>pem</code>이 스트링으로 주어진 경우 그 형식이 무엇인지를 지정합니다. 없으면 자동으로 인식합니다.</li>
+    <li><code>type</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 인증서 형식. <code>jCastle.certificate</code> 상수 부분을 참조하세요. 기본 값은 <code>jCastle.certificate.typeCRT</code>입니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 데이터를 파싱하여 그 결과를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- certificate.request(req_info, options = {}) -->
+  <h4><code>certificate.request(req_info, options = {})</code><span><a class="mark" href="#certificate-request" id="certificate-request">#</a></span><a aria-hidden="true" class="legacy" id="certificate_request"></a></h4>
+
+  <p>CSR (Certificate Signing Request) 인증서를 생성합니다.</p>
+
+  <ul>
+    <li><code>req_info</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 인증서 생성에 필요한 스키마 객체</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 리턴할 인증서 형식. <code>der</code> | <code>buffer</code> | <code>hex</code> | <code>base64</code> | <code>pem</code>. 기본 값은 <code>pem</code>입니다.</li>
+        <li><code>signKey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+        <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+        <li><code>extensionName</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 사용할 <code>extension</code> 명. 만일 <code>config</code>값으로 환경파일 내용이 주어졌고 그 중 <code>extension</code> 명으로 지정하고 싶을 때 사용합니다.</li>
+        <li><code>config</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 OpenSSL의 환경파일 내용 스트링 혹은 Buffer 데이터.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 생성된 CSR 인증서를 <code>format</code>에 따른 형식으로 리턴합니다.</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+var subject = [{
+    name: 'C',
+    value: countryName.value
+  }, {
+    name: 'ST',
+    value: stateOrProvinceName.value
+  }, {
+    name: 'L',
+    value: localityName.value
+  }, {
+    name: 'O',
+    value: organizationName.value
+  }, {
+    name: 'OU',
+    value: organizationalUnitName.value
+  }, {
+    name: 'CN',
+    value: commonName.value
+  }, {
+    name: 'E',
+    value: emailAddress.value
+  }, {
+    name: 'STREET',
+    value: streetAddress.value
+  }
+];
+
+
+new cert = new jCastle.certificate();
+cert.setConfig(cert_config);
+cert.setSignKey(sign_key);
+
+var csr_pem = cert.request({
+  subject: subject,
+  algo: {
+    signAlgo: 'RSASSA-PKCS1-V1_5',
+    hashAlgo: 'sha-256'
+  }
+}, {
+  signKey: issuer_privateKey, // or use .setSignKey()
+  config: cert_config, // or use .setConfig()
+  extensionName: config_ext_name,
+  format: 'pem' // default
+});
+  </pre>
+
+
+  <!-- certificate.validate(pem [, pub_pki]) -->
+  <h4><code>certificate.validate(pem [, pub_pki])</code><span><a class="mark" href="#certificate-validate" id="certificate-validate">#</a></span><a aria-hidden="true" class="legacy" id="certificate_validate"></a></h4>
+
+  <p>주어진 인증서를 검증합니다. 서명 및 날짜가 유효여부를 조사하며 만일 <code>subjectKeyIdetifier</code>가 주어지면 역시 유효성을 검증합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 파싱할 X.509 인증서 형식의 스트링 혹은 Buffer 데이터. 객체는 <code>jCastle.asn1</code>으로 파싱한 결과 객체를 말합니다.</li>
+    <li><code>pub_pki</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 인증서 검증 시 사용할 공개키. 만일 주어지지 않으면 <code>pem</code> 인증서를 파싱해서 나온 <code>subjectPublicKey</code>를 사용하게 됩니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 검증하여 그 결과를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- certificate.issue(csr_pem, issue_info, options = {}) -->
+  <h4><code>certificate.issue(csr_pem, issue_info, options = {})</code><span><a class="mark" href="#certificate-issue" id="certificate-issue">#</a></span><a aria-hidden="true" class="legacy" id="certificate_issue"></a></h4>
+
+  <p>CSR 인증서를 바탕으로 X.509 인증서를 생성합니다.</p>
+
+  <ul>
+    <li><code>csr_pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> CSR 인증서. 객체인 경우는 <code>jCastle.asn1</code>으로 파싱된 객체를 말합니다.</li>
+    <li><code>issue_info</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 인증서 생성에 필요한 스키마 객체</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 리턴할 인증서 형식. <code>der</code> | <code>buffer</code> | <code>hex</code> | <code>base64</code> | <code>pem</code>. 기본 값은 <code>pem</code>입니다.</li>
+        <li><code>signKey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+        <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+        <li><code>extensionName</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 사용할 <code>extension</code> 명. 만일 <code>config</code>값으로 환경파일 내용이 주어졌고 그 중 <code>extension</code> 명으로 지정하고 싶을 때 사용합니다.</li>
+        <li><code>config</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 OpenSSL의 환경파일 내용 스트링 혹은 Buffer 데이터.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 생성된 인증서를 <code>format</code>에 따른 형식으로 리턴합니다.</li>
+  </ul>
+
+
+  <pre class="prettyprint p-4">
+var issuer = [{
+    name: 'C',
+    value: countryName.value
+  }, {
+    name: 'ST',
+    value: stateOrProvinceName.value
+  }, {
+    name: 'L',
+    value: localityName.value
+  }, {
+    name: 'O',
+    value: organizationName.value
+  }, {
+    name: 'OU',
+    value: organizationalUnitName.value
+  }, {
+    name: 'CN',
+    value: commonName.value
+  }, {
+    name: 'E',
+    value: emailAddress.value
+  }, {
+    name: 'STREET',
+    value: streetAddress.value
+  }
+];
+
+new cert = new jCastle.certificate();
+cert.setConfig(cert_config);
+cert.setSignKey(sign_key);
+
+var crt_pem = cert.issue(csr_pem, {
+  issuer: issuer,
+  validity: {
+    notBefore: not_before,
+    notAfter: not_after,
+  },
+  issuerUniqueId: iuid,
+  subjectUniqueId: suid,
+  algo: {
+    signAlgo: 'RSASSA-PKCS1-V1_5',
+    hashAlgo: 'sha-256'
+  }
+}, {
+  issuerCertificate: issuer_cert, // if exists, then issuer will be the subject of the certificate.
+  extentionName: config_ext_name,
+  format: 'pem' // default
+});
+  </pre>
+
+  <!-- certificate.revoke(revoked_list, revoke_info, options = {}) -->
+  <h4><code>certificate.revoke(revoked_list, revoke_info, options = {})</code><span><a class="mark" href="#certificate-revoke" id="certificate-revoke">#</a></span><a aria-hidden="true" class="legacy" id="certificate_revoke"></a></h4>
+
+  <p>CRL (Certificate Revokation List) 인증서를 생성합니다.</p>
+
+  <ul>
+    <li><code>revoked_list</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 폐기할 인증서 목록</li>
+    <li><code>revoke_info</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 인증서 생성에 필요한 스키마 객체</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 리턴할 인증서 형식. <code>der</code> | <code>buffer</code> | <code>hex</code> | <code>base64</code> | <code>pem</code>. 기본 값은 <code>pem</code>입니다.</li>
+        <li><code>signKey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+        <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+        <li><code>extensionName</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 사용할 <code>extension</code> 명. 만일 <code>config</code>값으로 환경파일 내용이 주어졌고 그 중 <code>extension</code> 명으로 지정하고 싶을 때 사용합니다.</li>
+        <li><code>config</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 OpenSSL의 환경파일 내용 스트링 혹은 Buffer 데이터.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 생성된 인증서를 <code>format</code>에 따른 형식으로 리턴합니다.</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+new cert = new jCastle.certificate();
+cert.setConfig(cert_config);
+cert.setSignKey(sign_key);
+
+var revoked_cert_list = [
+  {
+    userCertificate: serial,
+    revocationDate: "2013-02-18 10:22:12 UTC",
+    crlEntryExtensions: {
+      cRLReason: "affiliationChanged",
+      invalidityDate: "2013-02-18 10:22:00 UTC"
+    }
+  },
+  {
+    userCertificate: serial,
+    revocationDate: "2013-02-18 10:22:22 UTC",
+    crlEntryExtensions: {
+      cRLReason: "certificateHold",
+      invalidityDate: "2013-02-18 10:22:00 UTC"
+    }
+  },
+  {
+    userCertificate: serial,
+    revocationDate: "2013-02-18 10:22:32 UTC",
+    crlEntryExtensions: {
+      cRLReason: "superseded",
+      invalidityDate: "2013-02-18 10:22:00 UTC"
+    }
+  },
+  {
+    userCertificate: serial,
+    revocationDate: "2013-02-18 10:22:42 UTC",
+    crlEntryExtensions: {
+      cRLReason: "keyCompromise",
+      invalidityDate: "2013-02-18 10:22:00 UTC"
+    }
+  },
+  {
+    userCertificate: serial,
+    revocationDate: "2013-02-18 10:22:51 UTC",
+    crlEntryExtensions: {
+      cRLReason: "cessationOfOperation",
+      invalidityDate: "2013-02-18 10:22:00 UTC"
+    }
+  }
+];
+
+var crl_pem = cert.revoke(revoked_cert_list, {
+  issuer: issuer,
+  thisUpdate: tu,
+  nextUpdate: nu,
+  algo: {
+    signAlgo: 'RSASSA-PKCS1-V1_5',
+    hashAlgo: 'sha-256'
+  }
+}, {
+  issuerCertificate: issuer_cert, // if exists then issuer should be subject of the certificate.
+  signKey: issuer_signKey, // or use .setSignKey()
+  config: cert_config, // or use .setConfig()
+  extensionName: config_ext_name,
+  format: 'pem' // default
+});
+  </pre>
+
+  <!-- certificate.exportCertificate(cert_info, options = {}, reuseSignature = false) -->
+  <h4><code>certificate.exportCertificate(cert_info, options = {}, reuseSignature = false)</code><span><a class="mark" href="#certificate-exportCertificate" id="certificate-exportCertificate">#</a></span><a aria-hidden="true" class="legacy" id="certificate_exportCertificate"></a></h4>
+
+  <p>주어진 정보를 가지고 X.509 인증서를 생성합니다.</p>
+
+  <ul>
+    <li><code>cert_info</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 인증서 생성에 필요한 스키마 객체</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 리턴할 인증서 형식. <code>der</code> | <code>buffer</code> | <code>hex</code> | <code>base64</code> | <code>pem</code>. 기본 값은 <code>pem</code>입니다.</li>
+        <li><code>signKey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+        <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+        <li><code>extensionName</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 사용할 <code>extension</code> 명. 만일 <code>config</code>값으로 환경파일 내용이 주어졌고 그 중 <code>extension</code> 명으로 지정하고 싶을 때 사용합니다.</li>
+        <li><code>config</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 OpenSSL의 환경파일 내용 스트링 혹은 Buffer 데이터.</li>
+      </ul>
+    </li>
+    <li><code>reuseSignature</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 서명을 재사용할지 여부를 결정합니다. 원래 서명을 재사용할 수 없습니다. 하지만 테스트를 위한 목적으로 서명을 재사용하고자 할 때 사용합니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 생성된 인증서를 <code>format</code>에 따른 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- certificate.export(cert_info, options = {}, reuseSignature = false) -->
+  <h4><code>certificate.export(cert_info, options = {}, reuseSignature = false)</code><span><a class="mark" href="#certificate-export" id="certificate-export">#</a></span><a aria-hidden="true" class="legacy" id="certificate_export"></a></h4>
+
+  <p><code>certificate.exportCertificate()</code>와 동일 메소드입니다.</p>
+
+  <pre class="prettyprint p-4">
+QUnit.test("With RSA Test", function(assert) {    
+  var private_pem = `-----BEGIN PRIVATE KEY-----
+  MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAHe+YHFvjkxmqH0v
+  UtyTSd3WH7CkGcmRtYNFZhYE4dS/hH8D50h9YlINwpQRXStRT70Jj0GmjH58t9/Y
+  OGXmJJJwYO4muldITFZMD4Y8cFjGOp7+PczqQf8saHLoHO0uDn2K1XEYktb9UQS8
+  LhMbwyzpn9o5OjThcsK3b2YuGkzQ6+CEnB2XN4qNpJqjzukrxoZwAtRRCGvo92Wt
+  oucTA5ThTLKsYOLNLZON3+HfKPQfdNk/5X8Df6J1qasgoLfW39JiFlsyvHIxoNL2
+  583DXyDxesBAcoJds6r2xEhhak/Bu7CS45JmXne0fw9yGTA4NcHenf2dsyep+Us0
+  ZHE1WFECAwEAAQKCAQANV+qZWWwK+XmXEZnzOHqHvN+lKHQzMQiAC1C37W1Y7sqN
+  +NpiCo7VQ/FF3LV8KUBweUs8bpnDUpSO3iJSwJWct+clQq2LImRXTXyBYeTHD7fi
+  lcQ/PG+ERueQvmrSx0oYFUt5odpjGLFZjLq5qGNUcug8QhpJYEIQjq5cPZDytEFz
+  PiVvtzhmmzsz+gW2jS3hlwwgoZCSPA+/5eT/ber4B2lK62GDDRO+J667Agp/E9L/
+  OLKShumcgNItZ8nQdzJj+Rg82XBLX44KTE5IyTM7UlLCWix0NbjObOfGSFTUv7nX
+  3Ef+qNz5qmJ0EFpvaD3Sj3Reetn25k6cxYgvW23tAoGBANY7pyhJM3xgJgmgkGge
+  pzQRwK/AuVnS4JpGUbVUTZ1DUj9Vd6+FfW8Ij0lROPfj21jXbiCaPD0cX2+RptVv
+  uGcq4er56dv+do/UeoFevlql7k2rw4gkIvjbwDbm2icF/cAOUXeUxI87rfE4XUIA
+  GVigHTrUn/7Mus5BygTZT7uTAoGBAI8WxRnivR1tpr6Vo0828aUuyh2hXK3Mb1Fz
+  bme5uBmoO/Z2UOVwkhLo9adC+jLY3o4bR4XkwuiGfgiGbND8k7t2IKPB+aZE1Wmd
+  sIFRIvP8n3q8eDCjWZOmGtFGLrZVNW6pKCclh1JIfgOkJ5O3na5yXr9jxN3DR98/
+  QOfsLjMLAoGActD9wYWZ5mrReA9p1aO4ERwCnS85J37xiT1uxTQtdL+D8RWpU5TD
+  qSJ5SN4THigsguzSxP5kkowGShFRzMpXllNRSVIvmAxFFsjV70gL1SFhGpeX7/sO
+  EzoTRllrScbYPHpwBxrgTbO6gbGnqZvL+ce2YrVaGoE3DRwNXZPqO6kCgYEAipZA
+  MtEj38PbM04VTVzm8Nj/k3E9JWwTCS2m6jm7sMX7xbtUoNTF9iDCBM1fLS5VaAfN
+  30Xw7WuN2E3ySPvJTlCcTl9KoBqdJN1BHg7qrqun/yVZt6oO0W2ZHcY+6gRfax3V
+  MQ0tIqnpuzcbyfuWcmZ9lBtaintgOj62a6qaGH8CgYEAnZXFzL8+UQp4zogUH3uY
+  o5K3y8/dzvuQlUQNShOqySCYZq138TB4GRapbjEtybj5H8ir1lApM1xzcJcisT+f
+  QClpPUxq1KitZqZPj1PtH6Yn+vP4CWq9D6a+6lt9DhH7rwqyOmcTskmIeGJWerP4
+  YTdgkw8sWi3fZ9kH06PUPKs=
+  -----END PRIVATE KEY-----`;
+    
+
+  var rsa = new jCastle.pki('RSA');
+  rsa.parse(private_pem);
+
+  //var cert = rsa.Certificate.parsePEM(certificate);
+
+  //console.log(cert);
+
+
+  var serial = 3579;
+
+  var issuer = [{
+    name: 'countryName',
+    value: 'JP',
+    type: jCastle.ASN1.tagPrintableString
+  }, {
+    name: 'stateOrProvinceName',
+    value: 'Tokyo'
+    // type: jCastle.ASN1.tagUTF8String // default
+  }, {
+    name: 'localityName',
+    value: 'Chuo-ku'
+  }, {
+    name: 'organizationName',
+    value: 'Frank4DD'
+  }, {
+    name: 'organizationalUnitName',
+    value: 'WebCert Support'
+  }, {
+    name: 'commonName',
+    value: 'Frank4DD Web CA'
+  }, {
+    name: 'emailAddress',
+    value: 'support@frank4dd.com'
+  }];
+
+  var subject = [{
+    name: 'countryName',
+    value: 'JP',
+    type: jCastle.ASN1.tagPrintableString
+  }, {
+    name: 'stateOrProvinceName',
+    value: 'Tokyo'
+    // type: jCastle.ASN1.tagUTF8String // default
+  }, {
+    name: 'organizationName',
+    value: 'Frank4DD'
+  }, {
+    name: 'commonName',
+    value: 'Frank4DD Web CA'
+  }];
+
+
+  // self-signed certificate
+
+  var cert_info = {
+    type: jCastle.certificate.typeCRT,
+    tbs: {
+      serialNumber: serial,
+      issuer: issuer,
+      subject: subject,
+      subjectPublicKeyInfo: rsa.getPublicKeyInfo()
+    },
+    algo: {
+      signHash: 'SHA-256',
+      signAlgo: 'RSASSA-PKCS1-V1_5' // 'RSASSA-PSS', 'EC', 'DSA'
+    }
+  };
+
+
+//  console.log(jCastle.util.clone(cert_info));
+
+  var cert = new jCastle.certificate();
+  cert.setSignKey(rsa);
+
+  pem = cert.exportCertificate(cert_info);
+  // console.log(pem);
+    
+
+  cert_info = cert.parse(pem);
+  // console.log(cert_info);
+
+  var v = cert.verify(pem, rsa);
+  assert.ok(v, 'RSA certificate test for RSASSA-PKCS1-V1_5');
+  // console.log(v);
+
+  // this certificate is self-signed. so it should be true.
+  var v = cert.verify(pem);
+  assert.ok(v, 'RSA certificate test 2 for RSASSA-PKCS1-V1_5');
+  // console.log(v);
+
+  //
+  // RSASSA-PSS test
+  //
+
+  cert_info.algo.signAlgo = 'RSASSA-PSS';
+
+  pem = cert.exportCertificate(cert_info);
+  // console.log(pem);
+    
+
+  cert_info = cert.parse(pem);
+  // console.log(cert_info);
+
+  var v = cert.verify(pem, rsa);
+  assert.ok(v, 'RSA certificate test for RSASSA-PSS');
+  // console.log(v);
+
+  var v = cert.verify(pem);
+  assert.ok(v, 'RSA certificate test 2 for RSASSA-PSS');
+  // console.log(v);
+
+  //
+  // RSASSA-PKCS1-V1_5 with OAEP publickey info
+  //
+  var cert_info2 = jCastle.util.clone(cert_info);
+
+  cert_info2.algo.signAlgo = 'RSASSA-PKCS1-V1_5';
+
+  cert_info2.tbs.subjectPublicKeyInfo.padding = {
+    mode: 'RSAES-OAEP',
+    hashAlgo: 'SHA-256',
+    label: Buffer.from('jacob lee')
+  };
+
+//  console.log(cert_info);
+
+  pem = cert.exportCertificate(cert_info2);
+  // console.log(pem);
+    
+
+  cert_info2 = cert.parse(pem);
+    // console.log(cert_info2);
+
+  var v = cert.verify(pem, rsa);
+  assert.ok(v, 'RSA certificate test for RSASSA-PKCS1-V1_5 with OAEP public key info');
+  // console.log(v);
+
+  var v = cert.verify(pem);
+  assert.ok(v, 'RSA certificate test 2 for RSASSA-PKCS1-V1_5 with OAEP public key info');
+  // console.log(v);
+});  
+  </pre>
+
+  <!-- certificate.verify(pem, pub_pki = null, format = 'auto') -->
+  <h4><code>certificate.verify(pem, pub_pki = null, format = 'auto')</code><span><a class="mark" href="#certificate-verify" id="certificate-verify">#</a></span><a aria-hidden="true" class="legacy" id="certificate_verify"></a></h4>
+
+  <p>주어진 인증서의 서명을 검증합니다. 날짜 유효여부 등은 검증하지 않습니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 파싱할 X.509 인증서 형식의 스트링 혹은 Buffer 데이터. 객체는 <code>jCastle.asn1</code>으로 파싱한 결과 객체를 말합니다.</li>
+    <li><code>pub_pki</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 인증서 검증 시 사용할 공개키. 만일 주어지지 않으면 <code>pem</code> 인증서를 파싱해서 나온 <code>subjectPublicKey</code>를 사용하게 됩니다.</li>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 인증서 형식</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 검증하여 그 결과를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- certificate.isValid(pem, crl_pem) -->
+  <h4><code>certificate.isValid(pem, crl_pem)</code><span><a class="mark" href="#certificate-isValid" id="certificate-isValid">#</a></span><a aria-hidden="true" class="legacy" id="certificate_isValid"></a></h4>
+
+  <p>주어진 인증서의 날짜가 유효한지 그리고 CRL 폐기 목록에 있지 아니한지 여부를 검증합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 파싱할 X.509 인증서 형식의 스트링 혹은 Buffer 데이터. 객체는 <code>jCastle.asn1</code>으로 파싱한 결과 객체를 말합니다.</li>
+    <li><code>crl_pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> CRL 인증서</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 검증하여 그 결과를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- certificate.exportPublicKey() -->
+  <h4><code>certificate.exportPublicKey()</code><span><a class="mark" href="#certificate-exportPublicKey" id="certificate-exportPublicKey">#</a></span><a aria-hidden="true" class="legacy" id="certificate_exportPublicKey"></a></h4>
+
+  <p>만일 인증서 정보 목록인 <code>tbs</code>에 <code>subjectPublicKeyInfo</code>가 등록되어 있으면 해당 정보를 가지고 공개키를 생성하여 내보냅니다. 만일 없으면 <code>null</code>이 리턴됩니다.</p>
+
+  <ul>
+    <li>Return Value: 공개키를 <a href="#" class="type">jCastle.pki</a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- certificate.createPKIFromPublicKeyInfo() -->
+  <h4><code>certificate.createPKIFromPublicKeyInfo()</code><span><a class="mark" href="#certificate-createPKIFromPublicKeyInfo" id="certificate-createPKIFromPublicKeyInfo">#</a></span><a aria-hidden="true" class="legacy" id="certificate_createPKIFromPublicKeyInfo"></a></h4>
+
+  <p><code>certificate.exportPublicKey()</code>와 동일 메소드입니다.</p>
+
+  <!-- certificate.getSubjectPublicKeyInfo() -->
+  <h4><code>certificate.getSubjectPublicKeyInfo()</code><span><a class="mark" href="#certificate-getSubjectPublicKeyInfo" id="certificate-getSubjectPublicKeyInfo">#</a></span><a aria-hidden="true" class="legacy" id="certificate_getSubjectPublicKeyInfo"></a></h4>
+
+  <p>만일 인증서 정보 목록인 <code>tbs</code>에 <code>subjectPublicKeyInfo</code>가 등록되어 있으면 해당 정보를 내보냅니다. 만일 없으면 <code>null</code>이 리턴됩니다.</p>
+
+  <ul>
+    <li>Return Value: <code>subjectPublicKeyInfo</code>를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- certificate.registerExtension(ext_name, parse_func, schema_func) -->
+  <h4><code>certificate.registerExtension(ext_name, parse_func, schema_func)</code><span><a class="mark" href="#certificate-registerExtension" id="certificate-registerExtension">#</a></span><a aria-hidden="true" class="legacy" id="certificate_registerExtension"></a></h4>
+
+  <p><code>extention</code>파싱 및 스키마 생성 함수를 등록합니다.</p>
+
+  <ul>
+    <li><code>ext_name</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 등록할 <code>extension</code> 명칭.</li>
+    <li><code>parse_func</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&#x3C;Function></a> 파싱 함수</li>
+    <li><code>schema_func</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&#x3C;Function></a> 스키마 생성 함수</li>
+  </ul>
+
+
+  <!-- certificate.registerOtherNameRule(otherName, parse_func, schema_func) -->
+  <h4><code>certificate.registerOtherNameRule(ext_name, parse_func, schema_func)</code><span><a class="mark" href="#certificate-registerOtherNameRule" id="certificate-registerOtherNameRule">#</a></span><a aria-hidden="true" class="legacy" id="certificate_registerOtherNameRule"></a></h4>
+
+  <p><code>otherNames</code>파싱 및 스키마 생성 함수를 등록합니다.</p>
+
+  <ul>
+    <li><code>ext_name</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 등록할 <code>extension</code> 명칭.</li>
+    <li><code>parse_func</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&#x3C;Function></a> 파싱 함수</li>
+    <li><code>schema_func</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&#x3C;Function></a> 스키마 생성 함수</li>
+  </ul>
+
+  <hr>
+
+  <h3><code>jCastle.certificate</code> 상수 <span><a class="mark" href="#constants-certificate" id="constants-certificate">#</a></span><a aria-hidden="true" class="legacy" id="constants_certificate"></a></h3>
+
+  <h4><code>jCastle.certificate.typeCRT</code><span><a class="mark" href="#constants-certificate-typeCRT" id="constants-certificate-typeCRT">#</a></span><a aria-hidden="true" class="legacy" id="constants_certificate_typeCRT"></a></h4>
+
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;integer></a> 0x01 X.509 Certificate.</li>
+  </ul>
+
+  <h4><code>jCastle.certificate.typeCSR</code><span><a class="mark" href="#constants-certificate-typeCSR" id="constants-certificate-typeCSR">#</a></span><a aria-hidden="true" class="legacy" id="constants_certificate_typeCSR"></a></h4>
+
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;integer></a> 0x02 Certificate Request.</li>
+  </ul>
+
+  <h4><code>jCastle.certificate.typeCRL</code><span><a class="mark" href="#constants-certificate-typeCRL" id="constants-certificate-typeCRL">#</a></span><a aria-hidden="true" class="legacy" id="constants_certificate_typeCRL"></a></h4>
+
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;integer></a> 0x03 Certificate Revocation List.</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+// DEMO
+// JISCO - jCastle Internet & Security Company
+//
+var jisco_priv_pem = `-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAHe+YHFvjkxmqH0v
+UtyTSd3WH7CkGcmRtYNFZhYE4dS/hH8D50h9YlINwpQRXStRT70Jj0GmjH58t9/Y
+OGXmJJJwYO4muldITFZMD4Y8cFjGOp7+PczqQf8saHLoHO0uDn2K1XEYktb9UQS8
+LhMbwyzpn9o5OjThcsK3b2YuGkzQ6+CEnB2XN4qNpJqjzukrxoZwAtRRCGvo92Wt
+oucTA5ThTLKsYOLNLZON3+HfKPQfdNk/5X8Df6J1qasgoLfW39JiFlsyvHIxoNL2
+583DXyDxesBAcoJds6r2xEhhak/Bu7CS45JmXne0fw9yGTA4NcHenf2dsyep+Us0
+ZHE1WFECAwEAAQKCAQANV+qZWWwK+XmXEZnzOHqHvN+lKHQzMQiAC1C37W1Y7sqN
++NpiCo7VQ/FF3LV8KUBweUs8bpnDUpSO3iJSwJWct+clQq2LImRXTXyBYeTHD7fi
+lcQ/PG+ERueQvmrSx0oYFUt5odpjGLFZjLq5qGNUcug8QhpJYEIQjq5cPZDytEFz
+PiVvtzhmmzsz+gW2jS3hlwwgoZCSPA+/5eT/ber4B2lK62GDDRO+J667Agp/E9L/
+OLKShumcgNItZ8nQdzJj+Rg82XBLX44KTE5IyTM7UlLCWix0NbjObOfGSFTUv7nX
+3Ef+qNz5qmJ0EFpvaD3Sj3Reetn25k6cxYgvW23tAoGBANY7pyhJM3xgJgmgkGge
+pzQRwK/AuVnS4JpGUbVUTZ1DUj9Vd6+FfW8Ij0lROPfj21jXbiCaPD0cX2+RptVv
+uGcq4er56dv+do/UeoFevlql7k2rw4gkIvjbwDbm2icF/cAOUXeUxI87rfE4XUIA
+GVigHTrUn/7Mus5BygTZT7uTAoGBAI8WxRnivR1tpr6Vo0828aUuyh2hXK3Mb1Fz
+bme5uBmoO/Z2UOVwkhLo9adC+jLY3o4bR4XkwuiGfgiGbND8k7t2IKPB+aZE1Wmd
+sIFRIvP8n3q8eDCjWZOmGtFGLrZVNW6pKCclh1JIfgOkJ5O3na5yXr9jxN3DR98/
+QOfsLjMLAoGActD9wYWZ5mrReA9p1aO4ERwCnS85J37xiT1uxTQtdL+D8RWpU5TD
+qSJ5SN4THigsguzSxP5kkowGShFRzMpXllNRSVIvmAxFFsjV70gL1SFhGpeX7/sO
+EzoTRllrScbYPHpwBxrgTbO6gbGnqZvL+ce2YrVaGoE3DRwNXZPqO6kCgYEAipZA
+MtEj38PbM04VTVzm8Nj/k3E9JWwTCS2m6jm7sMX7xbtUoNTF9iDCBM1fLS5VaAfN
+30Xw7WuN2E3ySPvJTlCcTl9KoBqdJN1BHg7qrqun/yVZt6oO0W2ZHcY+6gRfax3V
+MQ0tIqnpuzcbyfuWcmZ9lBtaintgOj62a6qaGH8CgYEAnZXFzL8+UQp4zogUH3uY
+o5K3y8/dzvuQlUQNShOqySCYZq138TB4GRapbjEtybj5H8ir1lApM1xzcJcisT+f
+QClpPUxq1KitZqZPj1PtH6Yn+vP4CWq9D6a+6lt9DhH7rwqyOmcTskmIeGJWerP4
+YTdgkw8sWi3fZ9kH06PUPKs=
+-----END PRIVATE KEY-----`;
+jisco_pki = new jCastle.pki("RSA");
+jisco_pki.parse(jisco_priv_pem);
+
+console.log("JISCO - jCastle Internet & Security Company");
+console.log("JISCO ROOT PEM: ");
+console.log(jisco_pki.exportPrivateKey());
+
+// 2. create server private key
+console.log("Creating server private key...");
+
+var srv_pki = new jCastle.pki("RSA");
+srv_pki.generateKeypair({
+  bits: 2048,
+  exponent: 0x10001 /* 65537 */,
+});
+console.log("Server Private Key PEM: ");
+console.log(srv_pki.exportPrivateKey());
+
+// 3. create server CSR
+console.log("Creating server CSR...");
+var srv_subject = [
+  {
+    name: "C",
+    value: "kr",
+  },
+  {
+    name: "O",
+    value: "demosign",
+  },
+  {
+    name: "OU",
+    value: "demoCA",
+  },
+  {
+    name: "CN",
+    value: "demoCA Class 1",
+  },
+];
+var srv_algo = {
+  signAlgo: "RSASSA-PKCS1-V1_5",
+  signHash: "sha-256",
+};
+var srv_extensions = {
+  basicConstraints: {
+    cA: true,
+  },
+  keyUsage: {
+    critical: true,
+    list: ["nonRepudiation", "digitalSignature"],
+  },
+};
+var srv_cert = new jCastle.certificate().setSignKey(srv_pki);
+var srv_csr_pem = srv_cert.request({
+  subject: srv_subject,
+  algo: srv_algo,
+  extensions: srv_extensions,
+});
+console.log("Server CSR PEM: ");
+console.log(srv_csr_pem);
+console.log("csr verify test: ", srv_cert.verify(srv_csr_pem, srv_pki));
+
+// 4. create server certificate
+console.log("Creating server Certificate...");
+
+var jisco_cert = new jCastle.certificate().setSignKey(jisco_pki);
+var jisco_issuer = [
+  {
+    name: "C",
+    value: "KR",
+  },
+  {
+    name: "O",
+    value: "JISCO",
+  },
+  {
+    name: "OU",
+    value: "Demo Certificate Authority Central",
+  },
+  {
+    name: "CN",
+    value: "JISCO RootCA 1",
+  },
+];
+var serial = new jCastle.prng().nextBytes(4);
+serial = parseInt("00" + serial.toString("hex"), 16);
+var srv_cert_pem = jisco_cert.issue(srv_csr_pem, {
+  serialNumber: serial,
+  issuer: jisco_issuer,
+  algo: {
+    signAlgo: "RSASSA-PKCS1-V1_5",
+    hashAlgo: "sha-256",
+  },
+  extensions: {
+    subjectKeyIdentifier: "hash",
+    // authorityKeyIdentifier: {
+    // keyIdentifier: "always",
+    // authorityCertIssuer: "always"
+    // }
+  },
+});
+
+console.log("Server Certificate PEM:");
+console.log(srv_cert_pem);
+
+var cert_info = new jCastle.Certificate().parse(srv_cert_pem);
+console.log(cert_info);
+  </pre>
+
+</section>  
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>  

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    
+
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+</ul>
+
+
+<section>
+
+  <h3>Class:<code>jCastle.pki.elGamal</code><span><a class="mark" href="#class-pki-elGamal" id="class-pki-elGamal">#</a></span><a aria-hidden="true" class="legacy" id="class_pki_elGamal"></a></h3>
+
+  <p>엘가말 암호(ElGamal encryption)는 타헤르 엘가말이 1985년에 고안한, 디피-헬먼 키 교환을 바탕으로 한 공개 키 암호 방식입니다. ElGamal은 이산대수 문제의 어려움을 근거로 해서 만들어졌습니다.</p>
+
+  <p>이산대수의 문제의 어려움이란, p가 소수이고 g가 원시원소일 때 g, x, p를 이용하여 y=g^x mod p 를 구하긴 쉽지만 g,y,p 값을 이용하여 지수승의 x를 구하기는 어렵다는 것입니다. 이 때문에 ElGamal 암호에서는 x가 개인키, y가 공개키로 사용됩니다. ElGamal은 디지털 서명, 암호화, 키 교환에 사용될 수 있는 공개키 알고리즘입니다. ElGamal은 실제로 Diffie-Hellman 알고리즘의 확장입니다. ElGamal의 주요한 결점은 성능에 있는데 다른 알고리즘과 비교할 때 가장 느린 편입니다.</p>
+
+
+  <!-- new jCastle.pki.elGamal -->
+  <h4><code>new jCastle.pki.elGamal()</code><span><a class="mark" href="#new-pki-elGamal-intance" id="new-pki-elGamal-instance">#</a></span><a aria-hidden="true" class="legacy" id="new_pki_elGamal_instance"></a></h4>
+
+  <p><code>jCastle.pki.elGamal</code> 오브젝트를 생성합니다.</p>
+
+  <!-- jCastle.pki.elGamal.create() -->
+  <h4>Static method: <code>jCastle.pki.elGamal.create()</code><span><a class="mark" href="#static-elGamal-create" id="static-elGamal-create">#</a></span><a aria-hidden="true" class="legacy" id="static_elGamal_create"></a></h4>
+
+  <p><code>jCastle.pki.elGamal</code> 오브젝트를 생성합니다. <code>new jCastle.pki.elGamal()</code>와 동일합니다.</p>
+
+  <ul>
+    <li>Return Value: <code>jCastle.pki.elGamal</code> 오브젝트를 생성하여 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.pki.elGamal.getPredefinedParameters(bits) -->
+  <h4>Static method: <code>jCastle.pki.elGamal.getPredefinedParameters(bits)</code><span><a class="mark" href="#static-elGamal-getPredefinedParameters" id="static-elGamal-getPredefinedParameters">#</a></span><a aria-hidden="true" class="legacy" id="static_elGamal_getPredefinedParameters"></a></h4>
+
+  <p>미리 생성한 Parameters 목록 중 랜덤으로 리턴합니다. </p>
+
+  <ul>
+    <li><code>bits</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Parameter <code>p</code>의 비트 크기. 올 수 있는 값은 <code>1024</code>, <code>2048</code>, <code>3072</code>, <code>4096</code>이 있으며 각 비트마다 10개씩 생성되어 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 무작위로 Parameters를 선택하여 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.pki.elGamal.getNistParameters(pbits, qbits) -->
+  <h4>Static method: <code>jCastle.pki.elGamal.getNistParameters(pbits, qbits)</code><span><a class="mark" href="#static-elGamal-getNistParameters" id="static-elGamal-getNistParameters">#</a></span><a aria-hidden="true" class="legacy" id="static_elGamal_getNistParameters"></a></h4>
+
+  <p>NIST에서 미리 생성한 Parameters 목록 중 랜덤으로 리턴합니다. </p>
+
+  <ul>
+    <li><code>pbits</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Parameter <code>p</code>의 비트 크기. 올 수 있는 값은 <code>1024</code>, <code>2048</code>, <code>3072</code>, <code>4096</code>이 있습니다.</li>
+    <li><code>qbits</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Parameter <code>q</code>의 비트 크기. 비트 크기는 해쉬 알고리듬의 크기에 해당합니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 무작위로 Parameters를 선택하여 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a>로 리턴합니다.</li>
+  </ul>
+
+  <hr>
+
+  <!-- elGamal.reset() -->
+  <h4><code>elGamal.reset()</code> <span><a class="mark" href="#elGamal-reset" id="elGamal-reset">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_reset"></a></h4>
+
+  <p>입력되었던 모든 데이터들을 초기화 합니다.</p>
+
+  <ul>
+    <li>Return Value: 오브젝트 자신을 리턴합니다.</li>
+  </ul>
+
+  <!-- elGamal.getBlockLength() -->
+  <h4><code>elGamal.getBlockLength()</code> <span><a class="mark" href="#elGamal-getBlockLength" id="elGamal-getBlockLength">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_getBlockLength"></a></h4>
+
+  <p>Parameter <code>p</code>의 사이즈를 바이트 단위로 리턴합니다.</p>
+
+  <ul>
+    <li>Return Value: 사이즈를 바이트 단위로 해서 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- elGamal.getBitLength() -->
+  <h4><code>elGamal.getBitLength()</code> <span><a class="mark" href="#elGamal-getBitLength" id="elGamal-getBitLength">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_getBitLength"></a></h4>
+
+  <p>Parameter <code>p</code>의 사이즈를 비트 단위로 리턴합니다.</p>
+
+  <ul>
+    <li>Return Value: 사이즈를 비트 단위로 해서 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- elGamal.setPublicKey(y, params) -->
+  <h4><code>elGamal.setPublicKey(y [, params])</code> <span><a class="mark" href="#elGamal-setPublicKey" id="elGamal-setPublicKey">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_setPublicKey"></a></h4>
+
+  <p>공개키 <code>y</code>를 등록합니다.</p>
+
+  <ul>
+    <li><code>y</code> <a herf="#" class="type">&#x3C;BigInteger></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 공개키 <code>y</code>. Node.js에서 기본 지원하는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt" class="type">&#x3C;BigInt></a>는 아직 지원하지 않습니다. <a herf="#" class="type">&#x3C;BigInteger></a>는 <code>jCastle.math.bigInteger</code>로 등록되어 있습니다. 객체로 오는 경우 <code>JWK</code>의 형식이어야 합니다.</li>
+    <li><code>params</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> Parameters 값</li>
+  </ul>
+
+  <!-- elGamal.getPublicKey(format = 'object') -->
+  <h4><code>elGamal.getPublicKey(format = 'object')</code> <span><a class="mark" href="#elGamal-getPublicKey" id="elGamal-getPublicKey">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_getPublicKey"></a></h4>
+
+  <p>공개키 <code>y</code>를 내보냅니다.</p>
+
+  <ul>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 공개키 포맷 형식. 기본 값은 <code>object</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 공개키를 <code>format</code> 값에 따라 내보냅니다.</li>
+  </ul>
+
+  <!-- elGamal.getPrivateKey(format = 'object') -->
+  <h4><code>elGamal.getPrivateKey(format = 'object')</code> <span><a class="mark" href="#elGamal-getPrivateKey" id="elGamal-getPrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_getPrivateKey"></a></h4>
+
+  <p>개인키 <code>x</code>를 내보냅니다.</p>
+
+  <ul>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 개인키 포맷 형식. 기본 값은 <code>object</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 개인키를 <code>format</code> 값에 따라 내보냅니다.</li>
+  </ul>
+
+  <!-- elGamal.setPrivateKey(x [, y, params]) -->
+  <h4><code>elGamal.setPrivateKey(x[, y, params])</code> <span><a class="mark" href="#elGamal-setPrivateKey" id="elGamal-setPrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_setPrivateKey"></a></h4>
+
+  <p>공개키를 포함한 개인키를 등록합니다.</p>
+
+  <ul>
+    <li><code>x</code> <a herf="#" class="type">&#x3C;BigInteger></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 개인키. Node.js에서 기본 지원하는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt" class="type">&#x3C;BigInt></a>는 아직 지원하지 않습니다. <a herf="#" class="type">&#x3C;BigInteger></a>는 <code>jCastle.math.bigInteger</code>로 등록되어 있습니다. 객체로 오는 경우 <code>JWK</code>의 형식이어야 합니다.</li>
+    <li><code>y</code> <a herf="#" class="type">&#x3C;BigInteger></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 공개키 <code>y</code>.</li>
+    <li><code>params</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> Parameters 값</li>
+  </ul>
+
+  <!-- elGamal.getPublicKeyInfo(format = 'object', param_format = 'hex') -->
+  <h4><code>elGamal.getPublicKeyInfo(format = 'object', param_format = 'hex')</code> <span><a class="mark" href="#elGamal-getPublicKeyInfo" id="elGamal-getPublicKeyInfo">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_getPublicKeyInfo"></a></h4>
+
+  <p>공개키 관련 정보를 내보냅니다.</p>
+
+  <ul>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 공개키 포맷 형식. 기본 값은 <code>object</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+    <li><code>params_format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> Parameters 포맷 형식. 기본 값은 <code>hex</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 공개키 정보를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- elGamal.getPrivateKeyInfo(format = 'object', param_format = 'hex') -->
+  <h4><code>elGamal.getPrivateKeyInfo(format = 'object', param_format = 'hex')</code> <span><a class="mark" href="#elGamal-getPrivateKeyInfo" id="elGamal-getPrivateKeyInfo">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_getPrivateKeyInfo"></a></h4>
+
+  <p>개인키 관련 정보를 내보냅니다.</p>
+
+  <ul>
+    li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 개인키 포맷 형식. 기본 값은 <code>object</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+    <li><code>params_format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> Parameters 포맷 형식. 기본 값은 <code>hex</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 개인키 정보를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- elGamal.publicKeyEquals(pubkey) -->
+  <h4><code>elGamal.publicKeyEquals(pubkey)</code> <span><a class="mark" href="#elGamal-publicKeyEquals" id="elGamal-publicKeyEquals">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_publicKeyEquals"></a></h4>
+
+  <p>공개키가 일치하는지 체크합니다.</p>
+
+  <ul>
+    <li><code>pubkey</code> <a herf="#" class="type">&#x3C;BigInteger></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 공개키 <code>y</code>. 만일 객체로 오는 경우 <code>JWK</code> 형태로 주어져야 합니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 공개키가 일치하면 <code>true</code>를, 그렇지 않으면 <code>false</code>를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- elGamal.hasPublicKey() -->
+  <h4><code>elGamal.hasPublicKey()</code> <span><a class="mark" href="#elGamal-hasPublicKey" id="elGamal-hasPublicKey">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_hasPublicKey"></a></h4>
+
+  <p>공개키가 등록되어 있는지 체크합니다.</p>
+
+  <ul>
+    <li>Return Value: 공개키가 등록되어 있으면 <code>true</code>를, 그렇지 않으면 <code>false</code>를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- elGamal.hasPrivateKey() -->
+  <h4><code>elGamal.hasPrivateKey()</code> <span><a class="mark" href="#elGamal-hasPrivateKey" id="elGamal-hasPrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_hasPrivateKey"></a></h4>
+
+  <p>개인키가 등록되어 있는지 체크합니다.</p>
+
+  <ul>
+    <li>Return Value: 개인키가 등록되어 있으면 <code>true</code>를, 그렇지 않으면 <code>false</code>를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- elGamal.setParameters(p, q, g) -->
+  <h4><code>elGamal.setParameters(p[, q, g])</code> <span><a class="mark" href="#elGamal-setParameters" id="elGamal-setParameters">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_setParameters"></a></h4>
+
+  <p>Parameters를 등록합니다.</p>
+
+  <ul>
+    <li><code>p</code> <a herf="#" class="type">&#x3C;BigInteger></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> Parameter <code>p</code>. 객체로 오는 경우 <code>p</code>, <code>g</code>를 프로퍼티로 갖는 객체이어야 합니다. 스트링은 헥스 스트링이어야 합니다.</li>
+    <li><code>g</code> <a herf="#" class="type">&#x3C;BigInteger></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> Parameter <code>g</code>. 스트링은 헥스 스트링이어야 합니다.</li>
+  </ul>
+
+  <!-- elGamal.getParameters(format = 'hex') -->
+  <h4><code>elGamal.getParameters(format = 'hex')</code> <span><a class="mark" href="#elGamal-getParameters" id="elGamal-getParameters">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_getParameters"></a></h4>
+
+  <p>Parameters를 내보냅니다.</p>
+
+  <ul>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 포맷 형식. 기본 값은 <code>hex</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: Parameters값을 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a>형태로 내보냅니다.</li>
+  </ul>
+
+
+  <!-- elGamal.generateParameters(options = {}) -->
+  <h4><code>elGamal.generateParameters(options = {})</code> <span><a class="mark" href="#elGamal-generateParameters" id="elGamal-generateParameters">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_generateParameters"></a></h4>
+
+  <p>Parameters를 생성합니다.</p>
+
+  <ul>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 다음의 정보가 올 수 있습니다.
+      <ul>
+        <li><code>bits</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Parameter <code>p</code>의 비트 크기. 기본 값은 <code>1024</code>입니다.</li>
+        <li><code>hashAlgo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 랜덤 함수에서 사용할 해쉬 함수. 주어지지 않으면 jCastle에서는 <code>rc4</code>를 이용합니다.</li>
+        <li><code>seed</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 랜덤 함수에 사용될 Seed값. 주어지지 않으면 jCastle에서는 랜덤으로 생성합니다.</li>
+      </ul>
+    </li>
+  </ul>
+
+
+  <!-- elGamal.generateKeypair([parameters]) -->
+  <h4><code>elGamal.generateKeypair([parameters])</code> <span><a class="mark" href="#elGamal-generateKeypair" id="elGamal-generateKeypair">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_generateKeypair"></a></h4>
+
+  <p>공개키를 포함한 개인키를 생성합니다.</p>
+
+  <ul>
+    <li><code>parameters</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> Parameters 객체가 주어지면 이 값을 기준으로 개인키와 공개키를 생성합니다. 만일 주어지지 않으면 <code>elGamal.generateParameters()</code>를 통해 이미 생성되어 있어야 합니다.
+    </li>
+  </ul>
+
+  <!-- elGamal.publicEncrypt(pt) -->
+  <h4><code>elGamal.publicEncrypt(pt [, options])</code> <span><a class="mark" href="#elGamal-publicEncrypt" id="elGamal-publicEncrypt">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_publicEncrypt"></a></h4>
+
+  <p>공개키로 평문을 암호화 합니다.</p>
+
+  <ul>
+    <li><code>pt</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 암호화할 평문. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체.
+      <ul>
+        <li><code>publicKey</code> <a herf="#" class="type">&#x3C;BigInteger></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 공개키로 만일 이 값이 주어지면 해당 객체가 가지고 있는 공개키를 이용하지 않고 주어진 공개키로 암호화를 진행합니다. 상대방에게서 공개키를 받아 암호화를 진행하는데 해당 객체가 다른 공개키를 갖고 있을 때 사용할 수 있습니다. 스트링은 헥스 스트링만 허용합니다.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 평문을 암호화하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- elGamal.privateDecrypt(ct) -->
+  <h4><code>elGamal.privateDecrypt(ct)</code> <span><a class="mark" href="#elGamal-privateDecrypt" id="elGamal-privateDecrypt">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_privateDecrypt"></a></h4>
+
+  <p>개인키로 평문을 복호화 합니다.</p>
+
+  <ul>
+    <li><code>ct</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 복호화할 암호문. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 암호문을 복호화하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- elGamal.sign(str, options = {}) -->
+  <h4><code>elGamal.sign(str, options = {})</code> <span><a class="mark" href="#elGamal-sign" id="elGamal-sign">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_sign"></a></h4>
+
+  <p>메시지에 대해 서명을 생성합니다. </p>
+
+  <ul>
+    <li><code>str</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 서명할 스트링. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체.
+      <ul>
+        <li><code>hashAlgo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 사용할 해쉬 알고리듬 명. 기본 값은 <code>sha-1</code>입니다.</li>
+        <li><code>returnType</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 리턴할 서명의 형식. 올 수 있는 값은 세 종류로, <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 값인 <code>r</code>과 <code>s</code>를 concatenation하여 리턴하는 <code>concat</code>과, 객체형태로 리턴하는 <code>object</code>과, Asn#1형식으로 리턴하는 <code>asn1</code>이 있습니다.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 메시지에 대한 서명을 생성하여 <code>returnType</code> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- elGamal.verify(str, signature, options = {}) -->
+  <h4><code>elGamal.verify(str, signature, options = {})</code> <span><a class="mark" href="#elGamal-verify" id="elGamal-verify">#</a></span><a aria-hidden="true" class="legacy" id="elGamal_verify"></a></h4>
+
+  <p>메시지에 대해 생성된 서명을 검증합니다. </p>
+
+  <ul>
+    <li><code>str</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 검증할 스트링. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>signature</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 검증할 서명.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>hashAlgo</code> 값이 올 수 있습니다(기본 값은 <code>sha-1</code>입니다).</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 메시지에 대한 서명을 검증하여 맞으면 <code>true</code>, 그렇지 않으면 <code>false</code>를  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 리턴합니다.</li>
+  </ul>
+
+
+  <pre class="prettyprint p-4">
+QUnit.test("Basic Test", function(assert) {
+
+  var M = Buffer.from("4E636AF98E40F3ADCFCCB698F4E80B9F", 'hex');
+    
+  //var params = jCastle.ElGamal.generateParameters(1024);
+  // for convienence
+  var params = jCastle.pki.dsa.getPredefinedParameters(1024);
+    
+  var alice = new jCastle.pki.elGamal();
+  var bob = new jCastle.pki.elGamal();
+    
+  alice.setParameters(params);
+  bob.setParameters(params);
+    
+  alice.generateKeypair();
+  bob.generateKeypair();
+    
+  var bob_pubkey = bob.getPublicKey('buffer');
+  var alice_pubkey = alice.getPublicKey('buffer');
+  
+  // alice는 bob에게서 공개키를 받아 암호화를 진행.
+  // alice가 가진 공개키가 bob과 다르므로 옵션 객체에 넣어 진행.  
+  // alice gets the publicKey from bob and encrypts a message.
+  // it's because alice's publicKey is different from bob's.
+  var ct = alice.publicEncrypt(M, { publicKey: bob_pubkey });
+    
+  var pt = bob.privateDecrypt(ct);
+    
+  assert.ok(pt.equals(M), "ElGamal encrypt / decrypt Test");
+    
+  var hash_name = 'sha-1';
+  var s = alice.sign(M, { hashAlgo: hash_name });
+  var v = alice.verify(M, s, { hashAlgo: hash_name });
+    
+  assert.ok(v, "ElGamal sign / verify Test");
+
+});
+  </pre>
+
+
+
+</section>  
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>  

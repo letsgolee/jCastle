@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    
+
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+</ul>
+
+
+<section>
+
+  <h3><code>jCastle.algorithm.*</code><span><a class="mark" href="#class-algorithm" id="class-algorithm">#</a></span><a aria-hidden="true" class="legacy" id="class_algorithm"></a></h3>
+
+  <p>메시지 암호화 알고리듬과 같이 해쉬 알고리듬 역시 <code>jCastle.algorithm</code>에 하위 객체로 등록됩니다. 하지만 메시지 암호화 알고리듬과 다른 메소드를 갖고 있습니다. </p>
+
+  <p>다음은 <code>jCastle.algorithm</code>에서 지원하는 해쉬 알고리듬 목록입니다. </p>
+
+  <table class="table table-bordered table-striped">
+                <colgroup>
+                  <col width="130">
+                  <col width="120">
+                  <col width="120">
+                  <col width="100">
+                  <col width="160">
+                  <col>
+                </colgroup>
+                <thead>
+                  <th>이름</th>
+                  <th>해쉬 사이즈<br/>(단위:바이트)</th>
+                  <th>블럭 사이즈<br/>(단위:바이트)</th>
+                  <th>클래스 이름</th>
+                  <th>변수 이름</th>
+                  <th>추가 설명</th>
+                </thead>
+                <tr>
+                  <td>GOST3411-94</td>
+                  <td>32</td>
+                  <td>32</td>
+                  <td><code>gost3411</code></td>
+                  <td><code>gost3411</code><br/><code>gost3411-crypto</code></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>HAS-160</td>
+                  <td>20</td>
+                  <td>64</td>
+                  <td><code>has160</code></td>
+                  <td><code>has-160</code></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>Haval</td>
+                  <td>16/24/28/32</td>
+                  <td>128</td>
+                  <td><code>haval</code></td>
+                  <td><code>haval-128</code><br/><code>haval-160</code><br/><code>haval-192</code><br/><code>haval-224</code><br/><code>haval-256</code></td>
+                  <td><span style="color:red">서버의 php와 연동하여 사용할 경우 php버젼이 5.6.12, 5.5.28 혹은 5.4.44보다 이전 버젼이라면 버그로 인해 메시지의 길이에 따라 Haval 해쉬의 결과가 일치하지 않을 수 있습니다.</span> </td>
+                </tr>
+                <tr>
+                  <td>MD2</td>
+                  <td>16</td>
+                  <td>16</td>
+                  <td><code>md2</code></td>
+                  <td><code>md2</code></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>MD4</td>
+                  <td>16</td>
+                  <td>64</td>
+                  <td><code>md4</code></td>
+                  <td><code>md4</code></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>RipeMD</td>
+                  <td>16<br/>20<br/>32<br/>40</td>
+                  <td>64</td>
+                  <td><code>ripemd128</code><br/><code>ripemd160</code><br/><code>ripemd256</code><br/><code>ripemd320</code></td>
+                  <td><code>ripemd-128</code><br/><code>ripemd-160</code><br/><code>ripemd-256</code><br/><code>ripemd-320</code></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>SHA-1</td>
+                  <td>20</td>
+                  <td>64</td>
+                  <td><code>sha1</code></td>
+                  <td><code>sha-1</code></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>SHA2 패밀리</td>
+                  <td>28<br/>32<br/>48<br/>64<br/>28<br/>32</td>
+                  <td>64<br/>64<br/>128<br/>128<br/>128<br/>128</td>
+                  <td><code>sha224</code><br/><code>sha256</code><br/><code>sha384</code><br/><code>sha512</code><br/><code>sha512</code><br/><code>sha512</code></td>
+                  <td><code>sha-224</code><br/><code>sha-256</code><br/><code>sha-384</code><br/><code>sha-512</code><br/><code>sha-512/224</code><br/><code>sha-512/256</code></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>SHA3 패밀리</td>
+                  <td>28<br/>32<br/>36<br/>48<br/>64<br/>16<br/>32<br/>48<br/>64<br/>32<br/>48<br/>64</td>
+                  <td>144<br/>136<br/>128<br/>104<br/>72<br/>168<br/>168<br/>168<br/>168<br/>136<br/>136<br/>136</td>
+                  <td><code>sha3</code></td>
+                  <td>
+                  <code>sha3-224</code><br/><code>sha3-256</code><br/><code>sha3-288</code><br/><code>sha3-384</code><br/><code>sha3-512</code><br/><code>shake-128/128</code><br/><code>shake-128/256</code><br/><code>shake-128/384</code><br/><code>shake-128/512</code><br/><code>shake-256/256</code><br/><code>shake-256/384</code><br/><code>shake-256/512</code>
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>Skein</td>
+                  <td>16<br/>20<br/>28<br/>32<br/>16<br/>20<br/>28<br/>32<br/>48<br/>64<br/>32<br/>48<br/>64<br/>128</td>
+                  <td>32<br/>32<br/>32<br/>32<br/>64<br/>64<br/>64<br/>64<br/>64<br/>64<br/>128<br/>128<br/>128<br/>128</td>
+                  <td><code>skein</code></td>
+                  <td>
+                  <code>skein-256/128</code><br/><code>skein-256/160</code><br/><code>skein-256/224</code><br/><code>skein-256/256</code><br/><code>skein-512/128</code><br/><code>skein-512/160</code><br/><code>skein-512/224</code><br/><code>skein-512/256</code><br/><code>skein-512/384</code><br/><code>skein-512/512</code><br/><code>skein-1024/256</code><br/><code>skein-1024/384</code><br/><code>skein-1024/512</code><br/><code>skein-1024/1024</code>
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>Tiger</td>
+                  <td>16<br/>20<br/>24</td>
+                  <td>64</td>
+                  <td><code>tiger</code></td>
+                  <td><code>tiger-128</code><br/><code>tiger-160</code><br/><code>tiger-192</code></td>
+                  <td><span style="color:red">서버의 php와 연동하여 사용할 경우 php버젼이 5.3.8 혹은 5.4.9 및 그 이전 버젼에서 버그로 인해 메시지의 해쉬 값이 일치하지 않을 수 있습니다.</span></td>
+                </tr>
+                <tr>
+                  <td>Whirlpool</td>
+                  <td>64</td>
+                  <td>64</td>
+                  <td><code>whirlpool</code></td>
+                  <td><code>whirlpool</code></td>
+                  <td>&nbsp;</td>
+                </tr>
+
+            
+  </table>
+
+  <!-- new jCastle.algorithm -->
+  <h4><code>new jCastle.algorithm.*(hash_name [, options]])</code><span><a class="mark" href="#new-algorithm-intance" id="new-algorithm-instance">#</a></span><a aria-hidden="true" class="legacy" id="new_algorithm_instance"></a></h4>
+
+  <p><code>jCastle.mcrypt.algorithm.*</code> 해쉬 알고리즘 오브젝트를 생성합니다.</p>
+
+  <ul>
+    <li><code>hash_name</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 생성된 객체에 사용할 해쉬 알고리듬 이름.</li>
+  </ul>
+
+  <!-- algorithm.init -->
+  <h4><code>algorithm.init([options])</code> <span><a class="mark" href="#algorithm-init" id="algorithm-init">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_init"></a></h4>
+
+  <p>프로세스를 초기화합니다.</p>
+
+  <ul>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 프로세스 시작을 위한 변수들을 담은 오브젝트. 
+
+      <ul>
+        <li><code>rounds</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 타입으로 <code>haval</code>, <code>tiger</code> 해쉬 알고리듬에서 사용 가능</li>
+        <li><code>outputSize</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 해쉬 결과 값리턴시 스트링 길이를 지정합니다.<br/><code>sha3</code> 패밀리와 <code>shake</code> 및 <code>skein</code>은 스트링 길이 값을 지정할 수 있습니다. <code>outputSize</code>의 경우 <b>바이트</b> 길이를 의미합니다.
+        </li>
+        <li><code>hmacKey</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 타입으로 <code>skein</code> 해쉬 알고리즘에서 사용</li>
+      </ul>
+    </li>
+  </ul>
+
+
+  <!-- algorithm.process -->
+  <h4><code>algorithm.process(input)</code><span><a class="mark" href="#algorithm-process" id="algorithm-process">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_process"></a></h4>
+
+  <p>블럭 단위로 프로세스를 진행합니다.</p>
+
+  <ul>
+    <li><code>input</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 해쉬화할 블럭 데이터</li>
+  </ul>
+
+
+  <!-- algorithm.finish -->
+  <h4><code>algorithm.finish()</code><span><a class="mark" href="#algorithm-finish" id="algorithm-finish">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_finish"></a></h4>
+
+  <p>해쉬화 결과를 리턴합니다.</p>
+
+  <ul>
+    <li>Return Value: 해쉬화 결과를 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 리턴합니다.</li>
+  </ul>
+
+
+  <!-- algorithm.pad -->
+  <h4><code>algorithm.pad(input, pos)</code><span><a class="mark" href="#algorithm-pad" id="algorithm-pad">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_pad"></a></h4>
+
+  <p>입력 데이터를 블럭 사이즈에 맞게 패딩처리를 합니다.</p>
+
+  <ul>
+    <li><code>input</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 전체 입력 데이터</li>
+    <li><code>pos</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 현재 데이터 처리 포지션</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 패딩처리된 전체 입력 데이터를 리턴합니다.</li>
+  </ul>
+
+
+  <p>해쉬 알고리듬 객체를 직접 사용하여 해쉬를 생성할 수 있습니다. 그러나 직접 사용하는 것은 각 해쉬 알고리듬에 대한 지식이 없이는 사용하기 어렵습니다. 다음의 예는 직접 사용할 경우의 방식을 보여줍니다:</p>
+
+  <pre class="prettyprint p-4">
+var algo = new jCastle.algorithm.sha256("sha-256");
+var message = "The quick fox jumps over the lazy dog!";
+
+// get block size
+var block_size = jCastle.digest.getBlockSize("sha-256");
+
+// string to buffer
+var input = Buffer.from(message);
+
+algo.init();
+
+var pos = 0;
+
+while (pos + block_size <= input.length) {
+  algo.process(input.slice(pos, pos + block_size));
+  pos += block_size;
+}
+
+// padding
+algo.pad(input, pos);
+
+while (pos < input.length) {
+  algo.process(input.slice(pos, pos + block_size));
+  pos += block_size;
+}
+
+var output = algo.finish();
+
+// change to hex string
+var hash = output.toString('hex');
+console.log(hash);
+  </pre>
+
+
+</section>  
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>

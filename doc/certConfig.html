@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    
+
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+</ul>
+
+
+<section>
+
+  <h3>Class:<code>jCastle.certConfig</code><span><a class="mark" href="#class-certConfig" id="class-certConfig">#</a></span><a aria-hidden="true" class="legacy" id="class_certConfig"></a></h3>
+
+  <p>
+  OpenSSL의 경우 인증서 발급 및 관리를 위해 openssl.cnf라는 환경설정 파일을 사용합니다. jCastle.CertConfig은 환경설정 스트링을 분석하는 툴입니다. 이 툴을 이용하여 인증성의 생성시 사용합니다. 자바스크립트의 특성 및 브라우져에서 동작하는 것을 원칙으로 jCastle이 개발되었기 때문에 CA_default에 등록된 파일을 읽어오는 부분은 구현되어 있지 않습니다. 하지만 인증서의 Extensions 설정에 대한 부분은 대부분 구현되어 있습니다.</p>
+
+  <!-- new jCastle.certConfig -->
+  <h4><code>new jCastle.certConfig()</code><span><a class="mark" href="#new-certConfig-intance" id="new-certConfig-instance">#</a></span><a aria-hidden="true" class="legacy" id="new_certConfig_instance"></a></h4>
+
+  <p><code>jCastle.certConfig</code> 오브젝트를 생성합니다.</p>
+
+  <!-- jCastle.certConfig.create() -->
+  <h4>Static method: <code>jCastle.certConfig.create()</code><span><a class="mark" href="#static-certConfig-create" id="static-certConfig-create">#</a></span><a aria-hidden="true" class="legacy" id="static_certConfig_create"></a></h4>
+
+  <p><code>jCastle.certConfig</code> 오브젝트를 생성합니다. <code>new jCastle.certConfig()</code>와 동일합니다.</p>
+
+  <ul>
+    <li>Return Value: <code>jCastle.certConfig</code> 오브젝트를 생성하여 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.certConfig.parse(cnf_content, env_variables) -->
+  <h4>Static method: <code>jCastle.certConfig.parse(cnf_content, env_variables)</code><span><a class="mark" href="#static-certConfig-parse" id="static-certConfig-parse">#</a></span><a aria-hidden="true" class="legacy" id="static_certConfig_parse"></a></h4>
+
+  <p><code>jCastle.certConfig</code> 오브젝트를 생성한 후 <code>certConfig.parse(data)</code>를 실행합니다. 자세한 내용은 <code>certConfig.parse()</code>를 참조하세요.</p>
+
+  <ul>
+    <li><code>cnf_content</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 OpenSSL의 환경파일 내용 스트링 혹은 Buffer 데이터.</li>
+    <li><code>env_variables</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 환경 변수들을 담은 객체</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 데이터를 파싱하여 그 결과를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <hr>
+
+  <!-- certConfig.parse(cnf_content, env_variables) -->
+  <h4><code>certConfig.parse(cnf_content, env_variables)</code><span><a class="mark" href="#static-certConfig-parse" id="static-certConfig-parse">#</a></span><a aria-hidden="true" class="legacy" id="static_certConfig_parse"></a></h4>
+
+  <p>OpenSSL의 환경파일 내용을 파싱하여 객체 형태로 리턴합니다.</p>
+
+  <ul>
+    <li><code>cnf_content</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 OpenSSL의 환경파일 내용 스트링 혹은 Buffer 데이터.</li>
+    <li><code>env_variables</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 환경 변수들을 담은 객체</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 데이터를 파싱하여 그 결과를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형식으로 리턴합니다.</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+QUnit.test('Parsing test', assert => {
+
+    const testoid1 = '1.2.3.4';
+    const openssl_inf = `
+    #
+    # OpenSSL example configuration file.
+    # This is mostly being used for generation of certificate requests.
+    #
+    
+    # This definition stops the following lines choking if HOME isn't
+    # defined.
+    HOME      = .
+    RANDFILE    = $HOME/.rnd
+    
+    # Extra OBJECT IDENTIFIER info:
+    #oid_file   = $HOME/.oid
+    oid_section   = new_oids
+    
+    # To use this configuration file with the "-extfile" option of the
+    # "openssl x509" utility, name here the section containing the
+    # X.509v3 extensions to use:
+    # extensions    = 
+    # (Alternatively, use a configuration file that has only
+    # X.509v3 extensions in its main [= default] section.)
+    
+    [ new_oids ]
+    
+    # We can add new OIDs in here for use by 'ca' and 'req'.
+    # Add a simple OID like this:
+    # testoid1=1.2.3.4
+    # Or use config file substitution like this:
+    # testoid2=${testoid1}.5.6
+    
+    streetAddress = 2.5.4.9
+    postalCode = 2.5.4.17
+    POBox = 2.5.4.18
+    
+    ####################################################################
+    [ ca ]
+    default_ca  = CA_default    # The default ca section
+    
+    ####################################################################
+    [ CA_default ]
+    
+    dir   = ./demoCA    # Where everything is kept
+    certs   = $dir/certs    # Where the issued certs are kept
+    crl_dir   = $dir/crl    # Where the issued crl are kept
+    database  = $dir/index.txt  # database index file.
+    new_certs_dir = $dir/newcerts   # default place for new certs.
+    
+    certificate = $dir/cacert.pem   # The CA certificate
+    serial    = $dir/serial     # The current serial number
+    crl   = $dir/crl.pem    # The current CRL
+    private_key = $dir/private/cakey.pem# The private key
+    RANDFILE  = $dir/private/.rand  # private random number file
+    
+    x509_extensions = usr_cert    # The extentions to add to the cert
+    
+    # Extensions to add to a CRL. Note: Netscape communicator chokes on V2 CRLs
+    # so this is commented out by default to leave a V1 CRL.
+    # crl_extensions  = crl_ext
+    
+    default_days  = 365     # how long to certify for
+    default_crl_days= 30      # how long before next CRL
+    default_md  = sha1      # which md to use
+    preserve  = no      # keep passed DN ordering
+    
+    # A few difference way of specifying how similar the request should look
+    # For type CA, the listed attributes must be the same, and the optional
+    # and supplied fields are just that :-)
+    policy    = policy_match
+    
+    # For the CA policy
+    [ policy_match ]
+    countryName   = match
+    stateOrProvinceName = match
+    organizationName  = match
+    organizationalUnitName  = optional
+    commonName    = supplied
+    emailAddress    = optional
+    
+    # For the 'anything' policy
+    # At this point in time, you must list all acceptable 'object'
+    # types.
+    [ policy_anything ]
+    countryName   = optional
+    stateOrProvinceName = optional
+    localityName    = optional
+    organizationName  = optional
+    organizationalUnitName  = optional
+    commonName    = supplied
+    emailAddress    = optional
+    
+    ####################################################################
+    [ req ]
+    default_bits    = 2048
+    default_keyfile   = privkey.pem
+    default_md    = sha1
+    distinguished_name  = req_distinguished_name
+    #attributes   = req_attributes
+    x509_extensions = v3_ca # The extentions to add to the self signed cert
+    
+    # Passwords for private keys if not present they will be prompted for
+    # input_password = secret
+    # output_password = secret
+    
+    # This sets a mask for permitted string types. There are several options. 
+    # default: PrintableString, T61String, BMPString.
+    # pkix   : PrintableString, BMPString.
+    # utf8only: only UTF8Strings.
+    # nombstr : PrintableString, T61String (no BMPStrings or UTF8Strings).
+    # MASK:XXXX a literal mask value.
+    # WARNING: current versions of Netscape crash on BMPStrings or UTF8Strings
+    # so use this option with caution!
+    string_mask = nombstr
+    
+    req_extensions = v3_req # The extensions to add to a certificate request
+    
+    [ req_distinguished_name ]
+    countryName     = Country Name (code ISO a 2 lettres)
+    countryName_default   = FR
+    countryName_min     = 2
+    countryName_max     = 2
+    
+    stateOrProvinceName   = State or Province Name
+    stateOrProvinceName_default = Alpes Maritimes
+    stateOrProvinceName_max         = 64
+    
+    localityName      = Locality Name
+    localityName_default    = Nice
+    localityName_max                = 64
+    
+    organizationName    = Organization Name
+    organizationName_default  = Michel Durand SA
+    organizationName_max            = 64
+    
+    # we can do this but it is not needed normally :-)
+    #1.organizationName   = Second Organization Name (eg, company)
+    #1.organizationName_default = World Wide Web Pty Ltd
+    
+    organizationalUnitName    = Organizational Unit Name (optional)
+    organizationalUnitName_default  = Fourni par TBS internet
+    organizationalUnitName_max      = 64
+    
+    commonName      = Common Name (eg, YOUR name or site name)
+    commonName_default    = www.monsitessl.fr
+    commonName_max      = 64
+    
+    emailAddress    = Email Address
+    emailAddress_default  = your.mail.com
+    emailAddress_max    = 64
+    
+    # SET-ex3     = SET extension number 3
+    
+    [ req_attributes ]
+    challengePassword   = A challenge password
+    challengePassword_min   = 4
+    challengePassword_max   = 20
+    
+    unstructuredName    = An optional company name
+    
+    [ usr_cert ]
+    
+    # These extensions are added when 'ca' signs a request.
+    
+    # This goes against PKIX guidelines but some CAs do it and some software
+    # requires this to avoid interpreting an end user certificate as a CA.
+    
+    basicConstraints=CA:FALSE
+    
+    # Here are some examples of the usage of nsCertType. If it is omitted
+    # the certificate can be used for anything *except* object signing.
+    
+    # This is OK for an SSL server.
+    # nsCertType      = server
+    
+    # For an object signing certificate this would be used.
+    # nsCertType = objsign
+    
+    # For normal client use this is typical
+    # nsCertType = client, email
+    
+    # and for everything including object signing:
+    # nsCertType = client, email, objsign
+    
+    # This is typical in keyUsage for a client certificate.
+    # keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+    
+    # This will be displayed in Netscape's comment listbox.
+    nsComment     = "OpenSSL Generated Certificate"
+    
+    # PKIX recommendations harmless if included in all certificates.
+    subjectKeyIdentifier=hash
+    authorityKeyIdentifier=keyid,issuer:always
+    
+    # This stuff is for subjectAltName and issuerAltname.
+    # Import the email address.
+    # subjectAltName=email:copy
+    
+    # Copy subject details
+    # issuerAltName=issuer:copy
+    
+    #nsCaRevocationUrl    = http://www.domain.dom/ca-crl.pem
+    #nsBaseUrl
+    #nsRevocationUrl
+    #nsRenewalUrl
+    #nsCaPolicyUrl
+    #nsSslServerName
+    
+    authorityInfoAccess = aia_section
+    
+    [ v3_req ]
+    
+    # Extensions to add to a certificate request
+    
+    subjectKeyIdentifier        = hash
+    
+    #basicConstraints = critical,CA:FALSE,pathlen:1
+    basicConstraints = critical, bs_section
+    
+    keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment, decipherOnly
+    
+    authorityKeyIdentifier = keyid,issuer
+    
+    #subjectAltName=email:copy,email:my@other.address.ma,IP:192.168.7.1,URI:http://my.url.here/
+    #subjectAltName=email:copy,email:my@other.address.ma,IP:2013::bf05:17,RID:1.2.3.4,URI:http://my.url.here/
+    #subjectAltName=email:copy,email:my@other.address.ma,IP:2013::bf05:17,RID:1.2.3.4,URI:http://my.url.here/,otherName:1.2.3.4;UTF8:some other identifier
+    
+    subjectAltName = subject_alt_section
+    
+    issuerAltName=issuer_alt_sec
+    
+    issuingDistributionPoint=critical, idp_section
+    
+    authorityInfoAccess = OCSP;URI:http://ocsp.my.host/, aia_section
+    
+    
+    crlDistributionPoints=crldp1_section,URI:http://myhost.com/myca.crl,URI:http://oth.com/my.crl
+    
+    inhibitAnyPolicy = 2
+    
+    noCheck = ignored
+    
+    certificatePolicies=ia5org,1.2.3.4,1.5.7.8,polsect
+    
+    policyConstraints=requireExplicitPolicy:3
+    
+    nameConstraints=permitted;IP:192.168.0.0/255.255.0.0
+    nameConstraints=excluded;DNS:.east.corp.contoso.com
+    
+    extendedKeyUsage=critical,codeSigning,msCTLSign,emailProtection,1.2.3.4
+    
+    nsCertType = client, email, objsign
+    nsComment = "Some Random Comment"
+    nsBaseUrl  = https://www.sopac.org/ssl/
+    nsCaRevocationUrl = https://www.sopac.org/ssl/sopac-ca.crl
+    nsRevocationUrl  = https://www.sopac.org/ssl/revocation.html? 
+    nsRenewalUrl  = https://www.sopac.org/ssl/renewal.html? 
+    nsCaPolicyUrl  = https://www.sopac.org/ssl/policy.html 
+    nsSslServerName  = \$ENV::SSL_FQDN
+    
+    
+    
+    
+    [aia_section]
+    
+    OCSP;URI.0 = http://ocsp.my.host/
+    caIssuers;URI.0 = http://my.ca/ca.html
+    OCSP;URI.1 = http://ocsp.my.second.host/
+    
+    
+    
+    [bs_section]
+    
+    CA=true
+    pathlen =1
+    
+    [polsect]
+    
+    policyIdentifier=1.3.5.8
+    CPS.1="http://my.host.name/"
+    CPS.2="http://my.your.name/"
+    userNotice=notice
+    
+    [notice]
+    explicitText="Explicit Text here"
+    organization="organisation Name"
+    noticeNumbers=1,2,3,4
+    
+    
+    [crldp1_section]
+    
+    fullname=URI:http://myhost.com/myca.crl
+    CRLissuer=dirName:issuer_sect
+    #reasons=keyCompromise, CACompromise
+    reasons=keyCompromise
+    
+    [issuer_sect]
+    
+    C=UK
+    O=My Organisation
+    CN=some Name
+    
+    [idp_section]
+    
+    fullname=URI:http://myhost.com/myca.crl
+    onlyCA=TRUE
+    onlyAA=TRUE
+    indirectCRL=TRUE
+    onlysomereasons=keyCompromise, CACompromise
+    
+    
+    [issuer_alt_sec]
+    
+    DNS.1   = www.foo.com
+    DNS.2   = www.bar.org
+    IP.1    = 192.168.1.1
+    IP.2    = 192.168.69.144
+    email = email@me
+    
+    #otherName = 1.3.6.1.4.1.1;UTF8:some other identifier
+    otherName = 1.3.6.1.4.1.1.;SEQUENCE:seq_section
+    
+    
+    [subject_alt_section]
+    
+    otherName=1.2.410.200004.10.1.1;SEQUENCE:npki_sec1
+    
+    [npki_sec1]
+    field1 = UTF8:jacob lee
+    field2 = SEQUENCE:npki_sec2
+    
+    [npki_sec2]
+    field1 = SEQUENCE:npki_sec3
+    
+    [npki_sec3]
+    field1 = OID:1.2.410.200004.10.1.1.1
+    field2 = SEQUENCE:npki_sec4
+    
+    [npki_sec4]
+    field1 = SEQUENCE:npki_sec5
+    field2 = EXPLICIT:0,npki_sec6
+    
+    
+    [npki_sec5]
+    field1 = OID:2.16.840.1.101.3.4.2.1
+    
+    [npki_sec6]
+    field1 = OCTET:DER:49800B859C322622E0F3A27F8E77463EF60663ACC773953AA6D640BF166C738E
+    
+    [seq_section]
+    
+    field1 = UTF8:Some other name 1
+    field2 = UTF8:Some other name 2
+    field3 = SEQUENCE:seq_section2
+    
+    [seq_section2]
+    
+    field1 = UTF8:Some other name 3;
+    
+    [ v3_ca ]
+    
+    
+    # Extensions for a typical CA
+    
+    
+    # PKIX recommendation.
+    
+    subjectKeyIdentifier=hash
+    
+    # This is what PKIX recommends but some broken software chokes on critical
+    # extensions.
+    #basicConstraints = critical,CA:true
+    # So we do this instead.
+    basicConstraints = CA:true
+    
+    # Key usage: this is typical for a CA certificate. However since it will
+    # prevent it being used as an test self-signed certificate it is best
+    # left out by default.
+    # keyUsage = cRLSign, keyCertSign
+    
+    # Some might want this also
+    # nsCertType = sslCA, emailCA
+    
+    # Include email address in subject alt name: another PKIX recommendation
+    # subjectAltName=email:copy
+    # Copy issuer details
+    # issuerAltName=issuer:copy
+    
+    # DER hex encoding of an extension: beware experts only!
+    # obj=DER:02:03
+    # Where 'obj' is a standard or added object
+    # You can even override a supported extension:
+    # basicConstraints= critical, DER:30:03:01:01:FF
+    
+    [ crl_ext ]
+    
+    # CRL extensions.
+    # Only issuerAltName and authorityKeyIdentifier make any sense in a CRL.
+    
+    # issuerAltName=issuer:copy
+    authorityKeyIdentifier=keyid:always,issuer:always
+`;
+    var parser = jCastle.certConfig.create();
+
+    var config = parser.parse(openssl_inf);
+
+    assert.equal(config.v3_req.subjectAltName[0].value.name, '1.2.410.200004.10.1.1', 'Parsing Test');
+
+    assert.equal(config.v3_req.subjectAltName[0].value.items[1].items[0].items[0].value, '1.2.410.200004.10.1.1.1', 'Parsing Test');
+
+    assert.equal(config.v3_req.subjectAltName[0].value.items[1].items[0].items[1].items[0].items[0].value, '2.16.840.1.101.3.4.2.1', 'Parsing Test');
+
+    assert.equal(config.v3_req.issuerAltName[5].value.items[2].items[0].value, 'Some other name 3;', 'Parsing Test');
+});
+  </pre>
+
+</section>  
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>  

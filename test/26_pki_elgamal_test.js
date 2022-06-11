@@ -166,6 +166,8 @@ QUnit.test("Basic Test", function(assert) {
         var bob_pubkey = bob.getPublicKey('buffer');
         var alice_pubkey = alice.getPublicKey('buffer');
     
+        // alice gets the publicKey from bob and encrypts a message.
+        // it's because alice's publicKey is different from bob's.
         var ct = alice.publicEncrypt(M, { publicKey: bob_pubkey });
     
         var pt = bob.privateDecrypt(ct);

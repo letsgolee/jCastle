@@ -3237,7 +3237,7 @@ QUnit.test("Basic Test", function(assert) {
         var dsa = new jCastle.pki('DSA');
     
         var bits = 2048;
-        var hash_name = bits >= 2048 ? 'sha-256' : 'sha-1'
+        var hash_name = bits >= 2048 ? 'sha-256' : 'sha-1';
     
         var params = dsa.generateParameters({ 
             bits: bits,

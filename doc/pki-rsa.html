@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    
+
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+</ul>
+
+
+<section>
+
+  <h3>Class:<code>jCastle.pki.rsa</code><span><a class="mark" href="#class-pki-rsa" id="class-pki-rsa">#</a></span><a aria-hidden="true" class="legacy" id="class_pki_rsa"></a></h3>
+
+  <p>RSA는 공개키 암호시스템의 하나로, 암호화뿐만 아니라 전자서명이 가능한 최초의 알고리즘으로 알려져 있습니다. RSA가 갖는 전자서명 기능은 인증을 요구하는 전자 상거래 등에 RSA의 광범위한 활용을 가능하게 하였습니다.</p>
+  <p>1978년 Ron Rivest, Adi Shamir, Leonard Adleman의 연구에 의해 체계화되었으며, RSA라는 이름은 이들 3명의 이름 앞글자에서 따왔습니다. 이 세 명의 발명자는 이 공로로 2002년 튜링상을 수상했습니다.</p>
+  <p>RSA 암호체계의 안정성은 큰 숫자를 소인수 분해하는 것이 어렵다는 것에 기반을 두고 있습니다.</p>
+
+  <!-- new jCastle.pki.rsa -->
+  <h4><code>new jCastle.pki.rsa()</code><span><a class="mark" href="#new-pki-rsa-intance" id="new-pki-rsa-instance">#</a></span><a aria-hidden="true" class="legacy" id="new_pki_rsa_instance"></a></h4>
+
+  <p><code>jCastle.pki.rsa</code> 오브젝트를 생성합니다.</p>
+
+
+  <!-- jCastle.pki.rsa.create() -->
+  <h4>Static method: <code>jCastle.pki.rsa.create()</code><span><a class="mark" href="#static-rsa-create" id="static-rsa-create">#</a></span><a aria-hidden="true" class="legacy" id="static_rsa_create"></a></h4>
+
+  <p><code>jCastle.pki.rsa</code> 오브젝트를 생성합니다. <code>new jCastle.pki.rsa()</code>와 동일합니다.</p>
+
+  <ul>
+    <li>Return Value: <code>jCastle.pki.rsa</code> 오브젝트를 생성하여 리턴합니다.</li>
+  </ul>
+
+  <hr>
+
+  <!-- rsa.reset() -->
+  <h4><code>rsa.reset()</code> <span><a class="mark" href="#rsa-reset" id="rsa-reset">#</a></span><a aria-hidden="true" class="legacy" id="rsa_reset"></a></h4>
+
+  <p>입력되었던 모든 데이터들을 초기화 합니다.</p>
+
+  <ul>
+    <li>Return Value: 오브젝트 자신을 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.getBlockLength() -->
+  <h4><code>rsa.getBlockLength()</code> <span><a class="mark" href="#rsa-getBlockLength" id="rsa-getBlockLength">#</a></span><a aria-hidden="true" class="legacy" id="rsa_getBlockLength"></a></h4>
+
+  <p>공개키 <code>n</code>의 사이즈를 바이트 단위로 리턴합니다.</p>
+
+  <ul>
+    <li>Return Value: 사이즈를 바이트 단위로 해서 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.getBitLength() -->
+  <h4><code>rsa.getBitLength()</code> <span><a class="mark" href="#rsa-getBitLength" id="rsa-getBitLength">#</a></span><a aria-hidden="true" class="legacy" id="rsa_getBitLength"></a></h4>
+
+  <p>공개키 <code>n</code>의 사이즈를 비트 단위로 리턴합니다.</p>
+
+  <ul>
+    <li>Return Value: 사이즈를 비트 단위로 해서 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.setPublicKey(n, e) -->
+  <h4><code>rsa.setPublicKey(n, e)</code> <span><a class="mark" href="#rsa-setPublicKey" id="rsa-setPublicKey">#</a></span><a aria-hidden="true" class="legacy" id="rsa_setPublicKey"></a></h4>
+
+  <p>공개키 <code>n</code>과 <code>e</code>를 등록합니다.</p>
+
+  <ul>
+    <li><code>n</code> <a herf="#" class="type">&#x3C;BigInteger></a> 공개키 <code>n</code>. Node.js에서 기본 지원하는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt" class="type">&#x3C;BigInt></a>는 아직 지원하지 않습니다. <a herf="#" class="type">&#x3C;BigInteger></a>는 <code>jCastle.math.bigInteger</code>로 등록되어 있습니다.</li>
+    <li><code>e</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> | <a herf="#" class="type">&#x3C;BigInteger></a> 공개키 <code>e</code></li>
+  </ul>
+
+  <!-- rsa.getPublicKey(format = 'object') -->
+  <h4><code>rsa.getPublicKey(format = 'object')</code> <span><a class="mark" href="#rsa-getPublicKey" id="rsa-getPublicKey">#</a></span><a aria-hidden="true" class="legacy" id="rsa_getPublicKey"></a></h4>
+
+  <p>공개키 <code>n</code>과 <code>e</code>를 내보냅니다.</p>
+
+  <ul>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 공개키 포맷 형식. 기본 값은 <code>object</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 공개키를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- rsa.getPrivateKey(format = 'object') -->
+  <h4><code>rsa.getPrivateKey(format = 'object')</code> <span><a class="mark" href="#rsa-getPrivateKey" id="rsa-getPrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="rsa_getPrivateKey"></a></h4>
+
+  <p>개인키(공개키를 포함) <code>d</code>, <code>p</code>, <code>q</code>, <code>dmp1</code>, <code>dmq1</code>, <code>iqmp</code>를 내보냅니다.</p>
+
+  <ul>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 개인키 포맷 형식. 기본 값은 <code>object</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 개인키를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- rsa.getPublicKeyInfo(format = 'object') -->
+  <h4><code>rsa.getPublicKeyInfo(format = 'object')</code> <span><a class="mark" href="#rsa-getPublicKeyInfo" id="rsa-getPublicKeyInfo">#</a></span><a aria-hidden="true" class="legacy" id="rsa_getPublicKeyInfo"></a></h4>
+
+  <p>공개키 관련 정보를 내보냅니다.</p>
+
+  <ul>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 공개키 포맷 형식. 기본 값은 <code>object</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 공개키 정보를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형태로 내보냅니다.</li>
+  </ul>
+
+
+  <!-- rsa.getPrivateKeyInfo(format = 'object') -->
+  <h4><code>rsa.getPrivateKeyInfo(format = 'object')</code> <span><a class="mark" href="#rsa-getPrivateKeyInfo" id="rsa-getPrivateKeyInfo">#</a></span><a aria-hidden="true" class="legacy" id="rsa_getPrivateKeyInfo"></a></h4>
+
+  <p>개인키 관련 정보를 내보냅니다.</p>
+
+  <ul>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 공개키 포맷 형식. 기본 값은 <code>object</code>입니다. 올 수 있는 값은 <code>hex</code>, <code>jwt</code>, <code>object</code>, <code>buffer</code>, <code>uint8array</code>, <code>base64</code> 등이 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 개인키 정보를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 형태로 내보냅니다.</li>
+  </ul>
+
+
+  <!-- rsa.publicKeyEquals(pubkey) -->
+  <h4><code>rsa.publicKeyEquals(pubkey)</code> <span><a class="mark" href="#rsa-publicKeyEquals" id="rsa-publicKeyEquals">#</a></span><a aria-hidden="true" class="legacy" id="rsa_publicKeyEquals"></a></h4>
+
+  <p>공개키가 일치하는지 체크합니다.</p>
+
+  <ul>
+    <li><code>pubkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 공개키 <code>n</code>과 <code>e</code>를 포함한 객체</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 공개키가 일치하면 <code>true</code>를, 그렇지 않으면 <code>false</code>를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- rsa.hasPublicKey() -->
+  <h4><code>rsa.hasPublicKey()</code> <span><a class="mark" href="#rsa-hasPublicKey" id="rsa-hasPublicKey">#</a></span><a aria-hidden="true" class="legacy" id="rsa_hasPublicKey"></a></h4>
+
+  <p>공개키가 등록되어 있는지 체크합니다.</p>
+
+  <ul>
+    <li>Return Value: 공개키가 등록되어 있으면 <code>true</code>를, 그렇지 않으면 <code>false</code>를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- rsa.hasPrivateKey() -->
+  <h4><code>rsa.hasPrivateKey()</code> <span><a class="mark" href="#rsa-hasPrivateKey" id="rsa-hasPrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="rsa_hasPrivateKey"></a></h4>
+
+  <p>개인키가 등록되어 있는지 체크합니다.</p>
+
+  <ul>
+    <li>Return Value: 개인키가 등록되어 있으면 <code>true</code>를, 그렇지 않으면 <code>false</code>를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 내보냅니다.</li>
+  </ul>
+
+  <!-- rsa.setPrivateKey(n, e, d, p, q, dmp1, dmq1, iqmp) -->
+  <h4><code>rsa.setPrivateKey(n, e, d [, p, q[, dmp1, dmq1, iqmp]])</code> <span><a class="mark" href="#rsa-setPrivateKey" id="rsa-setPrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="rsa_setPrivateKey"></a></h4>
+
+  <p>공개키를 포함한 개인키를 등록합니다.</p>
+
+  <ul>
+    <li><code>n</code> <a herf="#" class="type">&#x3C;BigInteger></a> 공개키 <code>n</code>. Node.js에서 기본 지원하는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt" class="type">&#x3C;BigInt></a>는 아직 지원하지 않습니다. <a herf="#" class="type">&#x3C;BigInteger></a>는 <code>jCastle.math.bigInteger</code>로 등록되어 있습니다.</li>
+    <li><code>e</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> | <a herf="#" class="type">&#x3C;BigInteger></a> 공개키 <code>e</code></li>
+    <li><code>d</code> <a herf="#" class="type">&#x3C;BigInteger></a> 개인키 <code>d</code>. </li>
+    <li><code>p</code> <a herf="#" class="type">&#x3C;BigInteger></a> 개인키 <code>p</code>. </li>
+    <li><code>q</code> <a herf="#" class="type">&#x3C;BigInteger></a> 개인키 <code>q</code>. </li>
+    <li><code>dmp1</code> <a herf="#" class="type">&#x3C;BigInteger></a> 개인키 <code>dmp1</code>. </li>
+    <li><code>dmq1</code> <a herf="#" class="type">&#x3C;BigInteger></a> 개인키 <code>dmq1</code>. </li>
+    <li><code>iqmp</code> <a herf="#" class="type">&#x3C;BigInteger></a> 개인키 <code>iqmp</code>. </li>
+  </ul>
+
+  <!-- rsa.validateKeypair(privkey, certainty = 10, display_err = false) -->
+  <h4><code>pki.validateKeypair(privkey, certainty = 10, display_err = false)</code><span><a class="mark" href="#pki-validateKeypair" id="pki-validateKeypair">#</a></span><a aria-hidden="true" class="legacy" id="pki_validateKeypair"></a></h4>
+
+  <p>개인키가 유효한 키인지 체크합니다.</p>
+
+  <ul>
+    <li><code>privkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 개인키 객체.</li>
+    <li><code>certainty</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 소수 분별 테스트에 사용할 값. 기본 값은 <code>10</code>입니다.</li>
+    <li><code>display_err</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 에러 발생시 console에 출력할지 여부를 결정합니다.  기본 값은 <code>false</code>입니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 키가 유효하면 <code>true</code>를, 그렇지 않으면 <code>false</code>를  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a>으로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.setPadding(mode, hash_algo = 'sha-1', label = '', mgf = 'mgf1') -->
+  <h4><code>rsa.setPadding(mode, hash_algo = 'sha-1', label = '', mgf = 'mgf1')</code> <span><a class="mark" href="#rsa-setPadding" id="rsa-setPadding">#</a></span><a aria-hidden="true" class="legacy" id="rsa_setPadding"></a></h4>
+
+  <p>Padding을 설정합니다.</p>
+
+  <ul>
+    <li><code>mode</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 패딩 값 혹은 객체. 스트링으로 올 수 있는 값은 <code>pkcs1_type_1</code>, <code>rsaes-pkcs1-v1_5</code>(<code>pkcs1_type_2</code>), <code>rsaes-oaep</code>(<code>pkcs1_oaep</code>), <code>no-padding</code>(<code>none</code>)이 있습니다.</li>
+    <li><code>hash_algo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 만일 패딩 값으로 스트링 값 <code>rsaes-oaep</code> 또는<code>pkcs1_oaep</code>이 왔을 때 해쉬 함수를 설정할 수 있습니다. 기본 값은 <code>sha-1</code>입니다.</li>
+    <li><code>label</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 만일 패딩 값으로 스트링 값 <code>rsaes-oaep</code> 또는<code>pkcs1_oaep</code>이 왔을 때 <code>label</code>값을 설정할 수 있습니다. 기본 값은 빈 스트링 값입니다.</li>
+    <li><code>mgf</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 만일 패딩 값으로 스트링 값 <code>rsaes-oaep</code> 또는<code>pkcs1_oaep</code>이 왔을 때 <code>mgf</code>값을 설정할 수 있습니다. 기본 값은 <code>mgf1</code>입니다. 아직 다른 MGF 함수는 지원하지 않습니다.</li>
+  </ul>
+
+
+  <!-- rsa.publicEncrypt(pt, options) -->
+  <h4><code>rsa.publicEncrypt(pt, options)</code> <span><a class="mark" href="#rsa-publicEncrypt" id="rsa-publicEncrypt">#</a></span><a aria-hidden="true" class="legacy" id="rsa_publicEncrypt"></a></h4>
+
+  <p>공개키로 평문을 암호화 합니다.</p>
+
+  <ul>
+    <li><code>pt</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 암호화할 평문. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>padding</code> 정보가 올 수 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 평문을 암호화하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형태로 리턴합니다.</li>
+  </ul>
+
+
+  <!-- rsa.privateEncrypt(pt, options) -->
+  <h4><code>rsa.privateEncrypt(pt, options)</code> <span><a class="mark" href="#rsa-privateEncrypt" id="rsa-privateEncrypt">#</a></span><a aria-hidden="true" class="legacy" id="rsa_privateEncrypt"></a></h4>
+
+  <p>개인키로 평문을 암호화 합니다. 일반적으로 개인키로 평문을 암호화하는 과정은 서명하는 과정에서 사용합니다.</p>
+
+  <ul>
+    <li><code>pt</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 암호화할 평문. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>padding</code> 정보가 올 수 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 평문을 암호화하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.publicDecrypt(ct, options) -->
+  <h4><code>rsa.publicDecrypt(ct, options)</code> <span><a class="mark" href="#rsa-publicDecrypt" id="rsa-publicDecrypt">#</a></span><a aria-hidden="true" class="legacy" id="rsa_publicDecrypt"></a></h4>
+
+  <p>공개키로 평문을 복호화 합니다. 일반적으로 공개키로 복호화하는 경우는 서명을 검증하는 과정에서 사용합니다.</p>
+
+  <ul>
+    <li><code>ct</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 복호화할 암호문. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>padding</code> 정보가 올 수 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 암호문을 복호화하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.privateDecrypt(ct, options) -->
+  <h4><code>rsa.privateDecrypt(ct, options)</code> <span><a class="mark" href="#rsa-privateDecrypt" id="rsa-privateDecrypt">#</a></span><a aria-hidden="true" class="legacy" id="rsa_privateDecrypt"></a></h4>
+
+  <p>개인키로 평문을 복호화 합니다.</p>
+
+  <ul>
+    <li><code>ct</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 복호화할 암호문. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>padding</code> 정보가 올 수 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 암호문을 복호화하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.generateKeypair(options = {}) -->
+  <h4><code>rsa.generateKeypair(options = {})</code> <span><a class="mark" href="#rsa-generateKeypair" id="rsa-generateKeypair">#</a></span><a aria-hidden="true" class="legacy" id="rsa_generateKeypair"></a></h4>
+
+  <p>공개키를 포함한 개인키를 생성합니다.</p>
+
+  <ul>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 다음의 정보가 올 수 있습니다.
+      <ul>
+        <li><code>bits</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 공개키 <code>n</code>의 비트 크기. 기본 값은 <code>2048</code>입니다.</li>
+        <li><code>exponent</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 공개키에 사용될 Exponent 값. 기본 값은 <code>0x10001</code>입니다.</li>
+        <li><code>hashAlgo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 랜덤 함수에서 사용할 해쉬 함수. 주어지지 않으면 jCastle에서는 <code>rc4</code>를 이용합니다.</li>
+        <li><code>certainty</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 소수 판정에 사용되는 값으로 기본 값은 <code>10</code>입니다. 값이 클 수록 소수 판정이 더 정확해지나 시간이 많이 소요됩니다.</li>
+        <li><code>seed</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 랜덤 함수에 사용될 Seed값. 주어지지 않으면 jCastle에서는 랜덤으로 생성합니다.</li>
+      </ul>
+    </li>
+  </ul>
+
+
+  <!-- rsa.sign(str, options = {}) -->
+  <h4><code>rsa.sign(str, options = {})</code> <span><a class="mark" href="#rsa-sign" id="rsa-sign">#</a></span><a aria-hidden="true" class="legacy" id="rsa_sign"></a></h4>
+
+  <p>메시지에 대해 <code>RSASSA-PKCS1-v1_5</code>방식의 서명을 생성합니다. 자세한 내용은 <a href="https://tools.ietf.org/html/rfc3447">Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography
+                      Specifications Version 2.1</a>를 참조하세요.</p>
+
+  <ul>
+    <li><code>str</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 서명할 스트링. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>hashAlgo</code> 값이 올 수 있습니다(기본 값은 <code>sha-1</code>입니다).</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 메시지에 대한 서명을 생성하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.verify(str, signature, options = {}) -->
+  <h4><code>rsa.verify(str, signature, options = {})</code> <span><a class="mark" href="#rsa-verify" id="rsa-verify">#</a></span><a aria-hidden="true" class="legacy" id="rsa_verify"></a></h4>
+
+  <p>메시지에 대해 <code>RSASSA-PKCS1-v1_5</code>방식으로 생성된 서명을 검증합니다. 자세한 내용은 <a href="https://tools.ietf.org/html/rfc3447">Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography
+                      Specifications Version 2.1</a>를 참조하세요.</p>
+
+  <ul>
+    <li><code>str</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 검증할 스트링. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>signature</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 검증할 서명.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>hashAlgo</code> 값이 올 수 있습니다(기본 값은 <code>sha-1</code>입니다).</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 메시지에 대한 서명을 검증하여 맞으면 <code>true</code>, 그렇지 않으면 <code>false</code>를  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.pssSign(str, options = {}) -->
+  <h4><code>rsa.pssSign(str, options = {})</code> <span><a class="mark" href="#rsa-pssSign" id="rsa-pssSign">#</a></span><a aria-hidden="true" class="legacy" id="rsa_pssSign"></a></h4>
+
+  <p>메시지에 대해 <code>RSASSA-PSS</code> 방식의 서명을 생성합니다. 자세한 내용은 <a href="https://tools.ietf.org/html/rfc3447">Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography
+                      Specifications Version 2.1</a>를 참조하세요.</p>
+
+  <ul>
+    <li><code>str</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 서명할 스트링. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>hashAlgo</code> 값이 올 수 있습니다(기본 값은 <code>sha-1</code>입니다).</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 메시지에 대한 서명을 생성하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.pssVerify(str, signature, options = {}) -->
+  <h4><code>rsa.pssVerify(str, signature, options = {})</code> <span><a class="mark" href="#rsa-pssVerify" id="rsa-pssVerify">#</a></span><a aria-hidden="true" class="legacy" id="rsa_pssVerify"></a></h4>
+
+  <p>메시지에 대해 <code>RSASSA-PSS</code>방식으로 생성된 서명을 검증합니다. 자세한 내용은 <a href="https://tools.ietf.org/html/rfc3447">Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography
+                      Specifications Version 2.1</a>를 참조하세요.</p>
+
+  <ul>
+    <li><code>str</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 검증할 스트링. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>signature</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 검증할 서명.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>hashAlgo</code> 값이 올 수 있습니다(기본 값은 <code>sha-1</code>입니다).</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 메시지에 대한 서명을 검증하여 맞으면 <code>true</code>, 그렇지 않으면 <code>false</code>를  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.ansiX931Sign(str, options = {}) -->
+  <h4><code>rsa.ansiX931Sign(str, options = {})</code> <span><a class="mark" href="#rsa-ansiX931Sign" id="rsa-ansiX931Sign">#</a></span><a aria-hidden="true" class="legacy" id="rsa_ansiX931Sign"></a></h4>
+
+  <p>메시지에 대해 <code>ANSI X9.31</code> 방식의 서명을 생성합니다. 자세한 내용은 <a href="https://www.di-mgt.com.au/rsa_alg.html#x931">의 X9.31 Signature Scheme</a> 부분을 참조하세요.</p>
+
+  <ul>
+    <li><code>str</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 서명할 스트링. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>hashAlgo</code> 값이 올 수 있습니다(기본 값은 <code>sha-1</code>입니다).</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 메시지에 대한 서명을 생성하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 형태로 리턴합니다.</li>
+  </ul>
+
+  <!-- rsa.ansiX931Verify(str, signature, options = {}) -->
+  <h4><code>rsa.ansiX931Verify(str, signature, options = {})</code> <span><a class="mark" href="#rsa-ansiX931Verify" id="rsa-ansiX931Verify">#</a></span><a aria-hidden="true" class="legacy" id="rsa_ansiX931Verify"></a></h4>
+
+  <p>메시지에 대해 <code>ANSI X9.31</code>방식으로 생성된 서명을 검증합니다. 자세한 내용은 <a href="https://www.di-mgt.com.au/rsa_alg.html#x931">의 X9.31 Signature Scheme</a> 부분을 참조하세요.</p>
+
+  <ul>
+    <li><code>str</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 검증할 스트링. 만일 스트링이 오면 <code>UTF-8</code> 스트링으로 인식하여 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환합니다.</li>
+    <li><code>signature</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 검증할 서명.</li>
+    <li><code>otions</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체로 <code>hashAlgo</code> 값이 올 수 있습니다(기본 값은 <code>sha-1</code>입니다).</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 메시지에 대한 서명을 검증하여 맞으면 <code>true</code>, 그렇지 않으면 <code>false</code>를  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 형태로 리턴합니다.</li>
+  </ul>
+
+
+
+
+
+  <pre class="prettyprint p-4">
+QUnit.test("Sign/Verify Test", function(assert) {
+
+  var n = 
+  "A9E167983F39D55FF2A093415EA6798985C8355D9A915BFB1D01DA197026170F"+
+  "BDA522D035856D7A986614415CCFB7B7083B09C991B81969376DF9651E7BD9A9"+
+  "3324A37F3BBBAF460186363432CB07035952FC858B3104B8CC18081448E64F1C"+
+  "FB5D60C4E05C1F53D37F53D86901F105F87A70D1BE83C65F38CF1C2CAA6AA7EB";
+  var e = 0x10001;
+  var d =
+  "67CD484C9A0D8F98C21B65FF22839C6DF0A6061DBCEDA7038894F21C6B0F8B35"+
+  "DE0E827830CBE7BA6A56AD77C6EB517970790AA0F4FE45E0A9B2F419DA8798D6"+
+  "308474E4FC596CC1C677DCA991D07C30A0A2C5085E217143FC0D073DF0FA6D14"+
+  "9E4E63F01758791C4B981C3D3DB01BDFFA253BA3C02C9805F61009D887DB0319";
+
+  var k = Buffer.from("4E636AF98E40F3ADCFCCB698F4E80B9F", 'hex');
+
+  var rsa = new jCastle.pki('RSA');
+  rsa.setPrivateKey(n, e, d);
+
+  var ct = rsa.publicEncrypt(k);
+
+  assert.ok(rsa.privateDecrypt(ct).equals(k), "RSA publicEncrypt / privateDecrypt Test");
+
+  var ct = rsa.publicEncrypt(k, {
+        padding: {
+            mode:'PKCS1_OAEP',
+            hashAlgo: 'sha-256'
+        }
+    });
+
+  assert.ok(rsa.privateDecrypt(ct, {
+        padding: {
+            mode: 'PKCS1_OAEP',
+            hashAlgo: 'sha-256'
+        }
+    }).equals(k), "RSA publicEncrypt / privateDecrypt with OAEP encoding Test");
+
+
+  var ct = rsa.privateEncrypt(k);
+
+  assert.ok(rsa.publicDecrypt(ct).equals(k), "RSA privateEncrypt / publicDecrypt Test");
+
+  var s = rsa.sign(k, {hashAlgo: 'sha-1'});
+
+  assert.ok(rsa.verify(k, s, {hashAlgo: 'sha-1'}), "sign/verify Test (RSASSA-PKCS1-V1_5-SIGN)");
+
+  var s = rsa.pssSign(k, {hashAlgo: 'sha-256'});
+
+  assert.ok(rsa.pssVerify(k, s, {hashAlgo: 'sha-256'}), "sign/verify Test (RSASSA-PSS)");
+
+  var s = rsa.ansiX931Sign(k, {hashAlgo: 'sha-256'});
+
+  assert.ok(rsa.ansiX931Verify(k, s, {hashAlgo: 'sha-256'}), "sign/verify Test (ANSIX931-SIGN)");
+
+  // test with setPadding
+  rsa.setPadding('pkcs1_oaep', 'sha-256');
+
+  var ct = rsa.publicEncrypt(k);
+
+  assert.ok(rsa.privateDecrypt(ct, {
+        padding: {
+            mode: 'PKCS1_OAEP',
+            hashAlgo: 'sha-256'
+        }
+    }).equals(k), "RSA publicEncrypt / privateDecrypt Test with PKCS1_OAEP Encoding working with setPadding.");
+});
+  </pre>
+
+
+
+
+
+</section>  
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>  
