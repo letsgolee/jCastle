@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+</ul>
+
+
+<section>
+
+  <h3><code>jCastle.mcrypt.mode</code><span><a class="mark" href="#class-mcrypt-mode" id="class-mcrypt-mode">#</a></span><a aria-hidden="true" class="legacy" id="class_mcrypt_mode"></a></h3>
+  <p>These are the cipher modes that <code>jCastle.mcrypt.mode</code> supports.</p>
+
+
+  <table class="table table-bordered table-striped">
+                <colgroup>
+                  <col width="150">
+                  <col width="100" class="text-center">
+                  <col width="60" class="text-center">
+                  <col width="140" class="text-center">
+                  <col width="300">
+                </colgroup>
+                <thead>
+                  <th>Mode</th>
+                  <th>IV</th>
+                  <th>Padding</th>
+                  <th>Block size</th>
+                  <th>required properties</th>
+                  <th>etc</th>
+                </thead>
+                <tr>
+                  <td><code>ECB</code></td>
+                  <td>no need</td>
+                  <td>need</td>
+                  <td>algorithm's block size</td>
+                  <td>&nbsp;</td>
+                  <td>the lowest security level</td>
+                </tr>
+                <tr>
+                  <td><code>CBC</code></td>
+                  <td>need</td>
+                  <td>need</td>
+                  <td>algorithm's block size</td>
+                  <td>&nbsp;</td>
+                  <td>top usage</td>
+                </tr>
+                <tr>
+                  <td><code>PCBC</code></td>
+                  <td>need</td>
+                  <td>need</td>
+                  <td>algorithm's block size</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td><code>CFB</code></td>
+                  <td>need</td>
+                  <td>no need</td>
+                  <td>algorithm's block size</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td><code>OFB</code></td>
+                  <td>need</td>
+                  <td>no need</td>
+                  <td>algorithm's block size</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td><code>nCFB</code></td>
+                  <td>need</td>
+                  <td>no need</td>
+                  <td>algorithm's block size</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td><code>nOFB</code></td>
+                  <td>need</td>
+                  <td>no need</td>
+                  <td>algorithm's block size</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td><code>CTR</code></td>
+                  <td>need</td>
+                  <td>no need</td>
+                  <td>algorithm's block size</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td><code>GTR</code><br/><code>GOFB</code></td>
+                  <td>need</td>
+                  <td>no need</td>
+                  <td>8 bytes</td>
+                  <td>&nbsp;</td>
+                  <td>mode only for <code>GOST</code></td>
+                </tr>
+                <tr>
+                  <td><code>GCFB</code></td>
+                  <td>need</td>
+                  <td>no need</td>
+                  <td>8 bytes</td>
+                  <td>&nbsp;</td>
+                  <td>mode only for <code>GOST</code></td>
+                </tr>
+                <tr>
+                  <td><code>CTS</code><br/><code>CTS-CBC</code></td>
+                  <td>need</td>
+                  <td>no need</td>
+                  <td>16 bytes</td>
+                  <td><code>ctsType</code>: CTS type(<code>CS1</code>, <code>CS2</code>, <code>CS3</code>)<br/>
+                  &nbsp;&nbsp; The default is <code>CS3</code>.</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td><code>CTS-ECB</code></td>
+                  <td>no need</td>
+                  <td>no need</td>
+                  <td>16 bytes</td>
+                  <td><code>ctsType</code>: CTS type(<code>CS1</code>, <code>CS2</code>, <code>CS3</code>)<br/>
+                  &nbsp;&nbsp; The default is <code>CS3</code>.</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td><code>XTS</code></td>
+                  <td>no need</td>
+                  <td>no need</td>
+                  <td>16 bytes</td>
+                  <td>
+                    <code>dataUnitSerial</code>: data unit serial number. use it for creating <code>tweak</code><br/>
+                    <code>tweak</code>: instead of <code>dataUnitSerial</code> you can give <code>tweak</code> value directly(16 bytes)<br/>
+                    <code>tweakKey</code>: <code>tweak</code> encrypt key.
+                    <code>dataUnitLength</code>: data unit total bit length
+                  </td>
+                  <td>- made for encryption of storage divice for security.<br/>- If <code>tweakKey</code> is not given then <code>key</code> value is divided into two values.<br/>- <code>dataUnitLength</code> is the bit size for bit stealing.</td>
+                </tr>
+                <tr>
+                  <td><code>EAX</code></td>
+                  <td>need<br/>(<code>Nonce</code>)</td>
+                  <td>no need</td>
+                  <td>16 bytes</td>
+                  <td><code>nonce</code>: block size<br/><code>additionalData</code><br/><code>tagSize</code>:[1..16]</td>
+                  <td><code style="color:royalblue">AEAD</code></td>
+                </tr>
+                <tr>
+                  <td><code>CCM</code></td>
+                  <td>need<br/>(<code>Nonce</code>)</td>
+                  <td>no need</td>
+                  <td>16 bytes</td>
+                  <td><code>nonce</code>: length range [7..13]<br/><code>additionalData</code><br/><code>tagSize</code>: value range [4..16]</td>
+                  <td><code style="color:royalblue">AEAD</code></td>
+                </tr>
+                <tr>
+                  <td><code>GCM</code></td>
+                  <td>need<br/>(<code>Nonce</code>)</td>
+                  <td>no need</td>
+                  <td>16 bytes</td>
+                  <td><code>nonce</code>: block size<br/><code>additionalData</code></td>
+                  <td><code style="color:royalblue">AEAD</code></td>
+                </tr>
+                <tr>
+                  <td><code>Poly1305-AEAD</code><br/><code>Poly1305</code></td>
+                  <td>no need</td>
+                  <td>no need</td>
+                  <td>stream mode</td>
+                  <td><code>additionalData</code></td>
+                  <td><code style="color:royalblue">AEAD</code><br/>mode only for <code>Chacha20</code></td>
+                </tr>
+                <tr>
+                  <td><code>Wrap</code></td>
+                  <td>no need</td>
+                  <td>no need</td>
+                  <td>16 bytes</td>
+                  <td>&nbsp;</td>
+                  <td><code>alias for <a href="keywrap.html">jCastle.KeyWrap</a></code></td>
+                </tr>
+            
+  </table>
+
+  <!-- jCastle.mcrypt.mode.create -->
+  <h4>Static method: <code>jCastle.mcrypt.mode.create(mode)</code><span><a class="mark" href="#static-mcrypt-mode-create" id="static-mcrypt-mode-create">#</a></span><a aria-hidden="true" class="legacy" id="static_mcrypt_mode_create"></a></h4>
+
+  <p> Creates cipher mode.</p>
+
+  <ul>
+    <li><code>mode</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> Mode name</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: Returns the instance of <code>jCastle.mcrypt.mode.*</code>.</li>
+  </ul>
+
+
+  <!-- jCastle.mcrypt.mode.listModes -->
+  <h4>Static method: <code>jCastle.mcrypt.mode.listModes()</code><span><a class="mark" href="#static-mcrypt-mode-listModes" id="static-mcrypt-mode-listModes">#</a></span><a aria-hidden="true" class="legacy" id="static_mcrypt_mode_listModes"></a></h4>
+
+  <p> Gets the list of cipher mode.</p>
+
+  <ul>
+    <li>Return Value: Returns the list as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">&#x3C;Array></a>.</li>
+  </ul>
+
+  <hr>
+  
+  <!-- mode.init -->
+  <h4><code>mode.init(algorithm, options)</code><span><a class="mark" href="#mcrypt-mode-init" id="mcrypt-mode-init">#</a></span><a aria-hidden="true" class="legacy" id="mcrypt_mode_init"></a></h4>
+
+  <p>Initializes the mode process.</p>
+
+  <ul>
+    <li><code>algorithm</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> an instance of <code>jCastle.mcrypt.algorithm.*</code>.</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> Options object. Refer to the above table for needed properties.
+      <ul>
+        <li><code>isEncryption</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="type">&#x3C;Boolean></a> Flag for direction of process. If encryption then <code>true</code>, otherwise <code>false</code></li>
+        <li><code>blockSize</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> block size for the process</li>
+        <li><code>iv</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> Initial Vector.</li>
+        <li><code>nonce</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> Nonce value for <code style="color:royalblue">AEAD</code>(<code>ccm</code>, <code>eax</code>, <code>gcm</code>, <code>cwc</code>).</li>
+        <li><code>additionalData</code>  An additional data for <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> <code style="color:royalblue">AEAD</code>(<code>nonce</code>를 지원하는 모드 및 <code>poly1305</code>).</li>
+        <li><code>ctsType</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> <code>cts</code> type</li>
+        <li><code>tweakKey</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> <code>xts</code> The tweak key value</li>
+        <li><code>tweak</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> Only used in <code>xts</code> mode.</li>
+        <li><code>dataUnitSerial</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> Only used for <code>xts</code> mode</li>
+        <li><code>dataUnitLength</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Only used for <code>xts</code> mode</li>
+        <li><code>tagSize</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Tag size for <code style="color:royalblue">AEAD</code>.
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+
+  <!-- mode.process -->
+  <h4><code>mode.process(input)</code><span><a class="mark" href="#mcrypt-mode-process" id="mcrypt-mode-process">#</a></span><a aria-hidden="true" class="legacy" id="mcrypt_mode_process"></a></h4>
+
+  <p>Processes with the block size.</p>
+
+  <ul>
+    <li><code>input</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> block data</li>
+  </ul>
+
+  <!-- mode.finish -->
+  <h4><code>mode.finish([input])</code><span><a class="mark" href="#mcrypt-mode-finish" id="mcrypt-mode-finish">#</a></span><a aria-hidden="true" class="legacy" id="mcrypt_mode_finish"></a></h4>
+
+  <p>Finishes the process and returns the result.</p>
+
+  <ul>
+    <li><code>input</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> block data</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: Returns the result as <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>.</li>
+  </ul>
+
+
+  <pre class="prettyprint p-4">
+var ciphertext = new jCastle.mcrypt().encrypt("This is the message", {
+  algoName: "AES-256",
+  key: key,
+  nonce: nonce,
+  mode: "GCM",
+  isEncryption: true,
+  padding: "pkcs7",
+  additionalData: adata
+});
+  </pre>
+
+  <p><code>jCastle.mcrypt.mode</code> object can be used with each algorithm object and an encryption or decryption with block cipher mode can be processed.<br/>
+  However using directly with the cipher mode is not easy without the knowledage of each cipher modes.<br/>
+  <code>jCastle.mcrypt.mode</code> requires padding process if the mode needs padding of the string.<br/>
+  Without the knowledage of <code>jCastle.mcrypt.mode</code>, it is desirable to use <code>new jCastle.mcrypt</code>.
+  </p>
+
+  <pre class="prettyprint p-4">
+var is_encryption = true; // encryption
+var block_size = jCastle.mcrypt.getBlockSize("aes-256");
+
+var algo = new jCastle.algorithm.aes("aes-256"); // key length is 32 bytes
+algo.keySchedule(key, is_encryption);
+
+var cbcMode = jCastle.mcrypt.mode.create("cbc");
+cbcMode.init(algo, {
+  iv: initial_vector,
+  blockSize: block_size,
+  isEncryption: is_encryption
+});
+var cipher_block = cbcMode.process(input_block);
+cbcMode.finish();
+  </pre>
+
+</section>
+
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>

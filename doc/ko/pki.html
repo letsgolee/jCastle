@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    
+
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+</ul>
+
+
+<section>
+
+  <h3>Class:<code>jCastle.pki</code><span><a class="mark" href="#class-pki" id="class-pki">#</a></span><a aria-hidden="true" class="legacy" id="class_pki"></a></h3>
+
+  <p>PKI(Public Key Infrastructure)는 공개키 기반구조라고 하며, 디지털 증명서의 생성, 관리, 배포, 사용, 저장 및 파기, 공개키 암호화의 관리에 필요한 역할, 정책 등 일련의 절차들을 집합한 알고리듬을 말합니다.</p>
+
+  <p>데이터를 암호화하는 방법은 크게 공개키(비대칭키)와 비밀키(대칭키) 방식으로 구분할 수 있습니다. 비밀키 암호 시스템이 송수신자 양측에서 똑같은 비밀키를 공유하는데 반해, 공개키 알고리듬은 서로 다른 암호화 키와 복호화 키를 갖습니다. 따라서 공개키 방식은 데이터를 암호화하고 이를 다시 복원하는 열쇠가 다르기 때문에 거의 완벽한 데이터 보안이 가능하며 그로 인한 이점은 정보 유출의 가능성은 현저히 낮아진다는데 있습니다.</p>
+
+  <p>이러한 공개키 암호의 상용화를 위해서는 무엇보다도 키의 생성과 인증이 필요하며 이런 것들에 대한 분배와 안전한 관리를 위한 체계가 필요한데, 이 시스템을 PKI라고 합니다. PKI는 공개키에 대한 인증서를 발급하는 '인증기관(CA)', 사용자들의 인증서 신청 시 인증기관 대신 그들의 신분과 소속을 확인하는 '등록기관(RA)', 인증서와 사용자 관련 정보, 상호 인증서 쌍 및 인증서 취소 목록 등을 저장·검색하는 장소인 '디렉터리 서비스(DS)', 다양한 응용에서 공개키를 이용하여 전자서명을 생성하고 검증하며 데이터에 대한 암호, 복호를 수행하는 사용자 등으로 구성된다. PKI를 도입하여 전자상거래를 할 경우, 전자상거래를 위해 전자서명을 한 뒤 공인인증기관의 인증을 받아 상대에게 제시하여 거래가 이뤄짐으로써 개인정보나 거래정보가 외부에 노출되지 않아 안전하게 거래할 수 있게 됩니다.</p>
+
+  <p><code>jCastle</code>은 공개키 기반 알고리듬으로 <code>RSA</code>, <code>DSA</code>, <code>ECDSA</code>, <code>KCDSA</code>, <code>ECKCDSA</code> 및 <code>ElGamal</code>을 지원합니다.</p>
+
+
+  <!-- new jCastle.pki -->
+  <h4><code>new jCastle.pki([pkey])</code><span><a class="mark" href="#new-pki-intance" id="new-pki-instance">#</a></span><a aria-hidden="true" class="legacy" id="new_pki_instance"></a></h4>
+
+  <p><code>jCastle.pki</code> 오브젝트를 생성합니다.</p>
+
+  <ul>
+    <li><code>pkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 생성된 객체에 사용할 <code>jCastle.pki.*</code> 알고리듬 명칭 혹은 <code>jCastle.pki.*</code> 객체 혹은 <code>publicKeyInfo</code> 또는 <code>privateKeyInfo</code>와 같은 객체가 올 수 있습니다. 이 값이 주어지면 <code>pki.init(pkey)</code>를 실행합니다.</li>
+  </ul>
+
+  <!-- jCastle.pki.create(pkey) -->
+  <h4>Static method: <code>jCastle.pki.create([pkey])</code><span><a class="mark" href="#static-pki-create" id="static-pki-create">#</a></span><a aria-hidden="true" class="legacy" id="static_pki_create"></a></h4>
+
+  <p><code>jCastle.pki</code> 오브젝트를 생성합니다. <code>new jCastle.pki()</code>와 동일합니다.</p>
+
+  <ul>
+    <li><code>pkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 생성된 객체에 사용할 <code>jCastle.pki.*</code> 알고리듬 명칭 혹은 <code>jCastle.pki.*</code> 객체 혹은 <code>publicKeyInfo</code> 또는 <code>privateKeyInfo</code>와 같은 객체가 올 수 있습니다. 이 값이 주어지면 <code>pki.init(pkey)</code>를 실행합니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>jCastle.pki</code> 오브젝트를 생성하여 리턴합니다.</li>
+  </ul>
+
+
+  <!-- jCastle.pki.init(pkey) -->
+  <h4>Static method: <code>jCastle.pki.init(pkey)</code><span><a class="mark" href="#static-pki-init" id="static-pki-init">#</a></span><a aria-hidden="true" class="legacy" id="static_pki_init"></a></h4>
+
+  <p><code>jCastle.pki</code> 오브젝트를 생성한 후 <code>pki.init()</code>를 실행합니다. 자세한 내용은 <code>pki.init()</code>을 참조해 주세요.</p>
+
+  <ul>
+    <li><code>pkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 생성된 객체에 사용할 <code>jCastle.pki.*</code> 알고리듬 명칭 혹은 <code>jCastle.pki.*</code> 객체 혹은 <code>publicKeyInfo</code> 또는 <code>privateKeyInfo</code>와 같은 객체가 올 수 있습니다. 이 값이 주어지면 <code>pki.init(pkey)</code>를 실행합니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>jCastle.pki</code> 오브젝트를 생성하여 <code>pki.init()</code>를 실행 후 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.pki.parse(pem, password) -->
+  <h4>Static method: <code>jCastle.pki.parse(pem, password)</code><span><a class="mark" href="#static-pki-parse" id="static-pki-parse">#</a></span><a aria-hidden="true" class="legacy" id="static_pki_parse"></a></h4>
+
+  <p><code>jCastle.pki</code> 오브젝트를 생성한 후 <code>pki.parse(pem, password)</code>를 실행합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>jCastle.pki</code> 오브젝트를 생성하여 <code>pki.parse()</code>를 실행 후 리턴합니다.</li>
+  </ul>
+
+
+  <!-- jCastle.pki.parsePrivateKey(pem, password, format) -->
+  <h4>Static method: <code>jCastle.pki.parsePrivateKey(pem, password [, format])</code><span><a class="mark" href="#static-pki-parsePrivateKey" id="static-pki-parsePrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="static_pki_parsePrivateKey"></a></h4>
+
+  <p><code>jCastle.pki</code> 오브젝트를 생성한 후 <code>pki.parsePrivateKey()</code>를 실행합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 복호화하기 위한 비밀번호. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> <code>pem</code> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>asn1</code>, <code>hex</code>, <code>base64</code> 및 <code>auto</code>가 있습니다. 기본 값은 <code>auto</code>이며 자동으로 입력 데이터 포맷 형식을 찾습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>jCastle.pki</code> 오브젝트를 생성하여 <code>pki.parsePrivateKey()</code>를 실행 후 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.pki.parsePublicKey(pem, format) -->
+  <h4>Static method: <code>jCastle.pki.parsePublicKey(pem [, format])</code><span><a class="mark" href="#static-pki-parsePublicKey" id="static-pki-parsePublicKey">#</a></span><a aria-hidden="true" class="legacy" id="static_pki_parsePublicKey"></a></h4>
+
+  <p><code>jCastle.pki</code> 오브젝트를 생성한 후 <code>pki.parsePublicKey()</code>를 실행합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> <code>pem</code> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>asn1</code>, <code>hex</code>, <code>base64</code> 및 <code>auto</code>가 있습니다. 기본 값은 <code>auto</code>이며 자동으로 입력 데이터 포맷 형식을 찾습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>jCastle.pki</code> 오브젝트를 생성하여 <code>pki.parsePublicKey()</code>를 실행 후 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.pki.createFromPublicKeyInfo(publicKeyInfo) -->
+  <h4>Static method: <code>jCastle.pki.createFromPublicKeyInfo(publicKeyInfo)</code><span><a class="mark" href="#static-pki-createFromPublicKeyInfo" id="static-pki-createFromPublicKeyInfo">#</a></span><a aria-hidden="true" class="legacy" id="static_pki_createFromPublicKeyInfo"></a></h4>
+
+  <p>주어진 <code>publicKeyInfo</code> 객체를 가지고 <code>jCastle.pki</code> 객체를 생성합니다.</p>
+
+  <ul>
+    <li><code>publicKeyInfo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> publicKey 정보를 담고 있는 객체. 보통 인증서(Certificate)를 파싱하면 subjectPublicKeyInfo 정보를 갖게 됩니다. 이 정보를 가지고 publicKey를 가진 <code>jCastle.pki</code>를 생성할 수 있습니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> <code>jCastle.pki</code> 객체를 리턴합니다.</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+// certificate pem
+var cert_pem = `
+-----BEGIN CERTIFICATE-----
+MIID6zCCAtOgAwIBAgIBATANBgkqhkiG9w0BAQsFADBKMQswCQYDVQQGEwJrcjER
+MA8GA1UEChMIZGVtb3NpZ24xDzANBgNVBAsTBmRlbW9DQTEXMBUGA1UEAxMOZGVt
+b0NBIENsYXNzIDEwHhcNMTkxMjExMTQwMTI0WhcNMjAxMjExMTQwMTI0WjB/MQsw
+CQYDVQQGEwJrcjERMA8GA1UECgwIZGVtb3NpZ24xFDASBgNVBAsMC3BlcnNvbmFs
+NElTMREwDwYDVQQLDAhEZW1vQmFuazE0MDIGA1UEAwwrw63CmcKNw6rCuMK4w6vC
+j8KZKCkwMDk5MDMzMjAxOTEyMTExMTA0MTE4MDCCASIwDQYJKoZIhvcNAQEBBQAD
+ggEPADCCAQoCggEBANNX9DPTDRpp/QBx4O6h7k6YrSAqys4d8nE7BrtqYTsyiPg4
+0u+wPYYqZdYzLHyt4FhoT5u64XmvTgf98e67LjX2VUvZzK5r6kocSqa978t7Ievf
+uww4Hq6qr1rNdzfmNIcOdwj6Npn8Lz7sDef6UIXZPj8/Ary6kugmEE+otrU7zmQl
+yrZugGTjOAOutq3qA6Z7FWHfYIrBMGc7JMouehvOFSu+EB7PVhwKUcaxbRS4x3+e
+UB4JMG9+5f0z5DLMf6SdckxDQtzkCOYjq8zd7ufhANxeOtSbjKKojnJfovAQqj4W
+vvyv6tBJrg9MF+ZZhQWzBi4rbppwtJ0gTfMOsr8CAwEAAaOBpjCBozAMBgNVHRME
+BTADAQEAMB0GA1UdDgQWBBQ5wMqSqxM/Bxrssawz73W+7FJEgzB0BgNVHSMEbTBr
+oWWkYzBhMQswCQYDVQQGEwJLUjENMAsGA1UECgwERElTQTErMCkGA1UECwwiRGVt
+byBDZXJ0aWZpY2F0ZSBBdXRob3JpdHkgQ2VudHJhbDEWMBQGA1UEAwwNRElTQSBS
+b290Q0EgMYICEAMwDQYJKoZIhvcNAQELBQADggEBAGn4j78ZNBoUYrTOrpRPuRRE
+px/wqULne4mrYEB5RUe1B6KEI1W78kD8cFGvsPc2JJi0fo0aTeW7BUPM6Oh6vKtf
+fpbW9wxzT5VB/3w4klwoug0qaBYguskd1AZsxrxHg1zAUDdtgzWKRIKj6hp1VN9w
+7lQE5nIrBYwR78eGBeTIRqxc/zaviVYNTdnZFAoBCTBYJI5wmZaMmSoYzNnO/UQY
+ZccHTjW4TkJb0GuDuX7hRI7y0g45mbasuzpD2u5N2VYZH38kHc0eFMDLJOcRl5MV
+tcB1Tuc/oM+1QS6ZfFePQfNpKSx3+wQPc5CKfRE6zGhM58LMJ6TqjXON7Ebe+PI=
+-----END CERTIFICATE-----`;
+var text = "the fox is the culprit!";
+
+var cert_info = jCastle.certificate.parse(cert_pem);
+var pki = jCastle.pki.createFromPublicKeyInfo(cert_info.tbs.subjectPublicKeyInfo);
+var ct = pki.publicEncrypt(text);
+  </pre>
+
+  <!-- jCastle.pki.createPublicKeyIdentifier(pki) -->
+  <h4>Static method: <code>jCastle.pki.createPublicKeyIdentifier(pki)</code><span><a class="mark" href="#static-pki-createPublicKeyIdentifier" id="static-pki-createPublicKeyIdentifier">#</a></span><a aria-hidden="true" class="legacy" id="static_pki_createPublicKeyIdentifier"></a></h4>
+
+  <p>주어진 <code>pki</code> 객체를 가지고 <code>publicKeyIdentifier</code>를 생성합니다.</p>
+
+  <ul>
+    <li><code>pki</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> <code>jCastle.pki</code> 객체.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>publicKeyIdentifier</code>를 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.pki.validateKeypair(pem, certainty = 10, display_err = false) -->
+  <h4>Static method: <code>jCastle.pki.validateKeypair(pem, certainty = 10, display_err = false)</code><span><a class="mark" href="#static-pki-validateKeypair" id="static-pki-validateKeypair">#</a></span><a aria-hidden="true" class="legacy" id="static_pki_validateKeypair"></a></h4>
+
+  <p>주어진 <code>pem</code> 데이터를 파싱하여 유효한 키인지 체크합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>certainty</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 소수 분별 테스트에 사용할 값. 기본 값은 <code>10</code>이며 오직 <code>jCastle.pki.rsa</code>에서만 사용합니다.</li>
+    <li><code>display_err</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 에러 발생시 console에 출력할지 여부를 결정합니다. 오직 <code>jCastle.pki.rsa</code>에서만 사용합니다. 기본 값은 <code>false</code>입니다.</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 키가 유효하면 <code>true</code>를, 그렇지 않으면 <code>false</code>를  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a>으로 리턴합니다.</li>
+  </ul>
+
+  <hr>
+
+  <!-- pki.init(pki_name) -->
+  <h4><code>pki.init(pkey)</code><span><a class="mark" href="#pki-init" id="pki-init">#</a></span><a aria-hidden="true" class="legacy" id="pki_init"></a></h4>
+
+  <p><code>jCastle.pki</code> 객체를 초기화 합니다. <code>jCastle.pki</code> 오브젝트는 <code>pkiObject</code>라는 프로퍼티를 갖는데 <code>pkey</code>값에 따라 <code>jCastle.pki.*</code> 객체를 생성하여 <code>pkiObject</code> 값으로 등록합니다. 그렇게 되면 <code>jCastle.pki</code> 객체는 <code>pkiObject</code>가 갖는 메소드를 실행할 수 있습니다. </p>
+
+  <ul>
+    <li><code>pkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 생성된 객체에 사용할 <code>jCastle.pki.*</code> 알고리듬 명칭 혹은 <code>jCastle.pki.*</code> 객체 혹은 <code>publicKeyInfo</code> 또는 <code>privateKeyInfo</code>와 같은 객체가 올 수 있습니다. </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 객체 자신을 리턴합니다.</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+// RSA 생성
+var pki = jCastle.pki.create().init('RSA');
+var text = "me needs signing";
+
+// 이제 pki 객체는 jCastle.pki.rsa의 메소드를 실행 가능합니다.
+pki.generateKeypair({
+  bits: 2048,
+  exponent: 0x1001
+});
+var signed = pki.sign(text, {
+  hashAlgo: 'sha-256'
+});
+console.log(signed);
+  </pre>
+
+  <!-- pki.parse(pem, password) -->
+  <h4><code>pki.parse(pem, password)</code><span><a class="mark" href="#pki-parse" id="pki-parse">#</a></span><a aria-hidden="true" class="legacy" id="pki_parse"></a></h4>
+
+  <p>주어진 <code>pem</code> 데이터를 파싱(분석)합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+  </ul>
+
+  <!-- pki.parsePublicKey(pem, format = 'auto') -->
+  <h4><code>pki.parsePublicKey(pem [, format])</code><span><a class="mark" href="#pki-parsePublicKey" id="pki-parsePublicKey">#</a></span><a aria-hidden="true" class="legacy" id="pki_parsePublicKey"></a></h4>
+
+  <p>PublicKey를 파싱합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> <code>pem</code> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>asn1</code>, <code>hex</code>, <code>base64</code> 및 <code>auto</code>가 있습니다. 기본 값은 <code>auto</code>이며 자동으로 입력 데이터 포맷 형식을 찾습니다.</li>
+  </ul>
+
+  <!-- pki.parsePrivateKey(pem, password, format = 'auto') -->
+  <h4><code>pki.parsePrivateKey(pem, password [, format])</code><span><a class="mark" href="#pki-parsePrivateKey" id="pki-parsePrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="pki_parsePrivateKey"></a></h4>
+
+  <p>PrivateKey를 파싱합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 복호화하기 위한 비밀번호. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> <code>pem</code> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>asn1</code>, <code>hex</code>, <code>base64</code> 및 <code>auto</code>가 있습니다. 기본 값은 <code>auto</code>이며 자동으로 입력 데이터 포맷 형식을 찾습니다.</li>
+  </ul>
+
+  <!-- pki.parsePrivateKeyPKCS5(pem, password, format = 'auto') -->
+  <h4><code>pki.parsePrivateKeyPKCS5(pem, password [, format])</code><span><a class="mark" href="#pki-parsePrivateKeyPKCS5" id="pki-parsePrivateKeyPKCS5">#</a></span><a aria-hidden="true" class="legacy" id="pki_parsePrivateKeyPKCS5"></a></h4>
+
+  <p>PKCS#5 포맷 형식의 PrivateKey를 파싱합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 복호화하기 위한 비밀번호. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+    <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> <code>pem</code> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>asn1</code>, <code>hex</code>, <code>base64</code> 및 <code>auto</code>가 있습니다. 기본 값은 <code>auto</code>이며 자동으로 입력 데이터 포맷 형식을 찾습니다.</li>
+  </ul>
+
+  <!-- pki.exportKey(key_type, options) -->
+  <h4><code>pki.exportKey(key_type [, options])</code><span><a class="mark" href="#pki-exportKey" id="pki-exportKey">#</a></span><a aria-hidden="true" class="legacy" id="pki_exportKey"></a></h4>
+
+  <p>키를 원하는 형식으로 내보냅니다. <code>key_type</code>이 <code>private</code>인 경우 <code>pki.exportPrivateKey()</code>가 내부적으로 실행되고, <code>public</code>인 경우 <code>pki.exportPublicKey</code>가 실행됩니다. <code>private</code>인 경우 <code>options</code> 프라퍼티에 <code>algo</code>, <code>password</code>, <code>prf</code> 등이 올 수 있습니다. 자세한 내용은 <code>pki.exportPrivateKey()</code>를 참조하세요.</p>
+
+  <ul>
+    <li><code>key_type</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 키 타입. publicKey의 경우 <code>public</code>, privateKey인 경우 <code>private</code>.</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 키를 내보내기 위한 옵션 객체. 키 타입이 <code>private</code>인 경우 <code>type</code> 프라퍼티를 설정할 수 있습니다.
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>der</code>, <code>hex</code>, <code>base64</code>가 있습니다. 기본 값은 <code>pem</code>입니다.</li>
+        <li><code>type</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 기본 값은 <code>pkcs8</code>(<code>pkcs#8</code>)입니다. 만일 <code>pkcs5</code> 혹은 <code>pkcs#5</code> 값을 갖게 되면 내부적으로 <code>pki.exportPrivateKeyPKCS5()</code>로 실행을 옮기게 됩니다.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>options.format</code>값을 설정한 대로 키를 포맷하여 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 형식으로 내보냅니다.</li>
+  </ul>
+
+
+  <!-- pki.exportPrivateKey(options = {}) -->
+  <h4><code>pki.exportPrivateKey([options])</code><span><a class="mark" href="#pki-exportPrivateKey" id="pki-exportPrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="pki_exportPrivateKey"></a></h4>
+
+  <p>PrivateKey를 원하는 형식으로 내보냅니다.</p>
+
+  <ul>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 키를 내보내기 위한 옵션 객체.
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>der</code>, <code>hex</code>, <code>base64</code>가 있습니다. 기본 값은 <code>pem</code>입니다.</li>
+        <li><code>type</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 기본 값은 <code>pkcs8</code>(<code>pkcs#8</code>)입니다. 만일 <code>pkcs5</code> 혹은 <code>pkcs#5</code> 값을 갖게 되면 내부적으로 <code>pki.exportPrivateKeyPKCS5()</code>로 실행을 옮기게 됩니다.</li>
+        <li><code>algo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 키 암호화 명</li>
+        <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 메시지를 암호화하기 위한 비밀번호로 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+        <li><code>prf</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 암호화에 필요한 해쉬 함수 명칭. <code>algo</code> 알고리듬에서 기본 값으로 제공하는 해쉬 함수 대신 다른 해수 함수를 사용할 수 있습니다.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>options.format</code>값을 설정한 대로 키를 포맷하여 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 형식으로 내보냅니다.</li>
+  </ul>
+
+  <!-- pki.exportPrivateKeyPKCS5(options = {}) -->
+  <h4><code>pki.exportPrivateKeyPKCS5([options])</code><span><a class="mark" href="#pki-exportPrivateKeyPKCS5" id="pki-exportPrivateKeyPKCS5">#</a></span><a aria-hidden="true" class="legacy" id="pki_exportPrivateKeyPKCS5"></a></h4>
+
+  <p>PrivateKey를 PKCS#5 형식으로 내보냅니다.</p>
+
+  <ul>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 키를 내보내기 위한 옵션 객체.
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>der</code>, <code>hex</code>, <code>base64</code>가 있습니다. 기본 값은 <code>pem</code>입니다.</li>
+        <li><code>algo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 키 암호화 명</li>
+        <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 메시지를 암호화하기 위한 비밀번호로 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>options.format</code>값을 설정한 대로 키를 포맷하여 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 형식으로 내보냅니다.</li>
+  </ul>
+
+  <!-- pki.exportPublicKey(options = {}) -->
+  <h4><code>pki.exportPublicKey([options])</code><span><a class="mark" href="#pki-exportPublicKey" id="pki-exportPublicKey">#</a></span><a aria-hidden="true" class="legacy" id="pki_exportPublicKey"></a></h4>
+
+  <p>PublicKey를 원하는 형식으로 내보냅니다. </p>
+
+  <ul>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 키를 내보내기 위한 옵션 객체. 
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>der</code>, <code>hex</code>, <code>base64</code>가 있습니다. 기본 값은 <code>pem</code>입니다.</li>
+        <li><code>type</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 기본 값은 <code>pkcs8</code>(<code>pkcs#8</code>)입니다. 만일 <code>pkcs5</code> 혹은 <code>pkcs#5</code> 값을 갖게 되면 내부적으로 <code>pki.exportPublicKeyPKCS5()</code>로 실행을 옮기게 됩니다.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>options.format</code>값을 설정한 대로 키를 포맷하여 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 형식으로 내보냅니다.</li>
+  </ul>
+
+  <!-- pki.exportPublicKeyPKCS5(options = {}) -->
+  <h4><code>pki.exportPublicKeyPKCS5([options])</code><span><a class="mark" href="#pki-exportPublicKeyPKCS5" id="pki-exportPublicKeyPKCS5">#</a></span><a aria-hidden="true" class="legacy" id="pki_exportPublicKeyPKCS5"></a></h4>
+
+  <p>PublicKey를 PKCS#5 형식으로 내보냅니다. <!--오직 <code>jCastle.pki.rsa</code>와 <code>jCastle.pki.dsa</code>에서만 사용 가능합니다.--></p>
+
+  <ul>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 키를 내보내기 위한 옵션 객체.
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>der</code>, <code>hex</code>, <code>base64</code>가 있습니다. 기본 값은 <code>pem</code>입니다.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>options.format</code>값을 설정한 대로 키를 포맷하여 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 형식으로 내보냅니다.</li>
+  </ul>
+
+  <!-- pki.parseParameters(pem) -->
+  <h4><code>pki.parseParameters(pem)</code><span><a class="mark" href="#pki-parseParameters" id="pki-parseParameters">#</a></span><a aria-hidden="true" class="legacy" id="pki_parseParameters"></a></h4>
+
+  <p>Parameters 데이터를 파싱합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 파싱할 Parameters 데이터. <code>jCastle.pki.rsa</code>를 제외한 거의 모든 공개키 기반 알고리듬은  Parameters를 가지며 Parameters는 상호 간 동일한 값들이어야 합니다. </li>
+  </ul>
+
+  <!-- pki.exportParameters(options = {}) -->
+  <h4><code>pki.exportParameters([options])</code><span><a class="mark" href="#pki-exportParameters" id="pki-exportParameters">#</a></span><a aria-hidden="true" class="legacy" id="pki_exportParameters"></a></h4>
+
+  <p>Parameters 데이터를 내보냅니다.</p>
+
+  <ul>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 데이터를 내보내기 위한 옵션 객체.
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 데이터 포맷 형식. 올 수 있는 값은 <code>pem</code>, <code>buffer</code>, <code>der</code>, <code>hex</code>, <code>base64</code>가 있습니다. 기본 값은 <code>pem</code>입니다.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>options.format</code>값을 설정한 대로 데이터를 포맷하여 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 형식으로 내보냅니다.</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+var enc_private_key = `
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,584BBCF38BE41D90AB16740EE5D2E24C
+k5m1gaYDbX+EYPcv/+wvSsYOkBpOxFYXbzMYY8Z2d39mfQ8Y+WzOJnWWYT2tj2d8
+LodWRu2PD93or3z8wI0Y5huCs6VikZLtjxKawPwm5wosXud978k3dVw+VG/M8JDh
+J6dIAbcmNxaHv1UX5gmdnRcRqSGt0WHXYbXgUlSNLwhrTU9osd7A/eLZf5MZ5hTB
+5CQ/Tb9jCZxSyP8YiPvOuR9gCK5L3Ooq820mwZ0oL9r18uby4ElSmFuM+nipThyu
+4SinV3MIN5bOMvsb34DDbQ9wbbtvDA1V7iJRItLo9+1v5d7O876BTSwX9Qd12P0C
+WqiKUAt/T/ZB/NJC3bw2v9bRL+VifvfLmOigvw7r2NAokpRHb8Elv80S5ZtcZGmp
+tQ7wCkO8kz/JFX/UXqqkSSBsegtGm+CwenEvyQ5dtUUu1ETo7vOMp9c+AZyKCNgu
+MDC5nhLBm1H93t1Wko45yn/Az7RVw6yzUEp6WrADajjGtLwVbLC5eDd7+9utHp/x
+UB/5H+vI+nbYP5KBc/Zqe/IjSrVKFBtoD2MowVtkWg42mGgQ1VNKYhKELLFFtWxd
+HuYlHVYYiOHXbMLsofMkqxxJQatS7WtKBWBgmYbqhHxNpZ11QKxzk+Wo+J9ixLbs
+ADBhAak4t7eHFZtbKonP+hEGanZGK04Wz8+leo+BL+7J5d4d9WZPFH9q47kM5/Wc
+qUkJIZPzwKAlb5ot/9XQmqnECip2yRhyJYcOBqfg4EXfCbDqz3YCFS8HpPOVQqMs
+ZGvRA9LrZfsy6V9NCWFZbBtiYjO2gOtYASoDKyo615vdma42L8P+h2UPtk8e0ziM
+OpuZiR37HsahyWAcGgomprs+hmV5yFnzIs5O5P6J0uf2TCrUR8cZBuYoPVp9pErc
+l/U5m0G+ENTwzs8Dd6ySyDpKlADRnjQYPxulbT4VpT9c9kUg3sxRHWRv5C0FLVPq
+M0atErcFtKIlLPsEDKHwfx3kyRrsEopU8f9kTpcTKcHEdrp7zKJFCmKZa9K53/JZ
+Y9Z8DQY7e36l7UOuVIMqzBxADZIUJsyw8AmUu2/pwjgNfAjRD11p3k9rz0cMMp0X
+5Np2VfSdVSkHFsDqLw7B6AKO+3fXtzqMPD40b+vIDhrpDJNgrwMCKVlkw2J1A6VG
+Ec4oSDc3gIXLzA7O/42xSAObA9hZldEqrimMCFlW+qkkWyUh9mWhiUyJyZ5MgPk2
+LW80PS+3q3G7ALEnP69cNxJ3CE7nfYUNmcv8cYkJU0Y2SXXYdN75ejVEDLo6TfJT
+mxZV476I23gsBnAAk+G5RYSzx/lZ0VEV/8Z0B/X1UV/Oc5bm38chLKLFxYzVr400
+KzEb3m0LgwtR+N9kkMLTEkFeCFqublZ9qcJm/GP3+7BNcXaDBq950fZRKz5ET0So
+QbDopxjjW8CBPTSj8f1zlRqp1mAiwHdliNjUL5xhqNjKwR5XVpntSqy5KS1QXD2e
+hfjciNo1DcBMpSs+X6GqYuqybpU/El/XX7o9+Qb5Dy5zY+5MfOl2/O/4ToYWGc+/
+KmpQTLFiCqXrWNRQVbvvmCpuq/dHJL2aeE9Y/JcOH+yt9YEPB7hPZyXM15AVxVfL
+-----END RSA PRIVATE KEY-----`;
+var password = Buffer.from("password");
+var pki = new jCastle.pki("RSA");
+pki.parsePrivateKey(enc_private_key, password);
+
+// 1. export public key
+var pem = pki.exportPublicKey();
+var pki1 = new jCastle.pki("RSA");
+pki1.parsePublicKey(pem);
+
+var privkey1 = pki.getPrivateKey();
+var pubkey2 = pki1.getPublicKey();
+assert.ok(privkey1.n.equals(pubkey2.n), "parse public key");
+
+// 2. no encryption pkcs#5
+var pem3 = pki.exportPrivateKeyPKCS5();
+console.log(pem3);
+
+// 3. pkcs#5 encrypted with des-ede3-CBC
+var pem3 = pki.exportPrivateKeyPKCS5({ password: password, algo: "des-ede3" });
+console.log(pem3);
+
+// pkcs#5 encrypted with camellia-256
+var pem3 = pki.exportPrivateKeyPKCS5({
+  password: password,
+  algo: "camellia-256",
+});
+console.log(pem3);
+
+// pkcs#8 no encryption
+var pem3 = pki.exportPrivateKey();
+console.log(pem3);
+
+// pkcs#8 encryption pkcs5 v1.5 / default pbeWithMD5AndDES-CBC
+var pem3 = pki.exportPrivateKey({ password: password });
+console.log(pem3);
+
+// pkcs#8 encryption pkcs5 v1.5 / pbeWithSHAAnd40BitRC2-CBC
+var pem3 = pki.exportPrivateKey({
+  password: password,
+  algo: "pbeWithSHAAnd40BitRC2-CBC",
+});
+console.log(pem3);
+
+// pkcs#8 encryption pkcs5 v1.5 / pbeWithSHAAnd64BitRC2-CBC
+var pem3 = pki.exportPrivateKey({
+  password: password,
+  algo: "pbeWithSHAAnd64BitRC2-CBC",
+});
+console.log(pem3);
+
+// pkcs#8 encryption pkcs12 / pbeWithSHAAnd128BitRC4
+var pem3 = pki.exportPrivateKey({
+  password: password,
+  algo: "pbeWithSHAAnd128BitRC4",
+});
+console.log(pem3);
+
+// pkcs#8 encryption pkcs12 / pbeWithSHAAnd2-KeyTripleDES-CBC
+var pem3 = pki.exportPrivateKey({
+  password: password,
+  algo: "pbeWithSHAAnd2-KeyTripleDES-CBC",
+});
+console.log(pem3);
+
+// pkcs#8 encryption pkcs12 / PBE-SHA1-SEED
+var pem3 = pki.exportPrivateKey({ password: password, algo: "PBE-SHA1-SEED" });
+console.log(pem3);
+
+// pkcs#8 encryptions pkcs5 v2.0 / seed-cbc / default prf hmacWithSHA
+var pem3 = pki.exportPrivateKey({ password: password, algo: "seed-cbc" });
+console.log(pem3);
+
+// pkcs#8 encryptions pkcs5 v2.0 / idea-cbc / default prf hmacWithSHA384
+var pem3 = pki.exportPrivateKey({
+  password: password,
+  algo: "ideacbc",
+  prf: "hmacWithSHA256",
+});
+console.log(pem3);
+  </pre>
+
+</section>  
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>  

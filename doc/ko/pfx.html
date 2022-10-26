@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    
+
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+</ul>
+
+
+<section>
+
+
+  <h3>Class:<code>jCastle.pfx</code><span><a class="mark" href="#class-pfx" id="class-pfx">#</a></span><a aria-hidden="true" class="legacy" id="class_pfx"></a></h3>
+
+  <p>PFX 알고리듬이란 인증서(X509 Certificate) 및 개인키(PrivateKey)를 암호화하여 하나의 PKCS#12 스트링으로 전환하거나 혹은 PKCS#12형식의 스트링을 분석합니다.</p>
+  <p>만일 파일 API가 브라우져에서 지원된다면 PFX로 만든 스트링을 그대로 저장할 수 있습니다.</p>
+  <p>현재는 OpenSSL에서 지원하는 정도인 암호화된 PFX를 생성합니다.</p>
+
+  <p>관련 문서:<br/>
+    <a href="https://datatracker.ietf.org/doc/html/rfc5652">Cryptographic Message Syntax (CMS)</a><br/>
+    <a href="https://datatracker.ietf.org/doc/html/rfc7292">PKCS #12: Personal Information Exchange Syntax v1.1</a>
+  </p>
+
+  <!-- new jCastle.pfx -->
+  <h4><code>new jCastle.pfx()</code><span><a class="mark" href="#new-pfx-intance" id="new-pfx-instance">#</a></span><a aria-hidden="true" class="legacy" id="new_pfx_instance"></a></h4>
+
+  <p><code>jCastle.pfx</code> 오브젝트를 생성합니다.</p>
+
+  <!-- jCastle.pfx.create() -->
+  <h4>Static method: <code>jCastle.pfx.create()</code><span><a class="mark" href="#static-pfx-create" id="static-pfx-create">#</a></span><a aria-hidden="true" class="legacy" id="static_pfx_create"></a></h4>
+
+  <p><code>jCastle.pfx</code> 오브젝트를 생성합니다. <code>new jCastle.pfx()</code>와 동일합니다.</p>
+
+  <ul>
+    <li>Return Value: <code>jCastle.pfx</code> 오브젝트를 생성하여 리턴합니다.</li>
+  </ul>
+
+  <hr>
+
+  <!-- pfx.parse(pem, options = {}) -->
+  <h4><code>pfx.parse(pem, options = {})</code><span><a class="mark" href="#pfx-parse" id="pfx-parse">#</a></span><a aria-hidden="true" class="legacy" id="pfx_parse"></a></h4>
+
+  <p><code>CMS</code> ( Cryptographic Message Syntax) 데이터를 파싱합니다.</p>
+
+  <ul>
+    <li><code>pem</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 파싱할 스트링 혹은 Buffer 데이터. 객체는 <code>jCastle.asn1</code>으로 파싱한 결과 객체를 말합니다.</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체.
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 파싱할 데이터의 형식. <code>pem</code>이 스트링으로 주어진 경우 그 형식이 무엇인지를 지정합니다. 없으면 자동으로 인식합니다.</li>
+        <li><code>signkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+        <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- pfx.setSignKey(signkey, password) -->
+  <h4><code>pfx.setSignKey(signkey, password)</code><span><a class="mark" href="#pfx-setSignKey" id="pfx-setSignKey">#</a></span><a aria-hidden="true" class="legacy" id="pfx_setSignKey"></a></h4>
+
+  <p>PFX 생성이나 파싱에 필요한 개인키를 등록합니다.</p>
+
+  <ul>
+    <li><code>signkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 생성이나 파싱에 필요한 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+    <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+  </ul>
+
+  <!-- pfx.exportPFX(pfxInfo, options = {}) -->
+  <h4><code>pfx.exportPFX(pfxInfo, options = {})</code><span><a class="mark" href="#pfx-exportCMS" id="pfx-exportCMS">#</a></span><a aria-hidden="true" class="legacy" id="pfx_exportCMS"></a></h4>
+
+  <p>주어진 정보를 가지고 PFX 데이터를 생성합니다 현재 모든 형식의 PFX를 생성하지 못합니다. 따라서 되도록 <code>pfx.exportCertificateAndPrivateKey()</code>를 사용해 주세요. </p>
+
+  <ul>
+    <li><code>pfxInfo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> PFX 생성에 필요한 스키마 객체</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체
+      <ul>
+        <li><code>format</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 파싱할 데이터의 형식. <code>pem</code>이 스트링으로 주어진 경우 그 형식이 무엇인지를 지정합니다. 없으면 자동으로 인식합니다.</li>
+        <li><code>signkey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 <code>PEM</code> 포맷의 publicKey 혹은 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+        <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+      </ul>
+
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 생성된 CMS 데이터를 <code>format</code>에 따른 형식으로 리턴합니다.</li>
+  </ul>
+
+  <!-- pfx.export(pfxInfo, options = {}) -->
+  <h4><code>pfx.export(pfxInfo, options = {})</code><span><a class="mark" href="#pfx-export" id="pfx-export">#</a></span><a aria-hidden="true" class="legacy" id="pfx_export"></a></h4>
+
+  <p><code>cms.exportPFX()</code>와 동일 메소드입니다.</p>
+
+  <!-- pfx.exportCertificateAndPrivateKey(options = {}) -->
+  <h4><code>pfx.exportCertificateAndPrivateKey(cmsInfo, options = {})</code><span><a class="mark" href="#pfx-exportCertificateAndPrivateKey" id="pfx-exportCertificateAndPrivateKey">#</a></span><a aria-hidden="true" class="legacy" id="pfx_exportCertificateAndPrivateKey"></a></h4>
+
+  <p>주어진 정보를 가지고 PFX 데이터를 생성합니다.</p>
+
+  <ul>
+    <li><code>cmsInfo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> CMS 생성에 필요한 스키마 객체</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 옵션 객체
+      <ul>
+        <li><code>certificate</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> PFX에 삽입할 인증서 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.asn1</code> 파싱된 객체가 올 수 있습니다.</li>
+        <li><code>privateKey</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> PFX에 삽입할 <code>PEM</code> 포맷의 privateKey 스트링 혹은 Buffer 데이터가 오거나 <code>jCastle.pki.*</code> 객체가 올 수 있습니다.</li>
+        <li><code>password</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 파싱할 데이터가 privateKey에 해당하고 암호화되어 있다면 복호화하기 위한 비밀번호가 필요합니다. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+        <li><code>certificateEncryptAlgo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 인증서 암호화 정보 객체.<br/> 인증서를 암호화하기 위한 암호 정보값으로 <code>algo</code>, <code>salt</code>, <code>iterations</code>로 구성됩니다. <br/><code>salt</code>값이 주어지지 않으면 자동으로 생성하며 <code>saltLength</code>값을 주면 생성시 그 길이만큼 생성합니다. 기본 <cod>algo</cod>값은 <code>pbeWithSHAAnd40BitRC2-CBC</code>이며 <code>iterations</code>값은 <code>2048</code>입니다.</li>
+        <li><code>privateKeyEncryptAlgo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 개인키 암호화 정보 객체.<br/>개인키를 암호화하기 위한 암호 정보값으로 <code>certificateEncryptAlgo</code>값 설정과 동일한 구조입니다.<br/>기본 <code>algo</code>값은 <code>pbeWithSHAAnd3-KeyTripleDES-CBC</code>이며 <code>iterations</code>값은 <code>2048</code>입니다.</li>
+        <li><code>macInfo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 맥 생성에 필요한 정보 객체.<br/>맥 데이터를 생성하기 위한 정보값으로 <code>certificateEncryptAlgo</code>값 설정과 동일한 구조입니다.<br/>기본 <code>algo</code>값은 해쉬 함수이름으로 <code>sha-1</code>이며 <code>iterations</code>값은 <code>1</code>입니다</li>
+        <li><code>skipMacData</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type" class="type">&#x3C;Boolean></a> 맥 데이터 기록 여부. <code>true</code>값이 주어지면 <code>macData</code>는 생성되지 않습니다.</li>
+      </ul>
+
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 생성된 PFX 데이터를 <code>format</code>에 따른 형식으로 리턴합니다.</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+var privkey_pem = 
+"-----BEGIN ENCRYPTED PRIVATE KEY-----\n"+
+"MIIFLDBWBgkqhkiG9w0BBQ0wSTApBgkqhkiG9w0BBQwwHAQIcrhOJvTrcqsCAggA\n"+
+"MAwGCCqGSIb3DQIJBQAwHAYIKoMajJpEAQQEEA4j472Ovh3Ruxb+XdmV/+0EggTQ\n"+
+"KPpGAF/nwMz/vkTR0lhJo/oUQhzd38kbZPWa3RKxRoiaNsbiFxqESPnmcqqKVARV\n"+
+"HXW8/O6neCA/c3XZ/G7Qf6ZccHAjzaC11ZkqPbUJ6P/5qWYPlY+L2/AydtJ6dyMe\n"+
+"kNAgWVnD1PajG/QtquEMh0pQudaaVtqhPFHKmWmbretZNoT4SaVvyM/OQEuM9CwC\n"+
+"bwDJosoL7OGIreho8blAWXmPFWN8W77tE1ixQq3GzgZyxylkyoEKLskty2A/dP8p\n"+
+"Zi6FXKYA5qLe4GvSPWBj59w3dga20dUeXbu4pf3tYs/ifCOxzjbwI/DgtfyFI4J/\n"+
+"XVOo2z0hugT6RLs4PIdwrUerCO+lrjZsFEfFmJM3Rwvgn8eJXVwOionkRvSrsTgy\n"+
+"HyRnIigrn2mDnY6ILIy/UFBrDa5NxJviieQKXxNhEQI9Qjl8QToFn0MMJrY53muD\n"+
+"taCwYk6L7W6otI88cOa0bfj0Ww6a82U0xop26Fw2JQYlYbjn7EkTJh8eT9RADzuS\n"+
+"MeG3aJg5cqCH6G77zW7xBuRa/W6XqHyVKYMcJlK64pDVkocQa/nWmBYjJPPbkSxA\n"+
+"U208/vOrTGY1LU/wVag2qp78XaBgJpWz6ZGsTY4j4KiHaBWfkuBKnYsaYhBJk15k\n"+
+"p5l/1OFRHLuvYWTmHIxa5BfJv+BZ4xm/dE7BhWFHG/SD1lCARLBzlgyo6Ot9fzFQ\n"+
+"kQSpannZU3px0sncXVQrAJWDnlNaijuZDbw51JL7TnooS30ezdtKS4k1+saiN0S+\n"+
+"JCLc8T/YWBx+avidM8B+FlnWzN4AoEOhKK+/r/3+lz7prNNtdst8EVNG7c28fFOu\n"+
+"Eql7Fq6Bs68c14e/skKIXG4nof541nk0BAP4pRb5tBFMo91e9XFNbqI1d6Z05M1y\n"+
+"MLMbFzqlRMxKGZVEqeLYa37YBJsmaugoNF7Wp7LRcumehDm7iYV/IESdxv/2FGgg\n"+
+"MlPuhRmabZzkibGMuYJZozqp+m9xEE3MEt9qmwAR1Fej/e7osdplvte52kXNAFnF\n"+
+"yo/DojnB+Ls3dxd+Y4Bw+9c7WZeRkwJ3sFFuCFtbBh7dkuYqUT/kNPLGRXy7fprK\n"+
+"8uaK237MgxCWUn/7SlWl2ryFBFkk85kcwrUOVsDl2SoXJ1rTMSlMSjwoJ0EH4mIU\n"+
+"OPBoot3HU4HzkDTncfGEjzaYeirNsdU1ILV90nn5HFlMqujyp7LjTFGrpQs4uSIB\n"+
+"iL5woEuO/4W/MaIjeMbwb5O9MQQAO32DTpNyCmUPWycnSIWK07m19jO39mP9YH14\n"+
+"QLac4O4AutjUksO9lz0dKLqMm+MHDly27S1YPSphfFLSloJ27YA6b9WupjlhDHtp\n"+
+"JosAQo05AnJeyIcxijUnN4sht7YXMzvkP6GkGhogr3aN8xZwMM1rN+FbuLyXgEgj\n"+
+"wZPcE+DqVkpPHPSB8r2WPAqvbw3FeEY7A0jiqsRixyRzxvDptddmPUbtly3ZKFPV\n"+
+"gTYEJBOk4gfL6ilX3LbFUGEzgYHJg0Ow4VjZxOjDKwKI/vLIDb7QGdCRimEOu4qN\n"+
+"zDQKAFnJFaCZ4PMI39RC4QEUffx1tMTPBUIxMS95QAEFSIXlpGa/5QyJzdfs2rBn\n"+
+"/aHiLT4TznGNlZEXUlCBgMW4HasqjIFH2h7cnUXhQJw=\n"+
+"-----END ENCRYPTED PRIVATE KEY-----";
+
+var cert_pem = 
+"-----BEGIN CERTIFICATE-----\n"+
+"MIID4TCCAsmgAwIBAgIBATANBgkqhkiG9w0BAQsFADBKMQswCQYDVQQGEwJrcjER\n"+
+"MA8GA1UEChMIZGVtb3NpZ24xDzANBgNVBAsTBmRlbW9DQTEXMBUGA1UEAxMOZGVt\n"+
+"b0NBIENsYXNzIDEwHhcNMTYwNzIyMTAxMDM3WhcNMTcwNzIyMTAxMDM3WjB1MQsw\n"+
+"CQYDVQQGEwJrcjERMA8GA1UECgwIZGVtb3NpZ24xFDASBgNVBAsMC3BlcnNvbmFs\n"+
+"NElTMREwDwYDVQQLDAhEZW1vQmFuazEqMCgGA1UEAwwh7ZmN6ri464+ZKCkwMDk5\n"+
+"MDMzMjAxNjcyMjExMDIzODEyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC\n"+
+"AQEAjdTwFNeOE0d//tnTqFUjETR4XmwAvx/o0wNz8YUJW+vlc2xgznuvr+MxOejl\n"+
+"4snrBaKWIa+IYpIzLpdyibrowzbY00lsk0PdBexv3iiDjsxGydUuuWEC9hQFl7V/\n"+
+"0AqKjkK/PibmibKkVP6VYFZd4RPDN6uxOZrRURtvMGjXyIWBKwSe8Ae8P+qEMCDP\n"+
+"/u576prQrSNCjKm1xzIbSzi/9V3Td1gaWQVemIZQkDf0cHRTDhaje68290VoL+4o\n"+
+"tn/ehG77jWAp29/wlWG2FozhBR1xAgNeMOnbbsu1PSgpDw83R4sfykisy31SZlzN\n"+
+"E/d3gvlYA0rcXRA67YauMLvyHwIDAQABo4GmMIGjMAwGA1UdEwQFMAMBAQAwHQYD\n"+
+"VR0OBBYEFBIjUELZEMY/TBkF+EYN6Wvo+R3hMHQGA1UdIwRtMGuhZaRjMGExCzAJ\n"+
+"BgNVBAYTAktSMQ0wCwYDVQQKDARESVNBMSswKQYDVQQLDCJEZW1vIENlcnRpZmlj\n"+
+"YXRlIEF1dGhvcml0eSBDZW50cmFsMRYwFAYDVQQDDA1ESVNBIFJvb3RDQSAxggIQ\n"+
+"AzANBgkqhkiG9w0BAQsFAAOCAQEAFq/C9ofKtiv+5AplcrKMsYuelXZFx2x17l7V\n"+
+"61c7WnRbvX2W5FfFKt+zmLPsaAOSr1hFHhUfdSiBk6FMSGwurC4h1pBJn2gk76/c\n"+
+"9VIHW+xARhRooJs6ik36uk+7NP5y/phZkTNu9MtO7v0RZQFf3w2yVJ4P0pQgHolh\n"+
+"ZDfit5nqAQsiiz6VnhWyEO6oCkk9RKWGaPlmUtdMGLlkPclBui06aIV2MRT/bkCo\n"+
+"yoIBq6JX7oPtLGvB8rNjniGBclNZxsOmQXPlX4B3CqTFcfoPtf6zP0WoZ6me8NbZ\n"+
+"L8kSo7Uoq5oZINvqySplzD9UB1UVkxaipV5m/+W848ikfzm1Ig==\n"+
+"-----END CERTIFICATE-----";
+
+var password = '1111aaaa!!!!';
+
+var pfx = jCastle.pfx.create();
+pfx_der = pfx.exportCertificateAndPrivateKey({
+  certificate: cert_pem,
+  privateKey: privkey_pem,
+  password: password,
+
+  // these are the default values
+  certificateEncryptAlgo: {
+    algo: "pbeWithSHAAnd40BitRC2-CBC",
+    salt: null,
+    iterations: 2048
+  },
+  privateKeyEncryptAlgo {
+    algo: "pbeWithSHAAnd3-KeyTripleDES-CBC",
+    salt: null,
+    iterations: 2048
+  },
+  macInfo: {
+    algo: 'sha-1',
+    //salt: null,
+    iterations: 1
+  }
+});
+
+console.log(pfx_der.toString('hex'));
+
+var pfx_info = pfx.parse(pfx_der, {
+  password: password
+});
+  </pre>
+
+
+
+</section>  
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>    

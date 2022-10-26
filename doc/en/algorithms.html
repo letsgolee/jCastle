@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    
+
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+</ul>
+
+
+<section>
+
+  <h3><code>jCastle.algorithm.*</code><span><a class="mark" href="#class-algorithm" id="class-algorithm">#</a></span><a aria-hidden="true" class="legacy" id="class_algorithm"></a></h3>
+
+  <p>Creates the instance of the algorithm. <code>*</code> means the instance name of each algorithm. </p>
+
+  <p>These are the algorithm list that <code>jCastle.algorithm</code>supports. </p>
+
+  <table class="table table-bordered table-striped">
+                <colgroup>
+                  <col width="180">
+                  <col width="80" class="text-center">
+                  <col width="170" class="text-center">
+                  <col width="170" class="text-center">
+                  <col width="130">
+                  <col>
+                </colgroup>
+                <thead>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Key length<br/>(unit: bit)</th>
+                  <th>Block size<br/>(unit: bit)</th>
+                  <th>Class name</th>
+                  <th>Variable name<br/>(* means key bits)</th>
+                </thead>
+                <tr>
+                  <td>AES</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>aes</code></td>
+                  <td><code>aes-*</code></td>
+                </tr>
+                <tr>
+                  <td>Anubis</td>
+                  <td>block algorithm</td>
+                  <td>128/160/192/224/256/288/320</td>
+                  <td>128</td>
+                  <td><code>anubis</code></td>
+                  <td><code>anubis-*</code></td>
+                </tr>
+                <tr>
+                  <td>Aria</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>aria</code></td>
+                  <td><code>aria-*</code></td>
+                </tr>
+                <tr>
+                  <td>Blowfish</td>
+                  <td>block algorithm</td>
+                  <td>128~448</td>
+                  <td>64</td>
+                  <td><code>blowfish</code></td>
+                  <td><code>blowfish</code></td>
+                </tr>
+                <tr>
+                  <td>Camellia</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>camellia</code></td>
+                  <td><code>camellia-*</code></td>
+                </tr>
+                <tr>
+                  <td>Cast5</td>
+                  <td>block algorithm</td>
+                  <td>128</td>
+                  <td>64</td>
+                  <td><code>cast</code></td>
+                  <td><code>cast5</code> or <code>cast-128</code></td>
+                </tr>
+                <tr>
+                  <td>Cast6</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>cast</code></td>
+                  <td><code>cast6</code> or <code>cast-256</code></td>
+                </tr>
+                <tr>
+                  <td>Chacha20</td>
+                  <td>stream algorithm</td>
+                  <td>256</td>
+                  <td>512</td>
+                  <td><code>chacha20</code></td>
+                  <td><code>chacha20</code></td>
+                </tr>
+                <tr>
+                  <td>Clefia</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>clefia</code></td>
+                  <td><code>clefia-*</code></td>
+                </tr>
+                <tr>
+                  <td>DES</td>
+                  <td>block algorithm</td>
+                  <td>64</td>
+                  <td>64</td>
+                  <td><code>des</code></td>
+                  <td><code>des</code></td>
+                </tr>
+                <tr>
+                  <td>TripleDES</td>
+                  <td>block algorithm</td>
+                  <td>192</td>
+                  <td>64</td>
+                  <td><code>des</code></td>
+                  <td><code>des-ede3</code> 혹은 <code>tripledes</code><br/><code>des-ede2</code>일경우 키길이는 128비트가 됨</td>
+                </tr>
+                <tr>
+                  <td>GOST 28147-89</td>
+                  <td>block algorithm</td>
+                  <td>256</td>
+                  <td>16 바이트</td>
+                  <td><code>gost</code></td>
+                  <td><code>gost</code></td>
+                </tr>
+                <tr>
+                  <td>Hight</td>
+                  <td>block algorithm</td>
+                  <td>128</td>
+                  <td>64</td>
+                  <td><code>hight</code></td>
+                  <td><code>hight</code></td>
+                </tr>
+                <tr>
+                  <td>Idea</td>
+                  <td>block algorithm</td>
+                  <td>128</td>
+                  <td>64</td>
+                  <td><code>idea</code></td>
+                  <td><code>idea</code></td>
+                </tr>
+                <tr>
+                  <td>Lea</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>lea</code></td>
+                  <td><code>lea-*</code></td>
+                </tr>
+                <tr>
+                  <td>Rabbit</td>
+                  <td>stream algorithm</td>
+                  <td>16</td>
+                  <td>16</td>
+                  <td><code>rabbit</code></td>
+                  <td><code>rabbit</code></td>
+                </tr>
+                <tr>
+                  <td>RC2</td>
+                  <td>block algorithm</td>
+                  <td>64~1024</td>
+                  <td>64</td>
+                  <td><code>rc2</code></td>
+                  <td><code>rc2</code></td>
+                </tr>
+                <tr>
+                  <td>RC4</td>
+                  <td>stream algorithm</td>
+                  <td>8~2048</td>
+                  <td>1</td>
+                  <td><code>rc4</code></td>
+                  <td><code>rc4</code></td>
+                </tr>
+                <tr>
+                  <td>RC5</td>
+                  <td>block algorithm</td>
+                  <td>64~1024</td>
+                  <td>64</td>
+                  <td><code>rc5</code></td>
+                  <td><code>rc5</code></td>
+                </tr>
+                <tr>
+                  <td>RC6</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>rc6</code></td>
+                  <td><code>rc6</code></td>
+                </tr>
+                <tr>
+                  <td>Rijndael</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128/192/256</td>
+                  <td><code>rijndael</code></td>
+                  <td><code>rijndael-*</code><br/>It differs from <code>AES</code> for it supports divers block size.</td>
+                </tr>
+                <tr>
+                  <td>Safer</td>
+                  <td>block algorithm</td>
+                  <td>64/128</td>
+                  <td>64</td>
+                  <td><code>safer</code></td>
+                  <td><code>safer-k64</code><br/><code>safer-sk64</code><br/><code>safer-k128</code><br/><code>safer-sk128</code></td>
+                </tr>
+                <tr>
+                  <td>SaferPlus</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>saferplus</code></td>
+                  <td><code>saferplus</code></td>
+                </tr>
+                <tr>
+                  <td>Seed</td>
+                  <td>block algorithm</td>
+                  <td>128/256</td>
+                  <td>128</td>
+                  <td><code>seed</code></td>
+                  <td><code>seed-*</code><br/><span style="color:red">OpenSSL's version only supports 128 bits.</span></td>
+                </tr>
+                <tr>
+                  <td>Serpent</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>serpent</code></td>
+                  <td><code>serpent-*</code></td>
+                </tr>
+                <tr>
+                  <td>Skipjack</td>
+                  <td>block algorithm</td>
+                  <td>80</td>
+                  <td>64</td>
+                  <td><code>skipjack</code></td>
+                  <td><code>skipjack</code></td>
+                </tr>
+                <tr>
+                  <td>Threefish</td>
+                  <td>block algorithm</td>
+                  <td>256/512/1024</td>
+                  <td>256/512/1024</td>
+                  <td><code>threefish</code></td>
+                  <td><code>threefish-*</code></td>
+                </tr>
+                <tr>
+                  <td>Twofish</td>
+                  <td>block algorithm</td>
+                  <td>128/192/256</td>
+                  <td>128</td>
+                  <td><code>twofish</code></td>
+                  <td><code>twofish</code></td>
+                </tr>
+                <tr>
+                  <td>VMPC</td>
+                  <td>stream algorithm</td>
+                  <td>128~512</td>
+                  <td>1</td>
+                  <td><code>vmpc</code></td>
+                  <td><code>vmpc</code><br/><code>vmpc-ksa3</code></td>
+                </tr>
+                <tr>
+                  <td>VMPCR</td>
+                  <td>stream algorithm</td>
+                  <td>16~64</td>
+                  <td>1</td>
+                  <td><code>vmpcr</code></td>
+                  <td><code>vmpcr</code></td>
+                </tr>
+
+                <tr>
+                  <td>XTea</td>
+                  <td>block algorithm</td>
+                  <td>128</td>
+                  <td>64</td>
+                  <td><code>xtea</code></td>
+                  <td><code>xtea</code></td>
+                </tr>
+            
+  </table>
+
+  <p>Each algorithm's instance can have different key size. the "class name" is the instance name.<br/>
+  When creating the instance a variable name is needed.<br/>
+  If you want to use <code>AES</code> algorithm and its key length is 256 bits, that is 32 bytes then, the code is <code>new jCastle.algorithm.aes("aes-256")</code>.
+  </p>
+
+  <!-- new jCastle.algorithm -->
+  <h4><code>new jCastle.algorithm.*(algo_name [, options]])</code><span><a class="mark" href="#new-algorithm-intance" id="new-algorithm-instance">#</a></span><a aria-hidden="true" class="legacy" id="new_algorithm_instance"></a></h4>
+
+  <p>Creates the instance of <code>jCastle.mcrypt.algorithm.*</code>.</p>
+
+  <ul>
+    <li><code>algo_name</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> Algorithm name.</li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> Options object. 
+
+      <ul>
+        <li><code>tweak</code> <a herf="#" class="type">&#x3C;INT64></a> | <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> Tweak value. Used for <code>threefish</code> algorithm.</li>
+        <li><code>rounds</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Rounds value. Used for KISA's <code>seed</code>, <code>safer</code>, <code>rc5</code>, <code>chacha20</code> algorithms</li>
+        <li><code>version</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Version value. Used for <code>rc5</code> algorithm.</li>
+        <li><code>blockSizeInBits</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Block size in bits. Used for <code>rc5</code> algorithm.</li>
+        <li><code>effectiveKeyBits</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Effective key bits. Used for <code>rc2</code> algorithm.</li>
+        <li><code>counter</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> Counter value. Used for <code>chacha20</code> algorithm.</li>
+        <li><code>sbox</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> substitution-box. Used for <code>gost</code>(Gost 28147-89) algorithm.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- algorithm.isValidKeySize -->
+  <h4><code>algorithm.isValidKeySize(key)</code> <span><a class="mark" href="#algorithm-isValidKeySize" id="algorithm-isValidKeySize">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_isValidKeySize"></a></h4>
+
+  <p>Checks if the given key is the valid size for the algorithm.</p>
+
+  <ul>
+    <li><code>key</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> Encryption key</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: Returns <code>true</code> if the key size is ok, otherwise <code>false</code> as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="type">&#x3C;Boolean></a>.</li>
+  </ul>
+
+
+  <!-- algorithm.reset -->
+  <h4><code>algorithm.reset()</code> <span><a class="mark" href="#algorithm-reset" id="algorithm-reset">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_reset"></a></h4>
+
+  <p>Resets all the input data. <code>algoName</code> is not reset.</p>
+
+
+  <!-- algorithm.keySchedule -->
+  <h4><code>algorithm.keySchedule(key [, isEncryption])</code> <span><a class="mark" href="#algorithm-keySchedule" id="algorithm-keySchedule">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_keySchedule"></a></h4>
+
+  <p>Does the key expansion schedule.</p>
+
+  <ul>
+    <li><code>key</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> Encryption key</li>
+    <li><code>isEncryption</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="type">&#x3C;Boolean></a> Flag for the direction of the process. If encryption then <code>true</code>, if decryption, <code>false</code>. <code>AES</code> REQUIRES this value.</li>
+  </ul>
+
+
+  <!-- algorithm.encryptBlock -->
+  <h4><code>algorithm.encryptBlock(input)</code> <span><a class="mark" href="#algorithm-encryptBlock" id="algorithm-encryptBlock">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_encryptBlock"></a></h4>
+
+  <p>Processes the encryption with the block size.</p>
+
+  <ul>
+    <li><code>input</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> Block data</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: Returns the encrypted data as <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>.</li>
+  </ul>
+
+  <!-- algorithm.decryptBlock -->
+  <h4><code>algorithm.decryptBlock(input)</code> <span><a class="mark" href="#algorithm-decryptBlock" id="algorithm-decryptBlock">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_decryptBlock"></a></h4>
+
+  <p>Processes the decryption with the block size.</p>
+
+  <ul>
+    <li><code>input</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> Block data</li>
+  </ul>
+
+  <ul>
+    <li>Return Value: Returns the decrypted block data as <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>.</li>
+  </ul>
+
+
+  <!-- algorithm.setInitialVector -->
+  <h4><code>algorithm.setInitialVector(iv)</code> <span><a class="mark" href="#algorithm-setInitialVector" id="algorithm-setInitialVector">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_setInitialVector"></a></h4>
+
+  <p>Sets the <code>IV</code>. The method can be used in <code>vmpc</code>, <code>vmpcr</code>, <code>rc4</code>, <code>rabbit</code> algorithms.</p>
+
+  <ul>
+    <li><code>iv</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> <code>IV</code>.</li>
+  </ul>
+
+
+  <!-- algorithm.setNonce -->
+  <h4><code>algorithm.setNonce(nonce)</code> <span><a class="mark" href="#algorithm-setNonce" id="algorithm-setNonce">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_setNonce"></a></h4>
+
+  <p>Sets <code>nonce</code>. Used only for <code>chacha20</code> algorithm. Internally it is alias for <code>algorithm.setInitialVector()</code>.</p>
+
+  <ul>
+    <li><code>nonce</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> <code>nonce</code> value.</li>
+  </ul>
+
+
+  <!-- algorithm.setRounds -->
+  <h4><code>algorithm.setRounds(rounds)</code> <span><a class="mark" href="#algorithm-setRounds" id="algorithm-setRounds">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_setRounds"></a></h4>
+
+  <p>주어진 <code>rounds</code> 값을 등록합니다. <code>chacha20</code> 알고리즘에서만 사용 가능합니다. </p>
+
+  <ul>
+    <li><code>rounds</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 암호화/복호화에 사용할 <code>rounds</code> 값.</li>
+  </ul>
+
+
+  <!-- algorithm.setCounter -->
+  <h4><code>algorithm.setCounter(counter)</code> <span><a class="mark" href="#algorithm-setCounter" id="algorithm-setCounter">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_setCounter"></a></h4>
+
+  <p>주어진 <code>counter</code> 값을 등록합니다. <code>chacha20</code> 알고리즘에서만 사용 가능합니다. </p>
+
+  <ul>
+    <li><code>counter</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 암호화/복호화에 사용할 <code>counter</code> 값.</li>
+  </ul>
+
+  <!-- algorithm.getKey -->
+  <h4><code>algorithm.getKey()</code> <span><a class="mark" href="#algorithm-getKey" id="algorithm-getKey">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_getKey"></a></h4>
+
+  <p>등록된 <code>key</code> 값을 리턴합니다. </p>
+
+  <ul>
+    <li>Return Value: 등록된 <code>key</code>값을 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- algorithm.getBlockSize -->
+  <h4><code>algorithm.getBlockSize()</code> <span><a class="mark" href="#algorithm-getBlockSize" id="algorithm-getBlockSize">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_getBlockSize"></a></h4>
+
+  <p>해당 알고리즘의 블럭 사이즈를 리턴합니다. </p>
+
+  <ul>
+    <li>Return Value: 블럭 사이즈를  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- algorithm.setTweak -->
+  <h4><code>algorithm.setTweak(tweak)</code> <span><a class="mark" href="#algorithm-setTweak" id="algorithm-setTweak">#</a></span><a aria-hidden="true" class="legacy" id="algorithm_setTweak"></a></h4>
+
+  <p>주어진 <code>tweak</code>를 등록합니다. <code>threefish</code> 알고리즘에서만 사용 가능합니다. </p>
+
+  <ul>
+    <li><code>tweak</code> <a herf="#" class="type">&#x3C;INT64></a> 혹은 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 암호화/복호화에 사용할 <code>tweak</code> 값.</li>
+  </ul>
+
+
+  <pre class="prettyprint p-4">
+var algo = new jCastle.algorithm.aes("aes-256"); // key length is 32 bytes
+var input_block = Buffer.from([
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 
+  0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
+]);
+
+var key = Buffer.from([
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+  0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+  0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f
+]);
+
+algo.keySchedule(key, true) // the second parameter should be boolean type
+                            // encryption
+var cipher_block = algo.encryptBlock(input_block);
+
+algo.keySchedule(key, false) // decryption
+var plain_block = algo.decryptBlock(cipher_block);
+  </pre>
+
+  <p><code>jCastle.mcrypt.mode</code> 객체와 같이 사용함으로써 다양한 모드의 암호화/복호화를 진행할 수 있습니다.</p>
+
+  <pre class="prettyprint p-4">
+var is_encryption = true; // encryption
+var algo_name = "seed-128";
+var block_size = jCastle.mcrypt.getBlockSize(algo_name);
+var iv_size = jCastle.mcrypt.getInitialVectorSize(algo_name);
+var initial_vector = new jCastle.prng().nextBytes(iv_size);
+var algo = new jCastle.algorithm.seed(algo_name); // key length is 16 bytes
+
+// transform plaintext to Buffer object.
+var plaintext = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor" +
+  " incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "+
+  "exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure "+
+  "dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "+
+  "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit "+
+  "anim id est laborum.";
+var pt = Buffer.from(plaintext);
+
+// key scheduling must come first...
+algo.keySchedule(key, is_encryption);
+
+var cbcMode = jCastle.mcrypt.mode.create("cbc");
+cbcMode.init(algo, {
+  iv: initial_vector,
+  blockSize: block_size,
+  isEncryption: is_encryption
+});
+
+var ct = Buffer.alloc(0);
+
+// applying pkcs#7 padding
+var padding = jCastle.mcrypt.padding.create('pkcs7');
+pt = padding(pt, block_size);
+
+// process with cbc mode
+// encryption must be processed with blocks, each of blocks is block_size sized.
+for (var i = 0; i < pt.length; i += block_size) {
+  var block = pt.slice(i, i + block_size);
+  var cipher_block = cbcMode.process(block);
+  ct = Buffer.concat([ct, cipher_block]);
+}
+
+// finish processing
+// cbc mode has no return value.
+cbcMode.finish();
+
+// simple way...
+var decrypted = jCastle.mcrypt.decrypt(ct, {
+  algoName: algo_name,
+  mode: 'cbc',
+  key: key,
+  iv: initial_vector,
+  padding: 'pkcs7'
+
+});
+
+// transform Buffer object to text.
+var dt = decrypted.toString();
+console.log(dt == plaintext);
+  </pre>
+
+
+
+
+
+</section>  
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>

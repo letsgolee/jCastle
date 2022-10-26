@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'">-->
+    <title>jCastle documentation</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap-4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../static/lib/fontawesome-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <script type="text/javascript" src="../static/lib/jquery-3.6.0.min.js"></script>
+    <!--<script>
+    window.jQuery = window.$ = require('jquery');
+    </script>-->
+    <script type="text/javascript" src="../static/lib/bootstrap-4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/AdminLTe-3.2.0/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript" src="../static/lib/fontawesome-6.1.1/js/all.min.js"></script>
+    <script type="text/javascript" src="./api.js"></script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #column2::-webkit-scrollbar {
+            display: none;
+        }
+        .blink_me {
+          animation: blinker 5s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .cursor-pointer {
+            cursor:  pointer;
+        }
+        .mark {
+          background-color:  transparent;
+        }
+    </style>
+</head>
+<body class="apidoc" id="api-section-index">
+
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/" title="Go back to the home page">
+            <span style="font-size: 2rem">jCastle</span> <span style="color: #AED6F1; font-size: 14px">(v2.0)</span>
+          </a>
+        </div>
+
+        <ul>
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+        </ul>
+      </div>
+
+      <div id="column1" data-id="index" class="interior">
+        <header class="header">
+          <div class="header-container">
+            <h1>jCastle v2.0 documentation</h1>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle dark mode/light mode" aria-label="Toggle dark mode/light mode" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" height="24" width="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M11.1 12.08c-2.33-4.51-.5-8.48.53-10.07C6.27 2.2 1.98 6.59 1.98 12c0 .14.02.28.02.42.62-.27 1.29-.42 2-.42 1.66 0 3.18.83 4.1 2.15A4.01 4.01 0 0111 18c0 1.52-.87 2.83-2.12 3.51.98.32 2.03.5 3.11.5 3.5 0 6.58-1.8 8.37-4.52-2.36.23-6.98-.97-9.26-5.41z"/>
+              <path d="M7 16h-.18C6.4 14.84 5.3 14 4 14c-1.66 0-3 1.34-3 3s1.34 3 3 3h3c1.1 0 2-.9 2-2s-.9-2-2-2z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" height="24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            </button>
+          </div>
+          
+          <hr>
+        </header>
+
+        <!-- TOC -->
+
+        <div id="apicontent">
+
+
+<ul class="d-none">
+<li><a href="mcrypt.html">mcrypt - Message Crypt</a></li>
+<li><a href="algorithms.html">Message Crypt Algorithms</a></li>
+<li><a href="mcrypt-mode.html">Mcrypt Modes</a></li>
+<li><a href="digest.html">digest - Message Digest</a></li>
+<li><a href="hashes.html">Hash Algorithms</a></li>
+<li><a href="mac.html">mac - Message Authentication Code</a></li>
+<li><a href="mac-mode.html">MAC Modes</a></li>
+<li><a href="hmac.html">hmac - Hash MAC</a></li>
+<li><a href="kdf.html">kdf - Key Derive Function</a></li>
+<li><a href="pki.html">pki - Public Key Infrastructure</a></li>
+<li><a href="pki-rsa.html">pki.rsa - RSA</a></li>
+<li><a href="pki-dsa.html">pki.dsa - DSA</a></li>
+<li><a href="pki-ecdsa.html">pki.ecdsa - ECDSA</a></li>
+<li><a href="pki-kcdsa.html">pki.kcdsa - KCDSA</a></li>
+<li><a href="pki-eckcdsa.html">pki.eckcdsa - EC-KCDSA</a></li>
+<li><a href="pki-elgamal.html">pki.elgamal - ElGamal</a></li>
+<li><a href="dh.html">dh - Diffie–Hellman Key Exchange</a></li>
+<li><a href="ecdh.html">ecdh - DH with Elliptic Curve Cryptographic System</a></li>
+<li><a href="asn1.html">asn1 - Abstract Syntax Notation #1</a></li>
+<li><a href="certConfig.html">certConfig - openssl.cnf reader or parser</a></li>
+<li><a href="certificate.html">certificate - X.509 Certificate</a></li>
+<li><a href="cms.html">cms - Cryptographic Message Syntax</a></li>
+<li><a href="pfx.html">pfx - Personal Information Exchange</a></li>
+<li><a href="keywrap.html">keywrap - Key Wrapping Algorithm</a></li>
+<li><a href="jose.html">jose - Javascript Object Signing & Encryption</a></li>
+<li><a href="prng.html">prng - Pseudorandom number generator</a></li>
+</ul>
+
+
+<section>
+
+  <h3>Class:<code>jCastle.hmac</code><span><a class="mark" href="#class-hmac" id="class-hmac">#</a></span><a aria-hidden="true" class="legacy" id="class_hmac"></a></h3>
+
+  <p>해시 기반 메세지 인증 코드(Hash-based Message Authentication Code, HMac)는 해쉬 함수를 기반으로 하는 정보의 무결성을 검증하는 메시지 인증 코드입니다.</p>
+
+  <!-- new jCastle.hmac -->
+  <h4><code>new jCastle.hmac([hash_name])</code><span><a class="mark" href="#new-hmac-intance" id="new-hmac-instance">#</a></span><a aria-hidden="true" class="legacy" id="new_hmac_instance"></a></h4>
+
+  <p><code>jCastle.hmac</code> 오브젝트를 생성합니다.</p>
+
+  <ul>
+    <li><code>hash_name</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 생성된 객체에 사용할 알고리듬 이름. <br/>이 변수에 <code>null</code>값이 올 수 있습니다. 만일 <code>null</code>값이 주어지면 <code>jCastle.hmac::start</code> 혹은 <code>jCastle.hmac::digest</code>에 주어지는 변수 값에 <code>algoName</code>이라는 프로퍼티와 그 값이 주어져야 합니다.</li>
+  </ul>
+
+  <!-- jCastle.hmac.create -->
+  <h4>Static method: <code>jCastle.hmac.create([hash_name])</code><span><a class="mark" href="#static-hmac-create" id="static-hmac-create">#</a></span><a aria-hidden="true" class="legacy" id="static_hmac_create"></a></h4>
+
+  <p><code>jCastle.hmac</code> 오브젝트를 생성합니다. <code>new jCastle.hmac()</code>와 동일합니다.</p>
+
+  <ul>
+    <li><code>hash_name</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>생성된 객체에 사용할 해쉬 알고리듬 이름. </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>jCastle.hmac</code> 오브젝트를 생성하여 리턴합니다.</li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+var hmac = jCastle.hmac.create('skein-1024');
+hmac.start({
+  key: key, 
+  outputBits: 512
+});
+hmac.update(message);
+var code = hmac.finalize();
+
+// 위의 코드는 다음과 같이 사용할 수 있습니다.
+var hmac = jCastle.hmac.create('skein-1024/512'); // outputBits property can be here
+hmac.start({
+    key: key
+});
+hmac.update(message);
+var code = hmac.finalize();
+  </pre>
+
+
+  <!-- jCastle.hmac.start -->
+  <h4>Static method: <code>jCastle.hmac.start(options)</code><span><a class="mark" href="#static-hmac-start" id="static-hmac-start">#</a></span><a aria-hidden="true" class="legacy" id="static_hmac_start"></a></h4>
+
+  <p><code>jCastle.hmac</code> 오브젝트를 생성한 후 <code>hmac.hmac()</code> 메소드를 실행합니다.</p>
+
+  <ul>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 해쉬 MAC 코드를 생성하기 위한 변수들을 담은 오브젝트. <code>hmac.start()</code>를 참조하세요. </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: <code>jCastle.hmac</code> 오브젝트를 생성하여 <code>hmac.start()</code>를 수행한 후 동일 오브젝트를 리턴합니다.</li>
+  </ul>
+
+
+  <!-- jCastle.hmac.digest -->
+  <h4>Static method: <code>.jCastle.hmac.digest(message, options)</code> <span><a class="mark" href="#static-hmac-digest" id="static-hmac-digest">#</a></span><a aria-hidden="true" class="legacy" id="static_hmac_digest"></a></h4>
+
+  <p> 주어진 데이터를 가지고 해쉬 MAC 코드를 생성하고 그 결과 값을 리턴합니다. <code>options</code> 오브젝트에는 반드시 <code>algoName</code>이 주어져야 합니다.</p>
+
+  <ul>
+    <li><code>message</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 해쉬 MAC코드를 생성할 입력 데이터. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다.
+    </li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 해쉬 MAC 코드 생성에 필요한 변수들을 담은 오브젝트로 <code>hmac.start</code>의 <code>options</code> 변수를 참조하세요.</li>
+  </ul> 
+
+  <ul>
+    <li>Return Value: MAC 코드를 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 리턴합니다.</li>
+  </ul>
+
+
+  <!-- jCastle.hmac.getOID -->
+  <h4>Static method: <code>jCastle.hmac.getOID(hash_name)</code><span><a class="mark" href="#static-hmac-getOID" id="static-hmac-getOID">#</a></span><a aria-hidden="true" class="legacy" id="static_hmac_getOID"></a></h4>
+
+  <p>베이스가 되는 알고리듬의 해쉬 MAC 알고리듬 OID(Object ID)가 존재할 경우 해당 OID값을 리턴합니다.</p>
+
+  <ul>
+    <li><code>hash_name</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 해쉬 MAC 알고리듬의 베이스 알고리듬 명칭. <br/>OID가 등록된 베이스 알고리듬은 다음과 같습니다: <code>gost</code>(<code>gost3411</code>), <code>sha-1</code>, <code>sha-224</code>, <code>sha-256</code>, <code>sha-384</code>, <code>sha-512</code>, <code>md5</code>, <code>tiger</code>.
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 해당 OID를 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- jCastle.hmac.getAlgoName -->
+  <h4>Static method: <code>jCastle.hmac.getAlgoName(hmac_algo)</code><span><a class="mark" href="#static-hmac-getAlgoName" id="static-hmac-getAlgoName">#</a></span><a aria-hidden="true" class="legacy" id="static_hmac_getAlgoName"></a></h4>
+
+  <p>해쉬 MAC 알고리듬에서 베이스가 되는 알고리듬 명칭을 추출하여 리턴합니다.</p>
+
+  <ul>
+    <li><code>hmac_algo</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 해쉬 MAC 알고리듬 명칭.
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 베이스 알고리듬 명칭을 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>로 리턴합니다.</li>
+  </ul>
+
+  <hr>
+
+  <!-- hmac.start -->
+  <h4><code>hmac.start(options)</code><span><a class="mark" href="#hmac-start" id="hmac-start">#</a></span><a aria-hidden="true" class="legacy" id="hmac_start"></a></h4>
+
+  <p>해쉬 MAC 코드를 생성하기 위한 파라미터를 받아 프로세스를 준비합니다.</p>
+
+  <ul>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> 해쉬 MAC 코드 생성을 위한 변수들을 담은 객체
+      <ul>
+        <li><code>algoName</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a> 해쉬 MAC 알고리듬의 베이스가 되는 해쉬 알고리듬 이름.</li>
+        <li><code>key</code>|<code>hmacKey</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 해쉬 MAC 코드 생성을 위한 키로 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다. 입력 스트링은 <code>UTF-8</code> 인코딩으로 간주되기 보다 <code>binary</code> 스트링으로 간주된다는 점을 유의하세요.</li>
+        <li><code>outputBits</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 해쉬 결과 값 리턴시 스트링 길이를 지정합니다.<br/><code>outputBits</code>의 경우 <b>비트</b> 길이를 의미합니다.
+        </li>
+        <li><code>outputSize</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&#x3C;Integer></a> 해쉬 결과 값 리턴시 스트링 길이를 지정합니다.<br/><code>outputSize</code>의 경우 <b>바이트</b> 길이를 의미합니다.
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>Return Value: 오브젝트 자신을 리턴합니다.
+    </li>
+  </ul>
+
+  <pre class="prettyprint p-4">
+var hmac = jCastle.hmac.create('skein-1024/512'); // outputBits property can be here
+hmac.start({
+  key: key
+});
+hmac.update("The quick fox jumps");
+hmac.update(" over the lazy dog!");
+var code = hmac.finalize();
+  </pre>
+
+  <!-- hmac.update -->
+  <h4><code>hmac.update(message)</code><span><a class="mark" href="#hmac-update" id="hmac-update">#</a></span><a aria-hidden="true" class="legacy" id="hmac_update"></a></h4>
+
+  <p>MAC 코드 생성 프로세스를 실행합니다.</p>
+
+  <ul>
+    <li><code>message</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 해쉬 MAC코드를 생성할 입력 데이터. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다.
+    </li>
+  </ul> 
+
+  <ul>
+    <li>Return Value: 오브젝트 자신을 리턴합니다.</li>
+  </ul>
+
+  <!-- hmac.finalize -->
+  <h4><code>hmac.finalize([message])</code><span><a class="mark" href="#hmac-finalize" id="hmac-finalize">#</a></span><a aria-hidden="true" class="legacy" id="hmac_finalize"></a></h4>
+
+  <p>프로세스를 종료하고 결과를 리턴합니다.</p>
+
+  <ul>
+    <li><code>message</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 해쉬 MAC코드를 생성할 입력 데이터. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다.
+    </li>
+  </ul> 
+
+  <ul>
+    <li>Return Value: 생성된 해쉬 MAC코드를 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 리턴합니다.</li>
+  </ul>
+
+  <!-- hmac.digest -->
+  <h4><code>hmac.digest(message [, options])</code><span><a class="mark" href="#hmac-digest" id="hmac-digest">#</a></span><a aria-hidden="true" class="legacy" id="hmac_digest"></a></h4>
+
+  <p>해쉬 MAC코드를 생성합니다.</p>
+
+  <ul>
+    <li><code>message</code> <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 해쉬 MAC코드를 생성할 입력 데이터. 만일 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&#x3C;string></a>으로 주어지면 자동으로 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a>로 변환됩니다.
+    </li>
+    <li><code>options</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&#x3C;Object></a> MAC코드 생성에 필요한 변수들을 담은 오브젝트로 <code>hmac.start</code>의 <code>options</code> 변수를 참조하세요.</li>
+  </ul> 
+
+  <ul>
+    <li>Return Value: 생성된 해쉬 MAC코드를 <a href="https://nodejs.org/dist/latest-v18.x/docs/api/buffer.html#class-buffer" class="type">&#x3C;Buffer></a> 데이터를 리턴합니다.</li>
+  </ul>
+
+
+
+</section>
+
+
+        <!-- API END -->
+        </div>
+      </div>
+    </div>
+
+<script src="../static/lib/code-prettify/loader/run_prettify.js"></script>
+<!-- this stylesheet's position is important! -->
+<link rel="stylesheet" href="../static/lib/code-prettify/loader/skins/tranquil-heart.min.css">
+</body>
+</html>    
