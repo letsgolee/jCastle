@@ -33,8 +33,14 @@ QUnit.test("generating test 2", function(assert) {
 
     for (var i = 0; i < 10000; i++) {
         t = prng.nextBytes(64, true, true); // first boolean - no zero first byte, second boolean - allows no zero at all.
+
+        var flag = true;
+        for (var j = 0; j < t.length; j++) {
+            if (t[j] == 0x00) flag = false;
+        }
+        assert.ok(flag, "prng no zero test (" + (i+1) + ")");
+        //console.log("prng no zero test-" + (i+1) + ": ", flag);
+        //console.log(t.toString('hex'));
     }
-    for (var i = 0; i < t.length; i++) {
-        assert.ok(t[i] != 0x00, "prng no zero test");
-    }
+    
 });

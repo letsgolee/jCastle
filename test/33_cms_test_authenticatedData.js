@@ -1,5 +1,4 @@
 const jCastle = require('../lib/index');
-const BigInteger = require('../lib/biginteger');
 const QUnit = require('qunit');
 
 QUnit.module("CMS");
@@ -250,7 +249,7 @@ QUnit.test("CMS AuthenticatedData - KeyTransRecipientInfo export / parse Step Te
     // console.log(cms_info);
     // console.log(cms_info.content.recipientInfos);
     // console.log(cms_info.content.recipientInfos[0].recipientIdentifier.serialNumber);
-    // if (cms_info.content.recipientInfos[0].recipientIdentifier.serialNumber instanceof BigInteger)
+    // if (BigInt.is(cms_info.content.recipientInfos[0].recipientIdentifier.serialNumber))
     //     console.log(cms_info.content.recipientInfos[0].recipientIdentifier.serialNumber.intValue());
     // console.log(cms_info.content.macAlgorithm.macInfo);
     

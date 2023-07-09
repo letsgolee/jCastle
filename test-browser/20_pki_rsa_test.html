@@ -75,11 +75,11 @@ QUnit.test("RSAES-PKCS1-V1_5 Padding Test", function(assert) {
 // tAboUGBxTDq3ZroNism3DaMIbKPyYrAqhKov1h5V
 // -----END RSA KEY-----
 
-	var n = new BigInteger("9353930466774385905609975137998169297361893554149986716853295022578535724979677252958524466350471210367835187480748268864277464700638583474144061408845077", 10);
+	var n = BigInt("9353930466774385905609975137998169297361893554149986716853295022578535724979677252958524466350471210367835187480748268864277464700638583474144061408845077");
 	var e = 65537;
-	var d = new BigInteger("7266398431328116344057699379749222532279343923819063639497049039389899328538543087657733766554155839834519529439851673014800261285757759040931985506583861", 10);
-	var p = new BigInteger("98920366548084643601728869055592650835572950932266967461790948584315647051443", 10);
-	var q = new BigInteger("94560208308847015747498523884063394671606671904944666360068158221458669711639", 10);
+	var d = BigInt("7266398431328116344057699379749222532279343923819063639497049039389899328538543087657733766554155839834519529439851673014800261285757759040931985506583861");
+	var p = BigInt("98920366548084643601728869055592650835572950932266967461790948584315647051443");
+	var q = BigInt("94560208308847015747498523884063394671606671904944666360068158221458669711639");
 	var padding = 'RSAES-PKCS1-V1_5';
 
 	var rsa = new jCastle.pki.rsa();
@@ -137,7 +137,7 @@ QUnit.test("RSAES-PKCS1-V1_5 Padding Test", function(assert) {
 
 	// signature verifying
 
-	var n = new BigInteger("8272693557323587081220342447407965471608219912416565371060697606400726784709760494166080686904546560026343451112103559482851304715739629410219358933351333", 10);
+	var n = BigInt("8272693557323587081220342447407965471608219912416565371060697606400726784709760494166080686904546560026343451112103559482851304715739629410219358933351333");
 	var e = 65537;
 
 	var rsa = new jCastle.pki.rsa();
@@ -4944,7 +4944,7 @@ QUnit.test('Keypair Generation Test', function(assert) {
 	n = n.replace(/[ ]/g, '');
 	n = Buffer.from(n, 'hex');
 
-	n = BigInteger.fromByteArrayUnsigned(n);
+	n = BigInt.fromBufferUnsigned(n);
 
 	// same seed makes same keypair.
 	// console.log('pkey.n: ', pkey.getPublicKeyInfo().publicKey.n.toString(16));
@@ -5464,9 +5464,9 @@ QUnit.test('FIPS 186-4 Sign/Verify Test', function(assert) {
 	for (var i = 0; i < testVectors.length; i++) {
 		var vector = testVectors[i];
 
-		var n = new BigInteger(vector.n, 16);
+		var n = BigInt('0x' + vector.n);
 		var e = parseInt(vector.e, 16);
-		var d = new BigInteger(vector.d, 16);
+		var d = BigInt('0x' + vector.d);
 
 		var rsa = new jCastle.pki.rsa();
 		rsa.setPrivateKey({
@@ -6102,9 +6102,9 @@ QUnit.test('RSASSA-PSS vector test(FIPS186-3)', function(assert) {
 	for (var i = 0; i < testVectors.length; i++) {
 		var vector = testVectors[i];
 
-		var n = new BigInteger(vector.n, 16);
+		var n = BigInt('0x' + vector.n);
 		var e = parseInt(vector.e, 16);
-		var d = new BigInteger(vector.d, 16);
+		var d = BigInt('0x' + vector.d);
 
 		var rsa = new jCastle.pki.rsa();
 		rsa.setPrivateKey({

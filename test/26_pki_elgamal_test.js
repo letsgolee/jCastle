@@ -1,6 +1,5 @@
 const jCastle = require('../lib/index');
 const QUnit = require('qunit');
-const BigInteger = require('../lib/biginteger');
 
 
 QUnit.module('ElGamal');
@@ -37,14 +36,14 @@ QUnit.test("Step Test", function(assert) {
     for (var i = 0; i < testVectors.length; i++) {
         var vector = testVectors[i];
 
-        var p = new BigInteger(vector.p, 16);
-        var g = new BigInteger(vector.g, 16);
-        var y = new BigInteger(vector.y, 16);
-        var x = new BigInteger(vector.x, 16);
-        var k = new BigInteger(vector.k, 16);
+        var p = BigInt('0x' + vector.p);
+        var g = BigInt('0x' + vector.g);
+        var y = BigInt('0x' + vector.y);
+        var x = BigInt('0x' + vector.x);
+        var k = BigInt('0x' + vector.k);
         var pt = Buffer.from(vector.pt, 'hex');
-        var ct1 = new BigInteger(vector.ct1, 16);
-        var ct2 = new BigInteger(vector.ct2, 16);
+        var ct1 = BigInt('0x' + vector.ct1);
+        var ct2 = BigInt('0x' + vector.ct2);
 
         var elgamal = jCastle.pki.elGamal.create();
         elgamal.setParameters({
@@ -54,7 +53,7 @@ QUnit.test("Step Test", function(assert) {
 
         // public encrypt test
 
-        var m_bi = BigInteger.fromByteArrayUnsigned(pt);
+        var m_bi = BigInt.fromBufferUnsigned(pt);
 
         var c1 = g.modPow(k, p);
 		var c2 = m_bi.multiply(y.modPow(k, p)).mod(p);
@@ -64,9 +63,9 @@ QUnit.test("Step Test", function(assert) {
 
         // private decrypt test
 
-        var m_bi = c1.modPow(p.subtract(x).subtract(BigInteger.ONE), p).multiply(c2).mod(p);
+        var m_bi = c1.modPow(p.subtract(x).subtract(1n), p).multiply(c2).mod(p);
 
-		var ba = Buffer.from(m_bi.toByteArray());
+		var ba = m_bi.toBuffer();
 
         assert.ok(ba.equals(pt), 'pt test');
 
@@ -102,14 +101,14 @@ QUnit.test("Step Test", function(assert) {
     for (var i = 0; i < testVectors.length; i++) {
         var vector = testVectors[i];
 
-        var p = new BigInteger(vector.p, 16);
-        var g = new BigInteger(vector.g, 16);
-        var y = new BigInteger(vector.y, 16);
-        var x = new BigInteger(vector.x, 16);
-        var k = new BigInteger(vector.k, 16);
+        var p = BigInt('0x' + vector.p);
+        var g = BigInt('0x' + vector.g);
+        var y = BigInt('0x' + vector.y);
+        var x = BigInt('0x' + vector.x);
+        var k = BigInt('0x' + vector.k);
         var h = Buffer.from(vector.h, 'hex');
-        var sig1 = new BigInteger(vector.sig1, 16);
-        var sig2 = new BigInteger(vector.sig2, 16);
+        var sig1 = BigInt('0x' + vector.sig1);
+        var sig2 = BigInt('0x' + vector.sig2);
 
         var elgamal = jCastle.pki.elGamal.create();
         elgamal.setParameters({
@@ -119,15 +118,11 @@ QUnit.test("Step Test", function(assert) {
 
         // sign test
 
-        var hash_bi = BigInteger.fromByteArrayUnsigned(h);
-
-        var one = BigInteger.valueOf(1);
-		var zero = BigInteger.valueOf(0);
-		var p1 = p.subtract(one);
-
+        var hash_bi = BigInt.fromBufferUnsigned(h);
+		var p1 = p.subtract(1n);
         var r = g.modPow(k, p);
         var t = hash_bi.subtract(x.multiply(r)).mod(p1);
-        while (t.compareTo(zero) <= 0) t = t.add(p1); 
+        while (t.compareTo(0n) <= 0) t = t.add(p1); 
         var s = k.modInverse(p1).multiply(t).mod(p1);
 
         assert.ok(r.equals(sig1), 'sig r test');

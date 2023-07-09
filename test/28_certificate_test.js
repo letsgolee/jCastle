@@ -1,5 +1,4 @@
 const jCastle = require('../lib/index');
-const BigInteger = require('../lib/biginteger');
 const QUnit = require('qunit');
 
 QUnit.module("Certificate");
@@ -736,7 +735,7 @@ QUnit.test("DEMO Test 1", function(assert) {
 
 
 	var serial = new jCastle.prng().nextBytes(4);
-	//serial = BigInteger.fromByteArrayUnsigned(serial);
+	//serial = BigInt.fromBufferUnsigned(serial);
     serial = parseInt('00' + serial.toString('hex'), 16);
 
 	var cert_info = {

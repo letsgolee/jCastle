@@ -14,7 +14,8 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "qunit": "^2.17.2",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "uglifyjs-webpack-plugin": "^2.2.0"
   },
   "directories": {
     "lib": "lib",
@@ -29,6 +30,6 @@
   },
   "homepage": "https://github.com/letsgolee/jCastle#readme",
   "dependencies": {
-    "uglify-js": "^3.15.3"
+    "uglify-js": "^3.17.4"
   }
 }

@@ -1,5 +1,4 @@
 const jCastle = require('../lib/index');
-const BigInteger = require('../lib/biginteger');
 const QUnit = require('qunit');
 
 QUnit.module('ECKCDSA');
@@ -178,7 +177,7 @@ QUnit.test("Step Test", function(assert) {
     
         var ecInfo = pkey.getCurveInfo();
 
-        var x_i = new BigInteger(vector.x.replace(/[^0-9A-F]/gi, ''), 16);
+        var x_i = BigInt('0x' + vector.x.replace(/[^0-9A-F]/gi, ''));
 
         pkey.setPrivateKey(x_i);
 
@@ -187,8 +186,8 @@ QUnit.test("Step Test", function(assert) {
 
         // publc key test
 
-        assert.ok(pubkey.getX().toBigInteger().equals(new BigInteger(vector.Ux.replace(/[^0-9A-F]/gi, ''), 16)), 'public key x test');
-        assert.ok(pubkey.getY().toBigInteger().equals(new BigInteger(vector.Uy.replace(/[^0-9A-F]/gi, ''), 16)), 'public key y test');
+        assert.ok(pubkey.getX().toBigInt().equals(BigInt('0x' + vector.Ux.replace(/[^0-9A-F]/gi, ''))), 'public key x test');
+        assert.ok(pubkey.getY().toBigInt().equals(BigInt('0x' + vector.Uy.replace(/[^0-9A-F]/gi, ''))), 'public key y test');
 
         // signing test
 
@@ -203,14 +202,14 @@ QUnit.test("Step Test", function(assert) {
 
         var ba = Buffer.from(m);
         var hash = new jCastle.digest(vector.hashAlgo).start().update(z).update(ba).finalize();
-        var hash_bi = BigInteger.fromByteArrayUnsigned(hash);
+        var hash_bi = BigInt.fromBufferUnsigned(hash);
 
         // Generate a random number k, such that 0 < k < q.
         //var rng = new jCastle.prng();
 
-        var k = new BigInteger(vector.k.replace(/[^0-9A-F]/gi, ''), 16);
+        var k = BigInt('0x' + vector.k.replace(/[^0-9A-F]/gi, ''));
 
-        var zero = BigInteger.valueOf(0);
+        var zero = 0n;
 
         // (x1, y1) = kG
 		var w = ecInfo.G.multiply(k);
@@ -228,7 +227,7 @@ QUnit.test("Step Test", function(assert) {
         //     console.log((ecInfo.n.bitLength() + 7) >>> 3);
         // }
 
-		var r_i = BigInteger.fromByteArrayUnsigned(r);
+		var r_i = BigInt.fromBufferUnsigned(r);
 
 		// v = H(z || M)
 		// e = r ⊕ v mod n
@@ -240,7 +239,7 @@ QUnit.test("Step Test", function(assert) {
         //var t = k.subtract(e);
 		var s = privkey.multiply(t).mod(ecInfo.n);
 
-        var v_s = s.equals(new BigInteger(vector.s.replace(/[^0-9A-F]/gi, ''), 16));
+        var v_s = s.equals(BigInt('0x' + vector.s.replace(/[^0-9A-F]/gi, '')));
 		assert.ok(v_s, 's test');
         // if (!v_s) {
         //     console.log('s:   ', s.toString(16));
@@ -254,7 +253,7 @@ QUnit.test("Step Test", function(assert) {
         // ---------------------------------------------------------------------------------
 
         // computes e = r ⊕ h(z || m) mod n, 
-        var r_i = BigInteger.fromByteArrayUnsigned(r);
+        var r_i = BigInt.fromBufferUnsigned(r);
         var e = r_i.xor(hash_bi).mod(ecInfo.n);
 
         // (x1, y1) = sQ + eG
@@ -265,7 +264,7 @@ QUnit.test("Step Test", function(assert) {
         // finally checks if  r = h(w'). 
         var w_x = w.encodePoint(true).slice(1);
         var v = new jCastle.digest(vector.hashAlgo).digest(w_x);
-        v = BigInteger.fromByteArrayUnsigned(v);
+        v = BigInt.fromBufferUnsigned(v);
                 
         // If v == r, the digital signature is valid.
 

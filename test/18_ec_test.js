@@ -1,5 +1,4 @@
 const jCastle = require('../lib/index');
-const BigInteger = require('../lib/biginteger');
 const QUnit = require('qunit');
 
 QUnit.module('EC');
@@ -8,11 +7,11 @@ QUnit.test("Fp Test", function(assert) {
 
 	// Fp Test
 
-	var q = BigInteger.valueOf(29);
-	var a = BigInteger.valueOf(4);
-	var b = BigInteger.valueOf(20);
-	var n = BigInteger.valueOf(38);
-	var h = BigInteger.ONE;
+	var q = 29n;
+	var a = 4n;
+	var b = 20n;
+	var n = 38n;
+	var h = 1n;
 
 	var curve = new jCastle.math.ec.curve.fp(q, a, b, n, h);
 	var infinity = curve.getInfinity();
@@ -22,8 +21,8 @@ QUnit.test("Fp Test", function(assert) {
 
 	for (var i = 0; i < pointSource.length / 2; i++) {
 		p[i] = curve.createPoint(
-			BigInteger.valueOf(pointSource[2 * i]),
-			BigInteger.valueOf(pointSource[2 * i + 1])
+			BigInt(pointSource[2 * i]),
+			BigInt(pointSource[2 * i + 1])
 		);
 	}
 
@@ -45,7 +44,7 @@ QUnit.test("Fp Test", function(assert) {
 	// infinity test
 	var adder = infinity;
 	var multiplier = infinity;
-	var iter = BigInteger.ONE;
+	var iter = 1n;
 
 	// old-double-add test
 	var before = new Date();
@@ -56,7 +55,7 @@ QUnit.test("Fp Test", function(assert) {
 		
 		assert.ok(adder.equals(multiplier), "Add & multiply Test " + iter.toString());
 
-		iter = iter.add(BigInteger.ONE);
+		iter = iter.add(1n);
 	} while (!(adder.equals(infinity)));
 
 	var after = new Date();
@@ -65,7 +64,7 @@ QUnit.test("Fp Test", function(assert) {
 
     var adder = infinity;
 	var multiplier1 = infinity;
-	var iter = BigInteger.ONE;
+	var iter = 1n;
 
 	// double-add
 	var before = new Date();
@@ -76,7 +75,7 @@ QUnit.test("Fp Test", function(assert) {
 		
 		assert.ok(adder.equals(multiplier1), "Add & multiply(double-add) Test " + iter.toString());
 
-		iter = iter.add(BigInteger.ONE);
+		iter = iter.add(1n);
 	} while (!(adder.equals(infinity)));
 
 	var after = new Date();
@@ -85,7 +84,7 @@ QUnit.test("Fp Test", function(assert) {
 
 	var adder = infinity;
 	var multiplier2 = infinity;
-	var iter = BigInteger.ONE;
+	var iter = 1n;
 	
 	// montgomery-ladder'
 	var before = new Date();
@@ -96,7 +95,7 @@ QUnit.test("Fp Test", function(assert) {
 		
 		assert.ok(adder.equals(multiplier2), "Add & multiply(montgomery-ladder) Test " + iter.toString());
 
-		iter = iter.add(BigInteger.ONE);
+		iter = iter.add(1n);
 	} while (!(adder.equals(infinity)));
 
 	var after = new Date();
@@ -105,7 +104,7 @@ QUnit.test("Fp Test", function(assert) {
 
 	var adder = infinity;
 	var multiplier3 = infinity;
-	var iter = BigInteger.ONE;
+	var iter = 1n;
 
 	// z-signed-digit
 	var before = new Date();
@@ -116,7 +115,7 @@ QUnit.test("Fp Test", function(assert) {
 		
 		assert.ok(adder.equals(multiplier3), "Add & multiply(z-signed-digit) Test " + iter.toString());
 
-		iter = iter.add(BigInteger.ONE);
+		iter = iter.add(1n);
 	} while (!(adder.equals(infinity)));
 
 	var after = new Date();
@@ -158,11 +157,11 @@ QUnit.test("ECC F2m Test", function(assert) {
 	var m = 4;
 	var k1 = 1;
 	// a = z^3
-	var a = new BigInteger("1000", 2);
+	var a = BigInt("0b1000");
 	// b = z^3 + 1
-	var b = new BigInteger("1001", 2);
-	var n = BigInteger.valueOf(23);
-	var h = BigInteger.ONE;
+	var b = BigInt("0b1001");
+	var n = 23n;
+	var h = 1n;
 
 	var curve = new jCastle.math.ec.curve.f2m(m, k1, 0, 0, a, b, n ,h);
 
@@ -172,8 +171,8 @@ QUnit.test("ECC F2m Test", function(assert) {
 
 	for (var i = 0; i < pointSource.length / 2; i++) {
 		p[i] = curve.createPoint(
-			new BigInteger(pointSource[2 * i], 2),
-			new BigInteger(pointSource[2 * i + 1], 2)
+			BigInt('0b' + pointSource[2 * i]),
+			BigInt('0b' + pointSource[2 * i + 1])
 		);
 	}
 
@@ -195,7 +194,7 @@ QUnit.test("ECC F2m Test", function(assert) {
 	// infinity test
 	var adder = infinity;
 	var multiplier = infinity;
-	var iter = BigInteger.ONE;
+	var iter = 1n;
 
 	// old-double-add test
 	var before = new Date();
@@ -206,7 +205,7 @@ QUnit.test("ECC F2m Test", function(assert) {
 		
 		assert.ok(adder.equals(multiplier), "Add & multiply Test " + iter.toString());
 
-		iter = iter.add(BigInteger.ONE);
+		iter = iter.add(1n);
 	} while (!(adder.equals(infinity)));
 
 	var after = new Date();
@@ -215,7 +214,7 @@ QUnit.test("ECC F2m Test", function(assert) {
 
     var adder = infinity;
 	var multiplier1 = infinity;
-	var iter = BigInteger.ONE;
+	var iter = 1n;
 
 	// double-add
 	var before = new Date();
@@ -226,7 +225,7 @@ QUnit.test("ECC F2m Test", function(assert) {
 		
 		assert.ok(adder.equals(multiplier1), "Add & multiply(double-add) Test " + iter.toString());
 
-		iter = iter.add(BigInteger.ONE);
+		iter = iter.add(1n);
 	} while (!(adder.equals(infinity)));
 
 	var after = new Date();
@@ -235,7 +234,7 @@ QUnit.test("ECC F2m Test", function(assert) {
 
 	var adder = infinity;
 	var multiplier2 = infinity;
-	var iter = BigInteger.ONE;
+	var iter = 1n;
 	
 	// montgomery-ladder'
 	var before = new Date();
@@ -246,7 +245,7 @@ QUnit.test("ECC F2m Test", function(assert) {
 		
 		assert.ok(adder.equals(multiplier2), "Add & multiply(montgomery-ladder) Test " + iter.toString());
 
-		iter = iter.add(BigInteger.ONE);
+		iter = iter.add(1n);
 	} while (!(adder.equals(infinity)));
 
 	var after = new Date();
@@ -255,7 +254,7 @@ QUnit.test("ECC F2m Test", function(assert) {
 
 	var adder = infinity;
 	var multiplier3 = infinity;
-	var iter = BigInteger.ONE;
+	var iter = 1n;
 
 	// z-signed-digit
 	var before = new Date();
@@ -266,7 +265,7 @@ QUnit.test("ECC F2m Test", function(assert) {
 		
 		assert.ok(adder.equals(multiplier3), "Add & multiply(z-signed-digit) Test " + iter.toString());
 
-		iter = iter.add(BigInteger.ONE);
+		iter = iter.add(1n);
 	} while (!(adder.equals(infinity)));
 
 	var after = new Date();
@@ -312,7 +311,7 @@ QUnit.test("ECC F2m Test 2", function(assert) {
 	//var curve = pki.getCurve();
 	var G = pki.pkiObject.ecInfo.G;
 
-	var x = curve.fromBigInteger(G.getX().toBigInteger());
+	var x = curve.fromBigInt(G.getX().toBigInt());
 
 	assert.ok(x.multiply(x).multiply(x).multiply(x).multiply(x).multiply(x).equals(x.pow(6)), "pow Test");
 
@@ -324,7 +323,7 @@ QUnit.test("ECC F2m Test 2", function(assert) {
 	// in binary field, c.pow(2.pow(m)) = c
 	// thus sqrt(c) = c.pow(2.pow(m-1))
 
-	var x = curve.fromBigInteger(BigInteger.ZERO);
+	var x = curve.fromBigInt(0n);
 
 	var before = new Date();
 	var y = curve.getB();
@@ -334,7 +333,7 @@ QUnit.test("ECC F2m Test 2", function(assert) {
 	var after = new Date();
 
 	// console.log("Computing sqrt with squaring m-1 times: "+(after - before) + " ms");
-	// console.log(y.toBigInteger().toString(16));
+	// console.log(y.toBigInt().toString(16));
 
 	// another test
 	var before = new Date();
@@ -345,6 +344,6 @@ QUnit.test("ECC F2m Test 2", function(assert) {
 	// console.log("Computing sqrt with given function: "+(after - before) + " ms");
 
 	assert.ok(y.equals(y2), "ECC on F2m sqrt Test");
-	// console.log(y2.toBigInteger().toString(16));
+	// console.log(y2.toBigInt().toString(16));
 
 });

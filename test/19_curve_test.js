@@ -1,5 +1,4 @@
 const jCastle = require('../lib/index');
-const BigInteger = require('../lib/biginteger');
 const QUnit = require('qunit');
 
 QUnit.module('EC Curve');
@@ -16,7 +15,7 @@ QUnit.test("ECC named curve - isOnCurve Test", function(assert) {
 	var G = ecdsa.ecInfo.G;
 
 	assert.ok(G.isOnCurve(), "G point should be on curve");
-	assert.ok(G.multiply(BigInteger.valueOf(1000)).isOnCurve(), "multiplied G also should be on curve");
+	assert.ok(G.multiply(1000n).isOnCurve(), "multiplied G also should be on curve");
 
 });
 
@@ -32,17 +31,17 @@ QUnit.test("ECC custom curve Test", function(assert) {
 
 	/* custom curve */
 
-	var q = BigInteger.valueOf(29);
-	var a = BigInteger.valueOf(4);
-	var b = BigInteger.valueOf(20);
-	var n = BigInteger.valueOf(37);
-	var h = BigInteger.ONE;
+	var q = 29n;
+	var a = 4n;
+	var b = 20n;
+	var n = 37n;
+	var h = 1n;
 
 	var curve = new jCastle.math.ec.curve.fp(q, a, b, n, h);
 	var infinity = curve.getInfinity();
 	var G = curve.createPoint(
-		BigInteger.valueOf(5),
-		BigInteger.valueOf(22)
+		5n,
+		22n
 	);
 
 	var p = G;
@@ -51,8 +50,8 @@ QUnit.test("ECC custom curve Test", function(assert) {
 	while (!p.isInfinity()) {
 		assert.ok(p.isOnCurve(), i + " - point should be on curve");
 
-		var x = p.getX().toBigInteger().toString();
-		var y = p.getY().toBigInteger().toString();
+		var x = p.getX().toBigInt().toString();
+		var y = p.getY().toBigInt().toString();
 		// console.log(i + " ==> (" + x + ", " + y + ")");
 
 		// put x and y into trace for plotly
@@ -65,8 +64,8 @@ QUnit.test("ECC custom curve Test", function(assert) {
 
 	p = p.add(G);
 
-	var x = p.getX().toBigInteger().toString();
-	var y = p.getY().toBigInteger().toString();
+	var x = p.getX().toBigInt().toString();
+	var y = p.getY().toBigInt().toString();
 //	console.log(38 + " ==> (" + x + ", " + y + ")");
 
 /*
@@ -116,17 +115,17 @@ QUnit.test("ECC custom curve Test2", function(assert) {
 
 	/* custom curve */
 
-	var q = BigInteger.valueOf(17);
-	var a = BigInteger.valueOf(2);
-	var b = BigInteger.valueOf(2);
-	var n = BigInteger.valueOf(19);
-	var h = BigInteger.ONE;
+	var q = 17n;
+	var a = 2n;
+	var b = 2n;
+	var n = 19n;
+	var h = 1n;
 
 	var curve = new jCastle.math.ec.curve.fp(q, a, b, n, h);
 	var infinity = curve.getInfinity();
 	var G = curve.createPoint(
-		BigInteger.valueOf(5),
-		BigInteger.valueOf(1)
+		5n,
+		1n
 	);
 
 	var p = G;
@@ -135,8 +134,8 @@ QUnit.test("ECC custom curve Test2", function(assert) {
 	while (!p.isInfinity()) {
 		assert.ok(p.isOnCurve(), i + " - point should be on curve");
 
-		var x = p.getX().toBigInteger().toString();
-		var y = p.getY().toBigInteger().toString();
+		var x = p.getX().toBigInt().toString();
+		var y = p.getY().toBigInt().toString();
 		// console.log(i + " ==> (" + x + ", " + y + ")");
 
 		p = p.add(G);
@@ -193,6 +192,6 @@ then
 2G = G + G = (5, 1) + (5, 1) = (x3, y3)
 
 
-gamma = (3*x1^2 + a)/2*y1 = (x1.square().multiply(BigInteger.valueOf(3)).add(a).divide(y1.multiply(BigInteger.valueOf(2)));
+gamma = (3*x1^2 + a)/2*y1 = (x1.square().multiply(3n).add(a).divide(y1.multiply(2n));
 
 */

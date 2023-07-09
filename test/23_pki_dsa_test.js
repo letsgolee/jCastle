@@ -1,6 +1,5 @@
 const jCastle = require('../lib/index');
 const QUnit = require('qunit');
-const BigInteger = require('../lib/biginteger');
 
 QUnit.module('DSA');
 
@@ -217,7 +216,7 @@ QUnit.test('Vector test & Step Test', function(assert) {
     {
         var bits = input.length * 8;
         var qBits = q.bitLength();
-        var z = BigInteger.fromByteArrayUnsigned(input);
+        var z = BigInt.fromBufferUnsigned(input);
 
         //if (qBits > bits) return z.mod(q);
         if (bits > qBits) {
@@ -226,7 +225,7 @@ QUnit.test('Vector test & Step Test', function(assert) {
         return z.mod(q);
     }
 
-    var zero = BigInteger.valueOf(0);
+    var zero = 0n;
 
     for (var i = 0; i < testVectors.length; i++) {
         var vector = testVectors[i];
@@ -253,19 +252,19 @@ QUnit.test('Vector test & Step Test', function(assert) {
             var v_r = Buffer.from(sig_vector.r, 'hex');
             var v_s = Buffer.from(sig_vector.s, 'hex');
 
-            v_r = BigInteger.fromByteArrayUnsigned(v_r);
-            v_s = BigInteger.fromByteArrayUnsigned(v_s);
+            v_r = BigInt.fromBufferUnsigned(v_r);
+            v_s = BigInt.fromBufferUnsigned(v_s);
 
             var ba = Buffer.from(message);
 
 		    hash_algo = jCastle.digest.getValidAlgoName(hash_algo);
 
             var hash = new jCastle.digest(hash_algo).digest(ba);
-            //var hash_bi = BigInteger.fromByteArrayUnsigned(hash.slice(0, params.q.bitLength() >>> 3));
+            //var hash_bi = BigInt.fromBufferUnsigned(hash.slice(0, params.q.bitLength() >>> 3));
             var hash_bi = calculateE(hash, params.q);
 
             // random integer
-            k = BigInteger.fromByteArrayUnsigned(k);
+            k = BigInt.fromBufferUnsigned(k);
 
             var r = params.g.modPow(k, params.p).mod(params.q);
 
@@ -3192,8 +3191,8 @@ QUnit.test("FIPS 186-4 Vector Test", function(assert) {
         for (var j = 0; j < vector.sigVectors.length; j++) {
             var sigVector = vector.sigVectors[j];
 
-            var x = new BigInteger(sigVector.X, 16);
-            var y = new BigInteger(sigVector.Y, 16);
+            var x = BigInt('0x' + sigVector.X);
+            var y = BigInt('0x' + sigVector.Y);
 
             dsa.setPrivateKey(x, y);
 
@@ -3490,8 +3489,8 @@ QUnit.test("Basic Test", function(assert) {
             g: "711ac4053baf502aa0a09abcb7af72885495e1efb0de129d93c7bb16f0e4b80a1a10d0409ed52bcd0df0b5511f6e08f74715517e9406edd45d78f0ef15d92b27ef398ea7bf9365fa13591322149fa84635187da277f15cbc8c9a28423feb233221e5d1ad36d926d2e1e0c770f34dc04a616f55685222a9b1cf4f8ecf87c19b7e"
         });
     /*
-        dsa.y = new BigInteger("8cafd9654ce51818e154613bd0b14ee974fbdffc5a19802c4301302bc854d5e17daf0d6745a4aaa8e46ff96b57c89371fa72cca12a2248821645d1ff75869a2549ad7fd110ceefea5616d00be5941036e1a2d87bbcf0bfbe6c3b1e18ba0d3b3af6d34bacf613270a0b5f67c78668e4ba5b3ec0aa28e762ea1f9f2e0167e0523b", 16);
-        dsa.x = new BigInteger("73b3538660ceac98a3bf48e53f88b4e124657c21", 16);
+        dsa.y = BigInt("0x8cafd9654ce51818e154613bd0b14ee974fbdffc5a19802c4301302bc854d5e17daf0d6745a4aaa8e46ff96b57c89371fa72cca12a2248821645d1ff75869a2549ad7fd110ceefea5616d00be5941036e1a2d87bbcf0bfbe6c3b1e18ba0d3b3af6d34bacf613270a0b5f67c78668e4ba5b3ec0aa28e762ea1f9f2e0167e0523b");
+        dsa.x = BigInt("0x73b3538660ceac98a3bf48e53f88b4e124657c21");
         dsa.hasPrivateKey = true;
         dsa.hasPublicKey = true;
     */

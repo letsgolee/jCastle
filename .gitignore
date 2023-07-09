@@ -3,9 +3,13 @@ skip-test/
 tmp-test/
 to-do/
 dist/backup/
+dist/minified-source/
 tmp-files/
+deprecated/
+
 
 to-do.txt
 git-info.txt
-packing.js
+pack-jCastle.js
 copyright.js
+test-result.txt

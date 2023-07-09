@@ -1,5 +1,4 @@
 const jCastle = require('../lib/index');
-const BigInteger = require('../lib/biginteger');
 const QUnit = require('qunit');
 
 
@@ -55,8 +54,8 @@ QUnit.test("Key Agreement Test", function(assert) {
     
     // creating ephemeral private key
     var prng = jCastle.prng.create();
-    var alice_ephemeral_privkey = BigInteger.random(alice.getBitLength(), prng);
-    var bob_ephemeral_privkey = BigInteger.random(bob.getBitLength(), prng);
+    var alice_ephemeral_privkey = BigInt.random(alice.getBitLength(), prng);
+    var bob_ephemeral_privkey = BigInt.random(bob.getBitLength(), prng);
 
     // creating ephemeral public key
     // var alice_ephemeral_pubkey = alice.pkiObject.ecInfo.G.multiply(alice_ephemeral_privkey);

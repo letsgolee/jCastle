@@ -1,5 +1,4 @@
 const jCastle = require('../lib/index');
-const BigInteger = require('../lib/biginteger');
 const QUnit = require('qunit');
 
 QUnit.module('KCDSA');
@@ -356,8 +355,8 @@ QUnit.test('Vector Test', function(assert) {
 		}
 	];
 
-	var zero = BigInteger.valueOf(0);
-	var one = BigInteger.valueOf(1);
+	var zero = 0n;
+	var one = 1n;
 
 	for (var i = 0; i < testVectors.length; i++) {
 		var vector = testVectors[i];
@@ -379,7 +378,7 @@ QUnit.test('Vector Test', function(assert) {
 		kcdsa.setPrivateKey(x);
 
 		var pubkey = kcdsa.getPublicKey();
-		var pubkey_buf = Buffer.from(pubkey.toByteArrayUnsigned());
+		var pubkey_buf = pubkey.toBufferUnsigned();
 
 		assert.ok(pubkey_buf.equals(y), 'public key test');
 
@@ -394,7 +393,7 @@ QUnit.test('Vector Test', function(assert) {
 		var ba = Buffer.from(M);
 
 		var l = jCastle.digest.getBlockSize(hash_algo) * 8;
-		var z = Buffer.from(pubkey.mod(one.shiftLeft(l)).toByteArrayUnsigned());
+		var z = pubkey.mod(one.shiftLeft(l)).toBufferUnsigned();
 
 		assert.ok(z.equals(Z), 'z test');
 
@@ -402,11 +401,11 @@ QUnit.test('Vector Test', function(assert) {
 
 		assert.ok(h.equals(H), 'h test');
 
-		var h_bi = BigInteger.fromByteArrayUnsigned(h);
-		var k = BigInteger.fromByteArrayUnsigned(K);
+		var h_bi = BigInt.fromBufferUnsigned(h);
+		var k = BigInt.fromBufferUnsigned(K);
 		var w = params.g.modPow(k, params.p);
 
-		var w_buf = Buffer.from(w.toByteArrayUnsigned());
+		var w_buf = w.toBufferUnsigned();
 
 		assert.ok(w_buf.equals(W), 'w test');
 
@@ -415,13 +414,13 @@ QUnit.test('Vector Test', function(assert) {
 
 		assert.ok(r.equals(R), 'r test');
 
-		var r_bi = BigInteger.fromByteArrayUnsigned(r);
+		var r_bi = BigInt.fromBufferUnsigned(r);
 
 		var e = r_bi.xor(h_bi).mod(params.q);
 
 		var s = privkey.multiply(k.subtract(e)).mod(params.q);
 
-		assert.ok(s.equals(BigInteger.fromByteArrayUnsigned(S)), 's test');
+		assert.ok(s.equals(BigInt.fromBufferUnsigned(S)), 's test');
 
 		// verifying test
 
@@ -429,13 +428,13 @@ QUnit.test('Vector Test', function(assert) {
 		var u2 = params.g.modPow(e, params.p);
 		var w = u1.multiply(u2).mod(params.p);
 
-		var w_buf = Buffer.from(w.toByteArrayUnsigned());
+		var w_buf = w.toBufferUnsigned();
 
 		assert.ok(w_buf.equals(W), 'w test 2');
 
 		// finally checks if  r = h(w'). 
 		var v = new jCastle.digest(hash_algo).digest(w_buf);
-		v = BigInteger.fromByteArrayUnsigned(v);
+		v = BigInt.fromBufferUnsigned(v);
 				
 		// If v == r, the digital signature is valid.
 		assert.ok(v.compareTo(r_bi) == 0, 'verify test');
@@ -519,7 +518,7 @@ QUnit.test("Step Test", function(assert) {
 
 	//kcdsa.generateKeypair();
 
-	kcdsa.privateKey = new BigInteger(x.replace(/ /g, ''), 16);
+	kcdsa.privateKey = BigInt('0x' + x.replace(/ /g, ''));
 	kcdsa.hasPrivateKey = true;
 
 	//var xmodinv = kcdsa.x.modInverse(kcdsa.q);
@@ -533,7 +532,7 @@ QUnit.test("Step Test", function(assert) {
 	// check whether y is equal
 	assert.equal(kcdsa.publicKey.toString(16), y.replace(/ /g, ''), 'Check if Y is equal');
 
-	kcdsa.z = kcdsa.publicKey.mod(BigInteger.ONE.shiftLeft(block_length));
+	kcdsa.z = kcdsa.publicKey.mod(1n.shiftLeft(block_length));
 
 //	console.log('Z: '+kcdsa.z.toString(16));
 
@@ -557,7 +556,7 @@ QUnit.test("Step Test", function(assert) {
 
 
 	var l = jCastle._algorithmInfo[hash_name].block_size * 8;
-    var Z = Buffer.from(kcdsa.publicKey.mod(BigInteger.ONE.shiftLeft(l)).toByteArray());
+    var Z = kcdsa.publicKey.mod(1n.shiftLeft(l)).toBuffer();
 
 //  Z == z
 
@@ -569,7 +568,7 @@ QUnit.test("Step Test", function(assert) {
 
 
 	hash = hash.substr(0, (kcdsa.params.q.bitLength() >>> 3) * 2);
-	var hash_bi = new BigInteger(hash, 16);
+	var hash_bi = BigInt('0x' + hash);
 
 	// Generate a random number k, such that 0 < k < q.
 	var rng = new jCastle.prng();
@@ -577,29 +576,29 @@ QUnit.test("Step Test", function(assert) {
 
 	while (!get_signature) {
 /*
-		//var k = BigInteger.randomInRange(BigInteger.ONE, kcdsa.q.subtract(BigInteger.ONE), rng);
+		//var k = BigInt.randomInRange(1n, kcdsa.q.subtract(1n), rng);
 		do {
-			var k = BigInteger.random(kcdsa.q.bitLength(), rng);
-		} while (k.compareTo(BigInteger.ZERO) <= 0 || k.compareTo(kcdsa.q) >= 0);
+			var k = BigInt.random(kcdsa.q.bitLength(), rng);
+		} while (k.compareTo(0n) <= 0 || k.compareTo(kcdsa.q) >= 0);
 */
 		// for test we have already random number k.
-		var K = new BigInteger(k.replace(/ /g, ''), 16);
+		var K = BigInt('0x' + k.replace(/ /g, ''));
 //		console.log(k.toString(16));
 		
 		// w = g^k mod p
 		var w = kcdsa.params.g.modPow(K, kcdsa.params.p);
 //		console.log('W: ' + w.toString(16));
 
-		assert.ok(w.equals(new BigInteger(W.replace(/ /g, ''), 16)), 'Check if W is equal');
+		assert.ok(w.equals(BigInt('0x' + W.replace(/ /g, ''))), 'Check if W is equal');
 
-		var r = new jCastle.digest(hash_name).digest(w.toByteArray());
+		var r = new jCastle.digest(hash_name).digest(w.toBuffer());
 //		console.log('R: ' + r);
 		assert.ok(r.toString('hex') == R.replace(/ /g, ''), 'Check if R is equal');
 
-		//var r_bi = new BigInteger(r.toString('hex'), 16);
-        var r_bi = BigInteger.fromByteArrayUnsigned(r);
+		//var r_bi = BigInt('0x' + r.toString('hex'));
+        var r_bi = BigInt.fromBufferUnsigned(r);
 
-		//if (r_bi.compareTo(BigInteger.ZERO) <= 0) continue;
+		//if (r_bi.compareTo(0n) <= 0) continue;
 
 		// e = r ⊕ h(z||m) mod q
 		var e = r_bi.xor(hash_bi).mod(kcdsa.params.q);
@@ -610,9 +609,9 @@ QUnit.test("Step Test", function(assert) {
 		var s = kcdsa.privateKey.multiply(K.subtract(e)).mod(kcdsa.params.q);
 
 //		console.log('S: '+s.toString(16));
-		assert.ok(s.equals(new BigInteger(S.replace(/ /g, ''), 16)), 'Check if S is equal');
+		assert.ok(s.equals(BigInt('0x' + S.replace(/ /g, ''))), 'Check if S is equal');
 
-		if (s.compareTo(BigInteger.ZERO) > 0) get_signature = true;
+		if (s.compareTo(0n) > 0) get_signature = true;
 		else {
 			console.log("s is smaller than zero");
 		}
@@ -644,11 +643,11 @@ QUnit.test("Step Test", function(assert) {
 
 //	console.log(sequence);
 
-	var r = BigInteger.fromByteArrayUnsigned(Buffer.from(sequence.items[0].value, 'latin1'));
+	var r = BigInt.fromBufferUnsigned(Buffer.from(sequence.items[0].value, 'latin1'));
 	var s = sequence.items[1].intVal;
 
-	if (r.compareTo(BigInteger.ZERO) <= 0 || r.compareTo(kcdsa.params.q.multiply(BigInteger.valueOf(2))) >= 0 ||
-		s.compareTo(BigInteger.ZERO) <= 0 || s.compareTo(kcdsa.params.q) >= 0
+	if (r.compareTo(0n) <= 0 || r.compareTo(kcdsa.params.q.multiply(2n)) >= 0 ||
+		s.compareTo(0n) <= 0 || s.compareTo(kcdsa.params.q) >= 0
 	) {
 		console.log("invalid DSA Signature");
 		return false;
@@ -680,8 +679,8 @@ QUnit.test("Step Test", function(assert) {
 //	console.log(w.toString(16));
 
 	// finally checks if  r = h(w'). 
-	var v = new jCastle.digest(hash_name).digest(w.toByteArray()).toString('hex');
-	var v = new BigInteger(v, 16);
+	var v = new jCastle.digest(hash_name).digest(w.toBuffer()).toString('hex');
+	var v = BigInt('0x' + v);
 			
 	// If v == r, the digital signature is valid.
 

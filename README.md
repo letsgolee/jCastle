@@ -27,6 +27,10 @@ The npm package includes pre-built `jCastle.min.js` and you will need `buffer.js
 
 The pre-built `jCastle.min.js` file is inside `dist` folder and it includes `buffer.js` for to use with the web browser.
 
+## Recent Update
+
+Bug fixes and removing `BigInteger` library. JavaScript now has its own `BigInt`, it does not need any more the library.
+
 ## Testing
 
 jCastle includes many testing codes and it is time consuming.

@@ -1,6 +1,5 @@
 const jCastle = require('../lib/index');
 const QUnit = require('qunit');
-const BigInteger = require('../lib/biginteger');
 
 
 QUnit.module('ECDSA');
@@ -1457,7 +1456,7 @@ QUnit.test('Vector Test & Step Test', function(assert) {
         var bits = input.length * 8;
         var qBits = q.bitLength();
 
-        var z = BigInteger.fromByteArrayUnsigned(input);
+        var z = BigInt.fromBufferUnsigned(input);
 
         if (qBits > bits) return z;
 
@@ -1511,7 +1510,7 @@ QUnit.test('Vector Test & Step Test', function(assert) {
 
             var hash = new jCastle.digest(hash_algo).digest(ba);
             // hash = hash.slice(0, ecInfo.n.bitLength() >>> 3);
-            // var hash_bi = BigInteger.fromByteArrayUnsigned(hash);
+            // var hash_bi = BigInt.fromBufferUnsigned(hash);
             var hash_bi = calculateE(hash, ecInfo.n);
 
             var k = sig_vector.k;
@@ -1526,13 +1525,13 @@ QUnit.test('Vector Test & Step Test', function(assert) {
             v_r = Buffer.from(v_r, 'hex');
             v_s = Buffer.from(v_s, 'hex');
 
-            k = BigInteger.fromByteArrayUnsigned(k);
-            v_r = BigInteger.fromByteArrayUnsigned(v_r);
-            v_s = BigInteger.fromByteArrayUnsigned(v_s);
+            k = BigInt.fromBufferUnsigned(k);
+            v_r = BigInt.fromBufferUnsigned(v_r);
+            v_s = BigInt.fromBufferUnsigned(v_s);
 
             var q = ecInfo.G.multiply(k);
 
-            var r = q.getX().toBigInteger().mod(ecInfo.n);
+            var r = q.getX().toBigInt().mod(ecInfo.n);
 
             k = k.modInverse(ecInfo.n).multiply(hash_bi.add(privkey.multiply(r)));
 

@@ -1,0 +1,293 @@
+<DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./qunit/qunit-1.19.0.css">
+
+<script src="./qunit/qunit-1.19.0.js"></script>
+
+<script src="../dist/jCastle.min.js"></script>
+<!--<script src="../dist/minified-source/lib/bigint-extend.min.js"></script>-->
+</head>
+<body style="font-family: Consolas, Courier New; font-size: 12px;">
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<script type="text/javascript">
+
+QUnit.module('BigInt-extend');
+QUnit.test('Basic test', assert => {
+	var a = BigInt(10);
+	var b = BigInt(500);
+
+	//console.log('add test: ', 510n == a.add(b));
+	assert.ok(510n == a.add(b), 'add test');
+
+	//console.log('pow test: ', a.pow(b) == a**b);
+	assert.ok(a.pow(b) == a**b, 'pow test');
+
+
+	var v1 = Buffer.from([0x85, 0x4A]);
+
+	var b1 = BigInt.fromBufferUnsigned(v1);
+
+	// console.log(b1.toString(), ', ', b1.toString(16));
+	//console.log('fromBufferUnsigned test: ', '854a' == b1.toString(16));
+	assert.ok('854a' == b1.toString(16), 'fromBufferUnsigned test');
+
+
+	// testBit test
+	var v2 = 275936592n;
+	var v2b = v2.toString(2);
+	//console.log('toString test: ', '10000011100100111010101010000' == v2b);
+	assert.ok('10000011100100111010101010000' == v2b, 'toString test');
+
+	var f = true;
+	for (var i = 0; i < v2b.length; i++) {
+		let bit_test = v2.testBit(i) ? '1' : '0';
+		// console.log(bit_test  == v2b.charAt(v2b.length - 1 - i));
+		if (bit_test !== v2b.charAt(v2b.length - 1 -i)) f = false;
+	}
+	//console.log('testBit test: ', f);
+	assert.ok(f, 'testBit test');
+
+	// divide test
+	// a (1, 5), b (2, 6)
+	var a = {x:1n, y:5n}, b = {x:2n, y:6n};
+	var gamma = b.y.subtract(a.y).divide(b.x.subtract(a.x));
+	//console.log('gamma: ', gamma.toString() == '1');
+	assert.ok(gamma.toString() == '1', 'gamma test');
+
+	// modInverse test
+	// EC - fieldElement.divide:
+	var c = 1n.multiply(1n.modInverse(29n)).mod(29n);
+	// console.log(c);
+	//console.log('fieldElement.divide: ', c == 1n);
+	assert.ok(c == 1n, 'fieldElement.divide test');
+
+	// the following result is false.
+	// the modInverse() function from BigInteger has an error
+	// when 1n * (1n.modInverse(29n)) % 29n.
+	// it should be 1n but it gives 0n.
+	//
+	//console.log(BigInteger.one == BigInteger.one.multiply(BigInteger.one.modInverse(BigInteger.valueOf(29))).mod(BigInteger.valueOf(29)));
+
+	// modInverse test
+	//console.log('modInverse test (1): ', 8n.modInverse(21n) == 8n);
+	assert.ok(8n.modInverse(21n) == 8n, 'modInverse test (1)');
+
+	// 13^-1 % 5 is 2
+	//console.log('modInverse test (2): ', 2n == 13n.modInverse(5n));
+	assert.ok(2n == 13n.modInverse(5n), 'modInverse test (2)');
+
+	// fromBuffer, toBuffer test
+	var tv = 17752297764146665446995298448962815825808617578533937894430080747376091955050502610015542914022798407373320496819673276167383224136827618244691214566936377131706664255597354856858564607671622668925329547748643680535489995095425890532751087049375291934562467891309044314925757958474667673972193198682441750340357994503801143202104162472976010845775328204236347770486632642076475794783900415336581645239963766137280472216164700540898056018270697028414204816768937529626531626422939922067053447473736555586764318575530155968845145094446629385006403990444617508676022241488618599029046856811026923958002962759862124290361n;
+	// console.log(tv);
+	var tb = tv.toBuffer();
+	// console.log(tb);
+	var tv2 = BigInt.fromBuffer(tb);
+	//console.log('fromBuffer test (1): ', tv2 == tv);
+	assert.ok(tv2 == tv, 'fromBuffer test (1)');
+
+	var ts = Buffer.from(tb).toString('latin1');
+	var tv3 = BigInt.fromBuffer(Buffer.from(ts, 'latin1'));
+	//console.log('fromBuffer test (2): ', tv == tv3);
+	assert.ok(tv == tv3, 'fromBuffer test (2)');
+
+	// log test
+	//console.log('log test (1): ', 1024n.log2() == 10n);
+	assert.ok(1024n.log2() == 10n, 'log test (1)');
+
+	//console.log('log test (2): ', 109478n.log10() == 5n);
+	assert.ok(109478n.log10() == 5n, 'log test (2)');
+
+
+	// extendedEuclid test
+	var result = BigInt.extendedEuclid(36163n, 21199n);
+	//console.log('extendedEuclid test: ', result.gcd == 1247n && result.x == -7n && result.y == 12n);
+	assert.ok(result.gcd == 1247n && result.x == -7n && result.y == 12n, 'extendedEuclid test');
+
+	// modPow test
+	// console.log('23895^15 % 14189 = 344');
+	//console.log('modPow test (1): ', 344n == 23895n.modPow(15n, 14189n));
+	assert.ok(344n == 23895n.modPow(15n, 14189n), 'modPow test (1)');
+
+	//console.log('6547890621^4532415 % 76543278906 = 1039609179');
+	//console.log('modPow test (2): ', 1039609179n == 6547890621n.modPow(4532415n, 76543278906n));
+	assert.ok(1039609179n == 6547890621n.modPow(4532415n, 76543278906n), 'modPow test (2)');
+
+	// square test
+	//console.log('square test (1): ', 509627n * 509627n == 509627n.square());
+	assert.ok(509627n * 509627n == 509627n.square(), 'square test (1)');
+
+	//console.log('square test (2): ', 478294615n.square().isSquare());
+	assert.ok(478294615n.square().isSquare(), 'square test (2)');
+
+	// 62 ^ 2 = 3844 = 2 + 34 * 113 = 2 (mod 113)
+	//console.log('modSqrt test: ', 62n == 2n.modSqrt(113n));
+	assert.ok(62n == 2n.modSqrt(113n), 'modSqrt test');
+
+	// getLowestSetBit test
+	//console.log('getLowestSetBit test (1): ', 2n == 2300n.getLowestSetBit());
+	assert.ok(2n == 2300n.getLowestSetBit(), 'getLowestSetBit test (1)');
+
+	//console.log('getLowestSetBit test (2): ', 3n == 35000n.getLowestSetBit());
+	assert.ok(3n == 35000n.getLowestSetBit(), 'getLowestSetBit test (2)');
+
+
+
+	// probablePrime test
+	var seed = "Date.now() basically returns the timestamp in milliseconds since 1st January 1970.";
+	var bitlen = 2048;
+
+	//console.time('certainty = 10');
+	var prime1 = BigInt.probablePrime(bitlen, rng, 10);
+	//console.timeEnd('certainty = 10');
+	//console.log(prime1.toString(16));
+
+	//console.log(prime1.isProbablePrime(10));
+	assert.ok(prime1.isProbablePrime(10), 'probablePrime test');
+
+	// small int test
+	var a = 'a69e629e';
+	var b = Buffer.from(a, 'hex');
+	var c = BigInt.fromBufferUnsigned(b);
+
+	//console.log(c.gt(0n));
+	assert.ok(c.gt(0n), 'small int test 1');
+
+	//console.log(c.toString(16));
+	//console.log(Buffer.from(c.toBufferUnsigned()).toString('hex'));
+	//console.log(c.intValue());
+	//console.log(c.toString());
+	//console.log(c);
+
+	var a = 'a69e62';
+	var b = Buffer.from(a, 'hex');
+	var c = BigInt.fromBufferUnsigned(b);
+
+	//console.log(c.gt(0n));
+	assert.ok(c.gt(0n), 'small int test 2');
+	//console.log(c.toString(16));
+	//console.log(Buffer.from(c.toBufferUnsigned()).toString('hex'));
+	//console.log(c.intValue());
+	//console.log(c.toString());
+	//console.log(c);
+
+
+
+	// random integer test
+	var rng = new jCastle.prng(seed, 'default');
+	//var rng = null;
+	let bit_len = 2048;
+	for (let i = 0; i < 10; i++) {
+		let big_num = BigInt.random(bit_len, rng);
+		//console.log('rand bigint bitLength test (' + (i+1) + ')', big_num.bitLength() == bit_len);
+		assert.ok(big_num.bitLength() == bit_len, 'rand bigint bitLength test (' + (i+1) + ')');
+		//console.log(big_num);
+		bit_len--;
+	}
+
+
+	function getRandomInt(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+	}
+
+	function randomBigIntegerLessThan(n, rng) {
+		var result;
+		do {
+			result = BigInt.random(n.bitLength(), rng);
+		}
+		while (result.compareTo(n) >= 0);
+		return result;
+	}
+
+	// mod test
+
+	for (var i = 0; i < 20; i++) {
+		var mod = BigInt(getRandomInt(0, 1000) + 8).setBit(0);
+		if (mod.equals(1n))
+			mod = 3n;
+		var x = randomBigIntegerLessThan(mod);
+		//console.log(x.square().mod(mod) == (x * x ) % mod);
+		assert.ok(x.square().mod(mod) == (x * x ) % mod, 'mod test ' + (i+1));
+	}
+
+	// montgomery reducer test
+
+	for (var i = 0; i < 20; i++) {
+		var mod = BigInt(getRandomInt(0, 1000) + 8).setBit(0);
+		if (mod.equals(1n))
+			mod = 3n;
+		var x = randomBigIntegerLessThan(mod);
+		var y = randomBigIntegerLessThan(mod);
+
+		var red = new BigInt.Montgomery(mod);
+		var xm = red.convert(x);
+		var ym = red.convert(y);
+		var zm = red.multiply(xm, ym);
+		var actual = red.revert(zm);
+		var expected = x.multiply(y).mod(mod);
+		//console.log(expected == actual);
+		assert.ok(expected == actual, 'montgomery reducer test ' + (i+1));
+	}
+
+	for (var i = 0; i < 10; i++) {
+		var mod = BigInt(getRandomInt(0, 1000) + 8).setBit(0);
+		if (mod.equals(1n))
+			mod = 3n;
+		var x = randomBigIntegerLessThan(mod);
+		var y = randomBigIntegerLessThan(mod.shiftLeft(8));
+
+		var red = new BigInt.Montgomery(mod);
+		var xm = red.convert(x);
+		var zm = red.pow(xm, y);
+		var actual = red.revert(zm);
+		var expected = x.modPow(y, mod);
+		//console.log(expected == actual);
+		assert.ok(expected == actual, 'montgomery reducer second test ' + (i+1));
+	}
+
+	// Barrett reducer test
+	function randomModulus(rng) {
+		var bits = getRandomInt(0, 1000) + 2;
+		while (true) {
+			var result = BigInt.random(bits, rng);
+			if (result.bitLength() == bits && result.bitCount() > 1)
+				return result;
+		}
+	}
+
+	for (var i = 0; i < 20; i++) {
+		var mod = randomModulus();
+		var modSqr = mod.pow(2n);
+		var modSqrLen = modSqr.bitLength();
+		var br = new BigInt.Barrett(mod);
+
+		for (var j = 0; j < 100; j++) {
+			var x;
+			do {
+				x = BigInt.random(modSqrLen, rng);
+			}
+			while (x.compareTo(modSqr) >= 0);
+
+			//console.log(br.reduce(x).equals(x.mod(mod)));
+			assert.ok(br.reduce(x).equals(x.mod(mod)), 'Barrett reducer test ' + (i+1) + ' - ' + (j+1));
+		}
+	}
+
+/*
+	
+
+
+*/
+
+});
+
+
+</script>
+
+</body>
+</html>

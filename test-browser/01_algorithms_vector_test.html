@@ -1101,6 +1101,8 @@ QUnit.test("Vector Test", function(assert) {
 		var ct = cipher.encryptBlock(pt);
 
 		assert.ok(ct.equals(expected) , "Encryption passed!");
+		//console.log(ct);
+		//console.log(expected);
 
 		cipher.keySchedule(key, true);
 		
